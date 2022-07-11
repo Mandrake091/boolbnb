@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypesTable extends Migration
+class CreateViewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,7 @@ class CreateTypesTable extends Migration
     {
         Schema::create('views', function (Blueprint $table) {
             $table->id();
-            $table->date('data');
             $table->string('ip_address');
-            $table->foreignId('house_id'); 
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('views');
     }
 }
