@@ -8,6 +8,8 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <div>Prova </div>
                 <div>Prova 2</div>
+                <div>Prova 3</div>
+
 
                 <div class="card-body">
                     @if (session('status'))
