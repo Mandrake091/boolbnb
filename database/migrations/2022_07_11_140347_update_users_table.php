@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypesTable extends Migration
+class UpdateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('views', function (Blueprint $table) {
-            $table->id();
-            $table->string('ip_address');
-            $table->foreignId('house_id')->constrained()->onDelete('cascade'); 
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('surname');
+            $table->date('birthday');
         });
     }
 
@@ -28,6 +26,11 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::table('users', function (Blueprint $table) {
+            
+            $table->dropColumn('surname');
+            $table->dropColumn('birthday');
+
+        });
     }
 }

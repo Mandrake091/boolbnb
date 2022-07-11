@@ -20,11 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 
-// Route::get('/home', 'HomeController@index')->name('home');
-// Route::middleware('auth')
-// ->namespace('Admin') // i controller saranno dentro lo stesso namespace (http > controllers > Admin > HomeController)
-// ->name('admin.') // quando lo richiamo nelle blade sarà route(‘admin.home’)
-// ->prefix('admin') // sarebbe localhost:8080/admin/home
-// ->group(function () {
-//     Route::get('/', 'HomeController@index')->name('home');
-// });
+Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')
+->namespace('Admin') // i controller saranno dentro lo stesso namespace (http > controllers > Admin > HomeController)
+->name('admin.') // quando lo richiamo nelle blade sarà route(‘admin.home’)
+->prefix('admin') // sarebbe localhost:8080/admin/home
+->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+});

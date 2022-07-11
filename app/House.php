@@ -3,9 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class House extends Model
 {
+    public static function generateSlug($title)
+    {
+        $slug = Str::of($title)->slug('-');
+        $count = 1;
+        while (House::where('slug', $slug)->first()) {
+            $slug = Str::of($title)->slug('-') . "-{$count}";
+            $count++;
+        }
+        return $slug;
+    }
+    
     protected $guarded = [];
     public function type()
     {
