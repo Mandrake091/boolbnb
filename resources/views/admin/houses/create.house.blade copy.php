@@ -6,11 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-                <div>Prova </div>
-                <div>Prova 2</div>
-                <div>Prova 3</div>
-                <div>Prova 4</div>
-
+                
+<h1>questa qui è la tua casa</h1>
 
                 <div class="card-body">
                     @if (session('status'))
