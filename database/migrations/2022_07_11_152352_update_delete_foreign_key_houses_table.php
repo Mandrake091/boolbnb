@@ -35,8 +35,7 @@ class UpdateDeleteForeignKeyHousesTable extends Migration
         Schema::table('houses', function (Blueprint $table) {
             
             $table->foreignId('host_id')->constrained()->onDelete('cascade');
-            // $table->dropForeign('user_id');
-            // $table->dropColumn('user_id');
+          
             
     });
 }

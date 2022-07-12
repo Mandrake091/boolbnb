@@ -16,11 +16,8 @@ class UpdateAddForeignKeyHousesTable extends Migration
         Schema::table('houses', function (Blueprint $table) {
             
 
-            
-           
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             
-
         });
     }
 
