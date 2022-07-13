@@ -74,11 +74,18 @@ class HouseController extends Controller
 
         $newHouse->state = $data['state'];
         $newHouse->city = $data['city'];
+        
         $newHouse->address = $data['address'];
-        $geoCode = Http::get('https://api.tomtom.com/search/2/geocode/via-papa-luciani-10-73010-surbo.json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0')->json();
+        
+        $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/"+$data['address']+".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
+        
+         @dd($geoCode);
 
-        $newHouse->latitude = $data['latitude'];
-        $newHouse->longitude = $data['longitude'];
+        $newHouse->latitude = $geoCode['results']['0']['position']['lat'];
+        // @dd($newHouse->latitude);
+
+        $newHouse->longitude = $geoCode['results']['0']['position']['lon'];
+        
         $newHouse->user_id = auth()->user()->id;
 
         if (isset($data['image'])) {
@@ -114,7 +121,7 @@ class HouseController extends Controller
      */
     public function edit(House $house)
     {
-    
+
         $types = Type::all();
         $services = Service::all();
         $sponsorships = Sponsorship::all();
@@ -162,7 +169,7 @@ class HouseController extends Controller
             $path_image = Storage::put("uploads", $data['image']);
             $house->image = $path_image;
         }
-        
+
         $house->update();
 
         if (isset($data['services'])) {
@@ -170,7 +177,7 @@ class HouseController extends Controller
         } else {
             $house->services()->sync([]);
         }
-        
+
         return redirect()->route('admin.houses.show', $house->id);
     }
 
