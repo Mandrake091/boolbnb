@@ -12,4 +12,4 @@ var map = tt.map({
     center: GOLDEN_GATE_BRIDGE,
     zoom: 12,
 });
-console.log('bello')
+

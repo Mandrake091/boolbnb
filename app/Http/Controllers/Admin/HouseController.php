@@ -12,8 +12,11 @@ use App\Service;
 use App\User;
 use App\Type;
 use App\Sponsorship;
+use Illuminate\Support\Facades\Auth;
 use App\View;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
+use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class HouseController extends Controller
 {
@@ -32,7 +35,25 @@ class HouseController extends Controller
      */
     public function index()
     {
-        return view('admin.houses.index');
+        $houses = [];
+        $id = Auth::id();
+        $allUserHouses = House::all();
+
+        for ($i = 0; $i < count($allUserHouses); $i++) {
+            if ($allUserHouses[$i]->user_id == $id) {
+                array_push($houses, $allUserHouses[$i]);
+            }
+        }
+    
+
+
+      
+
+        // dump($house);
+        // dump($house->id);
+
+        // dump($houses);
+       return view('admin.houses.index', compact('houses'));
     }
 
     /**
@@ -79,7 +100,7 @@ class HouseController extends Controller
         // @dd($newHouse->address);
 
         $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . '-' . $data['city'] . '-' . $data['state'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
-     
+
 
         $newHouse->latitude = $geoCode['results']['0']['position']['lat'];
         // @dd($newHouse->latitude);
@@ -110,6 +131,7 @@ class HouseController extends Controller
      */
     public function show(House $house)
     {
+
         return view('admin.houses.show', compact('house'));
     }
 
@@ -190,9 +212,11 @@ class HouseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(House $house)
     {
-        //
+        $house->services()->sync([]);
+        $house->delete();
+        return redirect()->route('admin.houses.index')->with("message", "House with id: {$house->id} successfully deleted !");
     }
 
     private function getSlug($title)
