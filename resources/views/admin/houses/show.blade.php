@@ -1,12 +1,5 @@
 @extends('layouts.app',['title'=>'#'.$house->id]))
 
-<style>
-    #map-div {
-        width: 50vw;
-        height: 50vh;
-    }
-</style>
-
 @section('content')
     <div class="container">
         <div class="row mb-3">
@@ -68,14 +61,9 @@
                         @endforeach
                     </ul>
                 </div>
-
+                <div id="map-div"></div>
             </div>
         </div>
     </div>
 @endsection
-<div id="map-div"></div>
-<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps-web.min.js"></script>
 
-<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/services/services-web.min.js"></script>
-
-<script src="{{ asset('js/admin.js') }}"></script>

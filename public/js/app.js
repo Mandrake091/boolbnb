@@ -49427,6 +49427,20 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+var API_KEY = "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh";
+var APPLICATION_NAME = "My Application";
+var APPLICATION_VERSION = "1.0";
+tt.setProductInfo(APPLICATION_NAME, APPLICATION_VERSION);
+var GOLDEN_GATE_BRIDGE = {
+  lng: 11.318687,
+  lat: 44.5213588
+};
+var map = tt.map({
+  key: API_KEY,
+  container: "map-div",
+  center: GOLDEN_GATE_BRIDGE,
+  zoom: 12
+});
 
 /***/ }),
 
@@ -49562,8 +49576,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\esercizi_php\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\esercizi_php\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
