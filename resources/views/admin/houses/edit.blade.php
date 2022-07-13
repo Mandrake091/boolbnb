@@ -140,22 +140,22 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="latitude" class="form-label">Lat</label>
             <input type="number" class="form-control @error('latitude') is-invalid @enderror" id="latitude"
                 name="latitude" value="{{ old('latitude', $house->latitude) }}" placeholder="Inserisci numero di bagni" required>
             @error('latitude')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-        </div>
-        <div class="form-group">
+        </div> --}}
+        {{-- <div class="form-group">
             <label for="longitude" class="form-label">Long</label>
             <input type="number" class="form-control @error('longitude') is-invalid @enderror" id="longitude"
                 name="longitude" value="{{ old('longitude', $house->latitude) }}" placeholder="Inserisci numero di bagni" required>
             @error('longitude')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-        </div>
+        </div> --}}
         <div class="form-group">
             <label for="check_in" class="form-label">Check in</label>
             <input type="date" class="form-control @error('check_in') is-invalid @enderror" id="check_in"

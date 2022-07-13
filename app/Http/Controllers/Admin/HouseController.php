@@ -74,18 +74,18 @@ class HouseController extends Controller
 
         $newHouse->state = $data['state'];
         $newHouse->city = $data['city'];
-        
+
         $newHouse->address = $data['address'];
-        
-        $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/"+$data['address']+".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
-        
-         @dd($geoCode);
+        // @dd($newHouse->address);
+
+        $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . '-' . $data['city'] . '-' . $data['state'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
+     
 
         $newHouse->latitude = $geoCode['results']['0']['position']['lat'];
         // @dd($newHouse->latitude);
 
         $newHouse->longitude = $geoCode['results']['0']['position']['lon'];
-        
+
         $newHouse->user_id = auth()->user()->id;
 
         if (isset($data['image'])) {
@@ -108,9 +108,9 @@ class HouseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(House $house)
     {
-        //
+        return view('admin.houses.show', compact('house'));
     }
 
     /**
@@ -125,7 +125,7 @@ class HouseController extends Controller
         $types = Type::all();
         $services = Service::all();
         $sponsorships = Sponsorship::all();
-        return view('admin.houses.edit', compact('house','types', 'services', 'sponsorships'));
+        return view('admin.houses.edit', compact('house', 'types', 'services', 'sponsorships'));
     }
 
     /**
@@ -158,10 +158,13 @@ class HouseController extends Controller
         $house->state = $data['state'];
         $house->city = $data['city'];
         $house->address = $data['address'];
-        $geoCode = Http::get('https://api.tomtom.com/search/2/geocode/via-papa-luciani-10-73010-surbo.json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0')->json();
+        $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . '-' . $data['city'] . '-' . $data['state'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
 
-        $house->latitude = $data['latitude'];
-        $house->longitude = $data['longitude'];
+
+        $house->latitude = $geoCode['results']['0']['position']['lat'];
+        // @dd($newHouse->latitude);
+
+        $house->longitude = $geoCode['results']['0']['position']['lon'];
         if (isset($data['image'])) {
             // cancello l'immagine
             Storage::delete($house->image);
