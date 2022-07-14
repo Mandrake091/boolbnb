@@ -37,7 +37,7 @@
       padding: 0;
     }
     #map-div {
-      width: 40vw;
+      width: 100%;
       height: 50vh;
     }
 </style>

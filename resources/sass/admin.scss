@@ -12,4 +12,6 @@ $fa-font-path: '../fonts/font-awesome' !default;
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 
-@import './partials/admin/admin'
+@import './partials/admin/admin';
+@import './partials/admin/houses/index';
+@import './partials/admin/houses/show';

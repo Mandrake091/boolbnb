@@ -6,7 +6,7 @@
             <div class="col-8">
                 <h1 class="text-uppercase mt-3">{{ $house->title }}</h1>
                 @if ($house->image)
-                    <img class="img-fluid" src="{{ asset('storage/' . $house->image) }}" alt="{{ $house->title }}">
+                    <img class=" img-show" src="{{ asset('storage/' . $house->image) }}" alt="{{ $house->title }}">
                 @endif
             </div>
             <div class="col-4 align-self-center">
