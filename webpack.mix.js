@@ -21,8 +21,10 @@ mix.js("resources/js/app.js", "public/js")
         "public/fonts/font-awesome"
     );
 
-//     //Front
-// mix.js('resources/js/front.js', 'public/js')
-// .sass('resources/sass/front.scss', 'public/css').options({
-//     processCssUrls: false
-// })
+    //Front
+mix.sass("resources/sass/front.scss", "public/css")
+    .options({
+        processCssUrls: false,
+    })
+
+    // .js("resources/js/front.js", "public/js");
