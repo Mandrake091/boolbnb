@@ -200,7 +200,7 @@ class HouseController extends Controller
         if (isset($data['services'])) {
             $house->services()->sync($data['services']);
         } else {
-            $house->services()->toggle([]);
+            $house->services()->sync([]);
         }
 
 

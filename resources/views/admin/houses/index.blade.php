@@ -19,14 +19,14 @@
                     </div>
                     <h1 class="w-100 text-center pt-3">Tutte le tue case</h1>
                     @foreach ($houses as $post)
-                        <div class="card mx-auto my-3" style="width: 16rem;">
+                        <div class="card mx-auto my-3" style="width: 18rem;">
                             @if ($post->image)
                                 <img class="img-fluid img-dimensions" src="{{ asset('/storage/' . $post->image) }}"
                                     alt="{{ $post->title }}">
                             @endif
                             <div class="card-body">
                                 <h5 class="card-title">{{ $post->title }}</h5>
-                                <p class="card-text card-text-index">{{ $post->description }}</p>
+                                <p class="card-text card-text-index">{!! $post->description !!}</p>
                             </div>
 
                             <div class="card-body">
@@ -37,7 +37,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger text-uppercase"
-                                            @@click="openModal($event, {{ $post->id }})">Delete</button>
+                                            @@click="openModal($event, {{ $post->id }})">Elimina</button>
                                     </form>
                                 </div>
 

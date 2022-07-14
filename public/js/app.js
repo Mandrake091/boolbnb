@@ -49587,9 +49587,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/sass/admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/sass/front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/sass/admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/sass/front.scss */"./resources/sass/front.scss");
 
 
 /***/ })
