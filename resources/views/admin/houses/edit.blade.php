@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Modifica Alloggio {{ $house->id }}</h1>
-    <form action="{{ route('admin.houses.update', $house->id) }}" method="post">
+    <form enctype="multipart/form-data" action="{{ route('admin.houses.update', $house->id) }}" method="post">
         @csrf
         @method('PUT')
 
@@ -53,17 +53,18 @@
                 <div class="form-check form-check-inline">
                     @if (old('service'))
                         <input type="checkbox" class="form-check-input" id="{{ $service->slug }}" name="tags[]"
-                            value="{{ $service->id }}" {{ in_array($service->id, old('service', [])) ? 'checked' : '' }}>
+                            value="{{ $service->id }}"
+                            {{ in_array($service->id, old('service', [])) ? 'checked' : '' }}>
                     @else
                         <input type="checkbox" class="form-check-input" id="{{ $service->slug }}" name="tags[]"
                             value="{{ $service->id }}" {{ $house->services->contains($service) ? 'checked' : '' }}>
                     @endif
                     <label class="form-check-label" for="{{ $service->slug }}">{{ $service->name }}</label>
-        </div>
-        @endforeach
-        @error('services')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+                </div>
+            @endforeach
+            @error('services')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group form-check">
@@ -78,7 +79,8 @@
         <div class="form-group">
             <label for="night_price" class="form-label">Prezzo per notte</label>
             <input type="number" class="form-control @error('night_price') is-invalid @enderror" id="night_price"
-                name="night_price" value="{{ old('night_price',$house->night_price)}}" placeholder="Inserisci prezzo per notte" required>
+                name="night_price" value="{{ old('night_price', $house->night_price) }}"
+                placeholder="Inserisci prezzo per notte" required>
             @error('night_price')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -86,7 +88,7 @@
         <div class="form-group">
             <label for="n_room" class="form-label">Numero di stanze:</label>
             <input type="number" class="form-control @error('n_room') is-invalid @enderror" id="n_room" name="n_room"
-                value="{{ old('n_room',$house->n_room) }}" placeholder="Inserisci numero di stanze" required>
+                value="{{ old('n_room', $house->n_room) }}" placeholder="Inserisci numero di stanze" required>
             @error('n_room')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -94,7 +96,7 @@
         <div class="form-group">
             <label for="n_bed" class="form-label">Numero di posti letto</label>
             <input type="number" class="form-control @error('n_bed') is-invalid @enderror" id="n_bed" name="n_bed"
-                value="{{ old('n_bed',$house->n_bed) }}" placeholder="Inserisci numero di posti letto" required>
+                value="{{ old('n_bed', $house->n_bed) }}" placeholder="Inserisci numero di posti letto" required>
             @error('n_bed')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -102,7 +104,8 @@
         <div class="form-group">
             <label for="n_bathroom" class="form-label">Numero di bagni:</label>
             <input type="number" class="form-control @error('n_bathroom') is-invalid @enderror" id="n_bathroom"
-                name="n_bathroom" value="{{ old('n_bathroom', $house->n_bathroom) }}" placeholder="Inserisci numero di bagni" required>
+                name="n_bathroom" value="{{ old('n_bathroom', $house->n_bathroom) }}"
+                placeholder="Inserisci numero di bagni" required>
             @error('n_bathroom')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -159,7 +162,8 @@
         <div class="form-group">
             <label for="check_in" class="form-label">Check in</label>
             <input type="date" class="form-control @error('check_in') is-invalid @enderror" id="check_in"
-                name="check_in" value="{{ old('check_in', $house->check_in) }}" placeholder="Inserisci numero di bagni" required>
+                name="check_in" value="{{ old('check_in', $house->check_in) }}"
+                placeholder="Inserisci numero di bagni" required>
             @error('check_in')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -167,7 +171,8 @@
         <div class="form-group">
             <label for="check_out" class="form-label">Check out</label>
             <input type="date" class="form-control @error('check_out') is-invalid @enderror" id="check_out"
-                name="check_out" value="{{ old('check_out', $house->check_out) }}" placeholder="Inserisci numero di bagni" required>
+                name="check_out" value="{{ old('check_out', $house->check_out) }}"
+                placeholder="Inserisci numero di bagni" required>
             @error('check_out')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
