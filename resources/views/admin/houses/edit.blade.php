@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <h1>Modifica Alloggio {{ $house->id }}</h1>

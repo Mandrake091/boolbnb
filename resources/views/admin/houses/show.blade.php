@@ -1,4 +1,4 @@
-@extends('layouts.app',['title'=>'#'.$house->id]))
+@extends('layouts.admin',['title'=>'#'.$house->id]))
 
 @section('content')
     <div class="container">

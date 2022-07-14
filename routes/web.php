@@ -18,10 +18,14 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::middleware('auth')
-->namespace('Admin') // i controller saranno dentro lo stesso namespace (http > controllers > Admin > HomeController)
-->name('admin.') // quando lo richiamo nelle blade sarà route(‘admin.home’)
-->prefix('admin') // sarebbe localhost:8080/admin/home
-->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('/houses', 'HouseController');
+    ->namespace('Admin') // i controller saranno dentro lo stesso namespace (http > controllers > Admin > HomeController)
+    ->name('admin.') // quando lo richiamo nelle blade sarà route(‘admin.home’)
+    ->prefix('admin') // sarebbe localhost:8080/admin/home
+    ->group(function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+        Route::resource('/houses', 'HouseController');
 });
+
+Route::get("{any?}", function(){
+    return view('guest.home');
+})->where('any', '.*');
