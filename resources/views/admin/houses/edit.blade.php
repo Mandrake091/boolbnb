@@ -60,7 +60,7 @@
                             value="{{ $service->id }}"
                             {{ in_array($service->id, old('service', [])) ? 'checked' : '' }}>
                     @else
-                        <input type="checkbox" class="form-check-input" id="{{ $service->slug }}" name="tags[]"
+                        <input type="checkbox" class="form-check-input" id="{{ $service->slug }}" name="services[]"
                             value="{{ $service->id }}" {{ $house->services->contains($service) ? 'checked' : '' }}>
                     @endif
                     <label class="form-check-label" for="{{ $service->slug }}">{{ $service->name }}</label>
