@@ -44,16 +44,16 @@ class HouseController extends Controller
                 array_push($houses, $allUserHouses[$i]);
             }
         }
-    
 
 
-      
+
+
 
         // dump($house);
         // dump($house->id);
 
         // dump($houses);
-       return view('admin.houses.index', compact('houses'));
+        return view('admin.houses.index', compact('houses'));
     }
 
     /**
@@ -194,16 +194,16 @@ class HouseController extends Controller
             $path_image = Storage::put("uploads", $data['image']);
             $house->image = $path_image;
         }
-        
 
 
+        $house->update();
         if (isset($data['services'])) {
             $house->services()->sync($data['services']);
         } else {
-            $house->services()->sync([]);
+            $house->services()->toggle([]);
         }
 
-        $house->update();
+
 
         return redirect()->route('admin.houses.show', $house->id);
     }
