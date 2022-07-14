@@ -194,14 +194,16 @@ class HouseController extends Controller
             $path_image = Storage::put("uploads", $data['image']);
             $house->image = $path_image;
         }
+        
 
-        $house->update();
 
         if (isset($data['services'])) {
             $house->services()->sync($data['services']);
         } else {
             $house->services()->sync([]);
         }
+
+        $house->update();
 
         return redirect()->route('admin.houses.show', $house->id);
     }

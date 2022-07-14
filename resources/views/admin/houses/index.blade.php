@@ -6,7 +6,7 @@
             <div class="col-md-10 flex-nowrap">
                 <div class="card flex-row flex-wrap">
                     <div class="card-header w-100 text-center"><h5>{{ __('Dashboard') }}</h5>
-                        <div class="card-body p-0">
+                        {{-- <div class="card-body p-0">
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
@@ -14,18 +14,19 @@
                             @endif
 
                             {{ __('You are logged in!') }}
-                        </div>
+                        </div> --}}
+                        <a href="{{route('admin.houses.create')}}"><button class="btn btn-success">Inserisci una nuova casa</button></a>
                     </div>
                     <h1 class="w-100 text-center pt-3">Tutte le tue case</h1>
                     @foreach ($houses as $post)
                         <div class="card mx-auto my-3" style="width: 16rem;">
                             @if ($post->image)
-                                <img class="img-fluid" src="{{ asset('/storage/' . $post->image) }}"
+                                <img class="img-fluid img-dimensions" src="{{ asset('/storage/' . $post->image) }}"
                                     alt="{{ $post->title }}">
                             @endif
                             <div class="card-body">
                                 <h5 class="card-title">{{ $post->title }}</h5>
-                                <p class="card-text">{{ $post->description }}</p>
+                                <p class="card-text card-text-index">{{ $post->description }}</p>
                             </div>
 
                             <div class="card-body">
@@ -45,6 +46,7 @@
                     @endforeach
 
                 </div>
+                
             </div>
         </div>
     </div>

@@ -38,14 +38,18 @@
             @enderror
         </div>
 
+        
         <div class="form-group">
-            <img id="uploadPreview" width="100" src="https://via.placeholder.com/300x200">
-            <label for="image">Aggiungi immagine</label>
-            <input type="file" id="image" name="image" onchange="boolpress.previewImage();">
-            @error('image')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
+        @if ($house->image)
+            <img id="uploadPreview" width="100" src="{{asset("storage/{$house->image}")}}" alt="{{$house->title}}">
+        @endif
+        {{-- manca else --}}
+        <label for="image">Aggiungi immagine</label>
+        <input type="file" id="image" name="image" onchange="boolpress.previewImage();">
+        @error('image')
+           <div class="alert alert-danger">{{ $message }}</div>
+         @enderror
+    </div>
 
         <div class="form-group">
             <h5>Servizi</h5>
@@ -67,14 +71,26 @@
             @enderror
         </div>
 
-        <div class="form-group form-check">
+        {{-- <div class="form-group form-check">
             <input type="checkbox" class="form-check-input  @error('visibility') is-invalid @enderror"
                 {{ old('visibility') ? 'checked' : '' }} id="visibility" name="visibility">
             <label class="form-check-label" for="visibility">Visibile</label>
             @error('visibility')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+        </div> --}}
+
+        <div class="form-group">
+        <p><strong>Visibile</strong></p>
+        <div class="form-check form-check-inline">
+
+            <input type="checkbox" class="form-check-input" {{old('visibility', $house->visibility ) ? 'checked' : ''}} id="visibility" name="visibility">
+            <label class="form-check-label"  for="visibility">Visibile</label>
+            @error('visibility')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
+    </div>
 
         <div class="form-group">
             <label for="night_price" class="form-label">Prezzo per notte</label>

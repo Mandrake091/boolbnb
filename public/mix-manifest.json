@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/admin.css": "/css/admin.css",
+    "/css/front.css": "/css/front.css",
     "/fonts/font-awesome/fa-brands-400.ttf": "/fonts/font-awesome/fa-brands-400.ttf",
     "/fonts/font-awesome/fa-brands-400.woff2": "/fonts/font-awesome/fa-brands-400.woff2",
     "/fonts/font-awesome/fa-regular-400.ttf": "/fonts/font-awesome/fa-regular-400.ttf",
