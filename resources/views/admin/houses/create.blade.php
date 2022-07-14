@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Crea Post</h2>
+                        <h2>Crea nuovo appartamento</h2>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('admin.houses.store') }}" method="POST" enctype="multipart/form-data">
@@ -20,7 +20,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group-description mx-auto">
                                 <label for="contentEditor" class="form-label">Descrizione:</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="contentEditor"
                                     cols="30" rows="10">{{ old('description') }}</textarea>

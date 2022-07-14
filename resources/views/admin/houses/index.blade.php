@@ -1,43 +1,49 @@
 @extends('layouts.admin')
 
 @section('content')
- 
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">{{ __('Dashboard') }}</div>
-                        <h1>Tutte le tue case</h1>
-                        @foreach ($houses as $post)
-                            <tr>
-                                <th scope="row">{{ $post->id }}</th>
-                                <td>{{ $post->title }}</td>
-                                <td>{{ $post->created_at }}</td>
-                                <td>
-                                    <a href="{{ route('admin.houses.show', $post->id) }}" class="btn cs_btn">View</a>
-                                </td>
-                                <td>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 flex-nowrap">
+                <div class="card flex-row flex-wrap">
+                    <div class="card-header w-100 text-center"><h5>{{ __('Dashboard') }}</h5>
+                        <div class="card-body p-0">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+
+                            {{ __('You are logged in!') }}
+                        </div>
+                    </div>
+                    <h1 class="w-100 text-center pt-3">Tutte le tue case</h1>
+                    @foreach ($houses as $post)
+                        <div class="card mx-auto my-3" style="width: 16rem;">
+                            @if ($post->image)
+                                <img class="img-fluid" src="{{ asset('/storage/' . $post->image) }}"
+                                    alt="{{ $post->title }}">
+                            @endif
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $post->title }}</h5>
+                                <p class="card-text">{{ $post->description }}</p>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row justify-content-around">
+                                    <a href="{{ route('admin.houses.show', $post->id) }}"
+                                        class="btn btn-primary">Visualizza</a>
                                     <form action="{{ route('admin.houses.destroy', $post->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger text-uppercase"
                                             @@click="openModal($event, {{ $post->id }})">Delete</button>
                                     </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                 
+                                </div>
 
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
                             </div>
-                        @endif
+                        </div>
+                    @endforeach
 
-                        {{ __('You are logged in!') }}
-                    </div>
                 </div>
             </div>
         </div>

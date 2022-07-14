@@ -1,4 +1,4 @@
-@extends('layouts.admin',['title'=>'#'.$house->id]))
+@extends('layouts.admin', ['title' => '#' . $house->id])
 
 @section('content')
     <div class="container">
@@ -6,7 +6,7 @@
             <div class="col-8">
                 <h1 class="text-uppercase mt-3">{{ $house->title }}</h1>
                 @if ($house->image)
-                    <img src="{{ asset('/storage/' . $house->image) }}" alt="{{ $house->title }}">
+                    <img class="img-fluid" src="{{ asset('storage/' . $house->image) }}" alt="{{ $house->title }}">
                 @endif
             </div>
             <div class="col-4 align-self-center">
@@ -14,11 +14,12 @@
                     <a href="{{ route('admin.houses.edit', $house->id) }}" class="btn btn-warning text-uppercase"
                         type="button">Edit</a>
                 </div>
-                 <div class="d-flex flex-column mt-2 mx-auto">
-                    <form class=" mx-auto" action="{{route('admin.houses.destroy', $house->id)}}" method="post">
+                <div class="d-flex flex-column mt-2 mx-auto">
+                    <form class=" mx-auto" action="{{ route('admin.houses.destroy', $house->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger text-uppercase" @@click="openModal($event, {{$house->id}})">Delete</button>
+                        <button class="btn btn-danger text-uppercase"
+                            @@click="openModal($event, {{ $house->id }})">Delete</button>
                     </form>
                 </div>
             </div>
@@ -66,4 +67,3 @@
         </div>
     </div>
 @endsection
-
