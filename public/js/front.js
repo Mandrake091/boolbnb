@@ -81,33 +81,20 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ "./resources/sass/admin.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/admin.scss ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!*****************************************************************!*\
-  !*** multi ./resources/js/admin.js ./resources/sass/admin.scss ***!
-  \*****************************************************************/
+/******/ ([
+/* 0 */,
+/* 1 */
+/*!*************************************!*\
+  !*** multi ./resources/js/front.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-!(function webpackMissingModule() { var e = new Error("Cannot find module 'C:\\MAMP\\htdocs\\esercizi_php\\boolbnb\\resources\\js\\admin.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\esercizi_php\boolbnb\resources\sass\admin.scss */"./resources/sass/admin.scss");
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'C:\\MAMP\\htdocs\\esercizi_php\\boolbnb\\resources\\js\\front.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 /***/ })
-
-/******/ });
+/******/ ]);
