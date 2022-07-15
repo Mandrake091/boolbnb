@@ -30,8 +30,8 @@
                             <p>Indirizzo: {{ $house->address }}</p>
                             <p>Città: {{ $house->city }}</p>
                             <p>Stato: {{ $house->state }}</p>
-                            <p>Latitudine: {{ $house->latitude }}</p>
-                            <p>Longitude: {{ $house->longitude }}</p>
+                            <p id="latitude">Latitudine: {{ $house->latitude }}</p>
+                            <p id="longitude">Longitude: {{ $house->longitude }}</p>
                         </div>
                     </div>
 

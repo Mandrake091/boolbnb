@@ -49427,20 +49427,25 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+latitude = latitude.innerHTML.substring(12, 23);
+longitude = longitude.innerHTML.substring(11, 23);
+console.log(latitude);
+console.log(longitude);
 var API_KEY = "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh";
 var APPLICATION_NAME = "My Application";
 var APPLICATION_VERSION = "1.0";
 tt.setProductInfo(APPLICATION_NAME, APPLICATION_VERSION);
 var GOLDEN_GATE_BRIDGE = {
-  lng: 11.318687,
-  lat: 44.5213588
+  lng: longitude,
+  lat: latitude
 };
 var map = tt.map({
   key: API_KEY,
   container: "map-div",
   center: GOLDEN_GATE_BRIDGE,
-  zoom: 12
+  zoom: 16
 });
+var marker = new tt.Marker().setLngLat([longitude, latitude]).addTo(map);
 
 /***/ }),
 
