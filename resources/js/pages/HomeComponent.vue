@@ -1,22 +1,19 @@
 <template>
     <section class="pt-5">
         <h1>Ciao</h1>
-        <!-- <div class="container h-100 pt-5">
+        <div v-for="(house, index) in houses" :key="index">
+            {{house.title}}
+        </div>
+        
+        <div class="container h-100 pt-5">
             <div class="row h-100 justify-content-center">
                 <div class="col-3 text-white">
-                    <h4>Categorie</h4>
+                    <h4>Appartamenti</h4>
                     <ul>
                         <li
                             v-for="(house, index) in houses"
                             :key="index"
                         >
-                            <router-link
-                                :to="{
-                                    name: 'category',
-                                    params: { slug: category.slug },
-                                }"
-                                >{{ category.name }}</router-link
-                            >
                         </li>
                     </ul>
                 </div>
@@ -44,7 +41,7 @@
                     </div> 
                 </div>
             </div>
-        </div> -->
+        </div>
     </section>
 </template>
 

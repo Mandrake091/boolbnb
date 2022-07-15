@@ -2151,17 +2151,53 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("section", {
     staticClass: "pt-5"
-  }, [_c("h1", [_vm._v("Ciao")])]);
-}];
+  }, [_c("h1", [_vm._v("Ciao")]), _vm._v(" "), _vm._l(_vm.houses, function (house, index) {
+    return _c("div", {
+      key: index
+    }, [_vm._v("\n        " + _vm._s(house.title) + "\n    ")]);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "container h-100 pt-5"
+  }, [_c("div", {
+    staticClass: "row h-100 justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-3 text-white"
+  }, [_c("h4", [_vm._v("Appartamenti")]), _vm._v(" "), _c("ul", _vm._l(_vm.houses, function (house, index) {
+    return _c("li", {
+      key: index
+    });
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "col-9"
+  }, [_vm.houses.length > 0 ? _c("div", _vm._l(_vm.houses, function (house, index) {
+    return _c("div", {
+      key: index
+    }, [_c("div", {
+      staticClass: "card mx-auto",
+      staticStyle: {
+        width: "18rem"
+      }
+    }, [_c("img", {
+      staticClass: "img-fluid card-img-top",
+      attrs: {
+        src: "/storage/".concat(house.image)
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("h5", {
+      staticClass: "card-title"
+    }, [_vm._v(_vm._s(house.title))]), _vm._v(" "), _c("p", {
+      staticClass: "card-text"
+    }, [_vm._v("\n                                       " + _vm._s(house.content) + "\n                                    ")]), _vm._v(" "), _c("a", {
+      staticClass: "btn btn-primary",
+      attrs: {
+        href: "#"
+      }
+    }, [_vm._v("Go somewhere")])])]), _vm._v(" "), _c("img")]);
+  }), 0) : _vm._e()])])])], 2);
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 
