@@ -81,7 +81,7 @@
 
                             <div class="form-group">
                                 <label for="night_price" class="form-label">Prezzo per notte</label>
-                                <input type="number" class="form-control @error('night_price') is-invalid @enderror"
+                                <input min="1" type="number" class="form-control @error('night_price') is-invalid @enderror"
                                     id="night_price" name="night_price" value="{{ old('night_price') }}"
                                     placeholder="Inserisci prezzo per notte" required>
                                 @error('night_price')
@@ -90,7 +90,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="n_room" class="form-label">Numero di stanze:</label>
-                                <input type="number" class="form-control @error('n_room') is-invalid @enderror"
+                                <input min="1" type="number" class="form-control @error('n_room') is-invalid @enderror"
                                     id="n_room" name="n_room" value="{{ old('n_room') }}"
                                     placeholder="Inserisci numero di stanze" required>
                                 @error('n_room')
@@ -99,7 +99,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="n_bed" class="form-label">Numero di posti letto</label>
-                                <input type="number" class="form-control @error('n_bed') is-invalid @enderror"
+                                <input min="1" type="number" class="form-control @error('n_bed') is-invalid @enderror"
                                     id="n_bed" name="n_bed" value="{{ old('n_bed') }}"
                                     placeholder="Inserisci numero di posti letto" required>
                                 @error('n_bed')
@@ -108,7 +108,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="n_bathroom" class="form-label">Numero di bagni:</label>
-                                <input type="number" class="form-control @error('n_bathroom') is-invalid @enderror"
+                                <input min="1" type="number" class="form-control @error('n_bathroom') is-invalid @enderror"
                                     id="n_bathroom" name="n_bathroom" value="{{ old('n_bathroom') }}"
                                     placeholder="Inserisci numero di bagni" required>
                                 @error('n_bathroom')
@@ -117,7 +117,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="square_meters" class="form-label">Metri quadrati:</label>
-                                <input type="number" class="form-control @error('square_meters') is-invalid @enderror"
+                                <input min="1" type="number" class="form-control @error('square_meters') is-invalid @enderror"
                                     id="square_meters" name="square_meters" value="{{ old('square_meters') }}"
                                     placeholder="Inserisci numero di metri quadrati" required>
                                 @error('square_meters')

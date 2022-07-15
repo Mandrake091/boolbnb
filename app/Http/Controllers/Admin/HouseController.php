@@ -232,7 +232,6 @@ class HouseController extends Controller
             $slug = Str::of($title)->slug("-") . "-{$count}";
             $count++;
         }
-
         return $slug;
     }
 }
