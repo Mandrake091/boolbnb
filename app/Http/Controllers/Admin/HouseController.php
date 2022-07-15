@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use App\House;
 use App\Message;
 use App\Service;
@@ -20,13 +21,14 @@ use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class HouseController extends Controller
 {
+    
     protected $validationRule = [
         // "title" => "required|string|max:100",
         // "content" => "required",
         // "visibility" => "sometimes|accepted",
         // "type_id" => "nullable|exists:type,id",
         // "image" => "nullable|image|mimes:jpeg,bmp,png,svg,jpg|max:2048",
-        // 'services'=> "nullable|exists:services,id"
+        'services'=> "required|exists:services,id"
     ];
     /**
      * Display a listing of the resource.
@@ -77,6 +79,7 @@ class HouseController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validationRule);
         $data = $request->all();
 
         $newHouse = new House();
@@ -159,6 +162,7 @@ class HouseController extends Controller
      */
     public function update(Request $request, House $house)
     {
+        $request->validate($this->validationRule);
         $data = $request->all();
         if ($house->title != $data['title']) {
             $house->title = $data['title'];
