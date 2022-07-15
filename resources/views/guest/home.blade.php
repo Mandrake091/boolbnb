@@ -28,6 +28,6 @@
             <a href="/register"><button class="btn btn-primary">Register</button></a> --}}
         </div>
     </div>
-    <script src="{{asset('js/front.js')}}"></script>
+    {{-- <script src="{{asset('js/front.js')}}"></script> --}}
 </body>
 </html>

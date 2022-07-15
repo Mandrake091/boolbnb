@@ -49427,25 +49427,6 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
-latitude = latitude.innerHTML.substring(12, 23);
-longitude = longitude.innerHTML.substring(11, 23);
-console.log(latitude);
-console.log(longitude);
-var API_KEY = "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh";
-var APPLICATION_NAME = "My Application";
-var APPLICATION_VERSION = "1.0";
-tt.setProductInfo(APPLICATION_NAME, APPLICATION_VERSION);
-var GOLDEN_GATE_BRIDGE = {
-  lng: longitude,
-  lat: latitude
-};
-var map = tt.map({
-  key: API_KEY,
-  container: "map-div",
-  center: GOLDEN_GATE_BRIDGE,
-  zoom: 16
-});
-var marker = new tt.Marker().setLngLat([longitude, latitude]).addTo(map);
 
 /***/ }),
 
@@ -49592,9 +49573,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/sass/admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/sass/front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/sass/admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/sass/front.scss */"./resources/sass/front.scss");
 
 
 /***/ })

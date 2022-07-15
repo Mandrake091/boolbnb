@@ -28,7 +28,6 @@
                                 <h5 class="card-title">{{ $post->title }}</h5>
                                 <p class="card-text card-text-index">{!! $post->description !!}</p>
                             </div>
-
                             <div class="card-body">
                                 <div class="row justify-content-around">
                                     <a href="{{ route('admin.houses.show', $post->id) }}"
@@ -40,13 +39,10 @@
                                             @@click="openModal($event, {{ $post->id }})">Elimina</button>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                     @endforeach
-
                 </div>
-                
             </div>
         </div>
     </div>

@@ -27,4 +27,3 @@ mix.sass("resources/sass/front.scss", "public/css")
         processCssUrls: false,
     })
 
-    // .js("resources/js/front.js", "public/js");

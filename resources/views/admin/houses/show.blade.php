@@ -72,11 +72,11 @@
 
                 </div>
             </div>
-
         </div>
-        <div class="row">
+        @push('head')
+            <!-- Styles -->
+            <script src="{{ asset('js/map.js') }}" defer></script>
+        @endpush
 
-
-        </div>
     </div>
 @endsection

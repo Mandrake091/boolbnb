@@ -26,7 +26,7 @@ class HouseController extends Controller
         // "title" => "required|string|max:100",
         // "content" => "required",
         // "visibility" => "sometimes|accepted",
-        // "type_id" => "nullable|exists:type,id",
+         "type_id" => "required|exists:types,id",
         // "image" => "nullable|image|mimes:jpeg,bmp,png,svg,jpg|max:2048",
         'services'=> "required|exists:services,id"
     ];
