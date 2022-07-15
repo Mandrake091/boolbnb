@@ -1,4 +1,4 @@
-const mix = require("laravel-mix");
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,19 +11,13 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js("resources/js/app.js", "public/js")
-    .sass("resources/sass/admin.scss", "public/css")
-    .options({
-        processCssUrls: false,
-    })
-    .copyDirectory(
-        "./node_modules/@fortawesome/fontawesome-free/webfonts/*",
-        "public/fonts/font-awesome"
-    );
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/admin.scss', 'public/css').options({
+        processCssUrls: false
+    }).copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts/*', 'public/fonts/font-awesome');
 
-    //Front
-mix.sass("resources/sass/front.scss", "public/css")
-    .options({
-        processCssUrls: false,
-    })
-
+//Front
+mix.js('resources/js/front.js', 'public/js')
+.sass('resources/sass/front.scss', 'public/css').options({
+    processCssUrls: false
+})
