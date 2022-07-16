@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
+import LandingPageComponent from "./pages/LandingPageComponent.vue";
 import HomeComponent from "./pages/HomeComponent.vue";
 import AdvancedSearchComponent from "./pages/AdvancedSearchComponent.vue";
 import ApartmentComponent from "./pages/ApartmentComponent.vue";
@@ -13,10 +14,16 @@ const router = new VueRouter({
     routes: [
         {
             path: "/",
-            name: "home",
+            name: "landing-page",
             meta: { nome: "" },
-            component: HomeComponent,
+            component: LandingPageComponent,
         },
+        // {
+        //     path: "/",
+        //     name: "home",
+        //     meta: { nome: "" },
+        //     component: HomeComponent,
+        // },
         {
             path: "/search",
             name: "search",
