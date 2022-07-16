@@ -2307,20 +2307,27 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("jumbotron", [_c("div", {
+  return _vm._m(0);
+};
+
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("section", [_c("div", {
     staticClass: "wallpaper"
   }), _vm._v(" "), _c("div", {
     staticClass: "container align-items-center"
   }, [_c("div", {
     staticClass: "row h-100 align-items-center justify-content-center text-center"
   }, [_c("div", {
-    staticClass: "col-6"
-  }, [_c("div", [_c("h1", {
+    staticClass: "col-12 col-sm-6"
+  }, [_c("div", [_c("h2", [_vm._v("Bool B&B")]), _vm._v(" "), _c("h1", {
     attrs: {
       "data-aos": "fade-down",
       "data-aos-offset": "200",
       "data-aos-delay": "150",
-      "data-aos-duration": "2000"
+      "data-aos-duration": "1000"
     }
   }, [_vm._v("\n                        Voglia di viaggiare?\n                    ")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-success",
@@ -2331,9 +2338,7 @@ var render = function render() {
       "data-aos-duration": "2000"
     }
   }, [_vm._v("\n                        Clicca qui\n                    ")])])])])])]);
-};
-
-var staticRenderFns = [];
+}];
 render._withStripped = true;
 
 
@@ -2394,7 +2399,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".wallpaper[data-v-7ce57840] {\n  background-image: url(\"https://img.wallpapersafari.com/desktop/1536/864/9/32/YF5sBZ.jpg\");\n  background-repeat: no-repeat;\n  width: 100%;\n  height: 100vh;\n  background-position: center center;\n  background-size: cover;\n  filter: brightness(80%) contrast(105%);\n  position: absolute;\n  z-index: -1;\n}\n.container[data-v-7ce57840] {\n  height: 100vh;\n  width: 100vw;\n}\n.container h1[data-v-7ce57840] {\n  font-size: 5em;\n  color: white;\n  filter: drop-shadow(5px 0px 5px black);\n}", ""]);
+exports.push([module.i, ".wallpaper[data-v-7ce57840] {\n  background-image: url(\"https://img.wallpapersafari.com/desktop/1536/864/9/32/YF5sBZ.jpg\");\n  background-repeat: no-repeat;\n  width: 100%;\n  height: 100vh;\n  background-position: center center;\n  background-size: cover;\n  filter: brightness(80%) contrast(105%);\n  position: absolute;\n  z-index: -1;\n}\n.container[data-v-7ce57840] {\n  height: 100vh;\n  width: 100vw;\n}\n.container h1[data-v-7ce57840] {\n  font-size: 5em;\n  color: white;\n  filter: drop-shadow(5px 0px 5px black);\n}\n.container button[data-v-7ce57840] {\n  font-size: 1.5em;\n}", ""]);
 
 // exports
 

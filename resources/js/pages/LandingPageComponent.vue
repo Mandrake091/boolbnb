@@ -1,5 +1,5 @@
 <template>
-    <jumbotron>
+    <section>
         <div class="wallpaper"></div>
 
         <div class="container align-items-center">
@@ -9,13 +9,14 @@
             <div
                 class="row h-100 align-items-center justify-content-center text-center"
             >
-                <div class="col-6">
+                <div class="col-12 col-sm-6">
                     <div>
+                      <h2>Bool B&B</h2>
                         <h1
                             data-aos="fade-down"
                             data-aos-offset="200"
                             data-aos-delay="150"
-                            data-aos-duration="2000"
+                            data-aos-duration="1000"
                         >
                             Voglia di viaggiare?
                         </h1>
@@ -32,7 +33,7 @@
                 </div>
             </div>
         </div>
-    </jumbotron>
+    </section>
 </template>
 
 <script>
@@ -87,6 +88,9 @@ export default {
         font-size: 5em;
         color: white;
         filter: drop-shadow(5px 0px 5px black);
+    }
+    button{
+      font-size: 1.5em;
     }
 }
 </style>
