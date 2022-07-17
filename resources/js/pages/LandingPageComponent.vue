@@ -11,7 +11,7 @@
             >
                 <div class="col-12 col-sm-6">
                     <div>
-                      <h2>Bool B&B</h2>
+                        <h2>Bool B&B</h2>
                         <h1
                             data-aos="fade-down"
                             data-aos-offset="200"
@@ -20,15 +20,17 @@
                         >
                             Voglia di viaggiare?
                         </h1>
-                        <button
-                            class="btn btn-success"
-                            data-aos="fade-up"
-                            data-aos-offset="200"
-                            data-aos-delay="200"
-                            data-aos-duration="2000"
+                        <a href="/home"
+                            ><button
+                                class="btn btn-success"
+                                data-aos="fade-up"
+                                data-aos-offset="200"
+                                data-aos-delay="200"
+                                data-aos-duration="2000"
+                            >
+                                Clicca qui
+                            </button></a
                         >
-                            Clicca qui
-                        </button>
                     </div>
                 </div>
             </div>
@@ -89,8 +91,8 @@ export default {
         color: white;
         filter: drop-shadow(5px 0px 5px black);
     }
-    button{
-      font-size: 1.5em;
+    button {
+        font-size: 1.5em;
     }
 }
 </style>

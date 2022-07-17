@@ -18,12 +18,12 @@ const router = new VueRouter({
             meta: { nome: "" },
             component: LandingPageComponent,
         },
-        // {
-        //     path: "/",
-        //     name: "home",
-        //     meta: { nome: "" },
-        //     component: HomeComponent,
-        // },
+        {
+            path: "/home",
+            name: "home",
+            meta: { nome: "" },
+            component: HomeComponent,
+        },
         {
             path: "/search",
             name: "search",
