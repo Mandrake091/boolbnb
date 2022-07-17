@@ -1,7 +1,15 @@
 <template>
-    <section>
-
-    </section>
+    <header>
+        <nav>
+            <div class="logo">Boolbnb</div>
+            <ul>
+                <li v-for="(item, index) in menuItem" :key="index" :class="{'active' : index === activeIndex}" @click="activeIndex = index">
+                    <router-link :to="{ name: item.routeName } " class="link">{{item.label}}</router-link>
+                </li>
+            </ul>
+            <a href="/admin"><div class="my-btn">Diventa un host</div></a>
+        </nav>
+    </header>
 </template>
 
 <script>
@@ -12,22 +20,31 @@ export default {
         menuItem: [
         {
             label: 'Home',
+            routeName: 'landing-page'
+        },
+        {
+            label: 'Case',
             routeName: 'home'
         },
         {
-            label: 'Posts',
-            routeName: 'posts'
+            label: 'Cerca',
+            routeName: 'search'
         },
         {
-            label: 'Chi Siamo',
-            routeName: 'about'
+            label: 'Dettaglio',
+            routeName: 'detail',
         },
         {
-            label: 'Contatti',
-            routeName: 'contact',
+            label: 'Accedi',
+            routeName: ''
         }
         ],
+        activeIndex : 0,
         }
     },
 }
 </script>
+
+<style lang="scss">
+
+</style>
