@@ -7,6 +7,8 @@ import AdvancedSearchComponent from "./pages/AdvancedSearchComponent.vue";
 import ApartmentComponent from "./pages/ApartmentComponent.vue";
 import SuccessSendComponent from "./pages/SuccessSendComponent.vue";
 import NotFoundComponent from "./pages/NotFoundComponent.vue";
+import SingleHouseComponent from "./pages/SingleHouseComponent.vue";
+
 
 const router = new VueRouter({
     mode: "history",
@@ -33,11 +35,11 @@ const router = new VueRouter({
             component: SuccessSendComponent,
         },
 
-        // {
-        //     path: "/posts/:slug",
-        //     name: "single-post",
-        //     component: SinglePostComponent,
-        // },
+        {
+            path: "/house/:slug",
+            name: "single-house",
+            component: SingleHouseComponent,
+         },
         // {
         //     path: "/categories/:slug",
         //     name: "category",

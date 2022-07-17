@@ -23,9 +23,9 @@ class House extends Model
     {
         return $this->belongsTo('App\Type');
     }
-    public function host()
+    public function user()
     {
-        return $this->belongsTo('App\Host');
+        return $this->belongsTo('App\User');
     }
     public function views()
     {
