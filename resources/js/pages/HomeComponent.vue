@@ -3,22 +3,50 @@
         <div class="row">
             <select
                 class="form-select form-select-sm text-center m-auto"
-                @change="changeSelect"
+                @change="changeSelectRoom"
+                v-model="textRoom"
             >
-                <option value="">Filter by Genre</option>
+                <option value="">Numero di stanze</option>
                 <option
-                    :value="city"
-                    v-for="(city, index) in cities"
+                    :value="room"
+                    v-for="(room, index) in numberMaxRooms"
                     :key="index"
                 >
-                    {{ city }}
+                    {{ room }}
+                </option>
+            </select>
+            <select
+                class="form-select form-select-sm text-center m-auto"
+                @change="changeSelectRoom"
+                v-model="textBed"
+            >
+                <option value="">Numero di letti</option>
+                <option
+                    :value="bed"
+                    v-for="(bed, index) in numberMaxRooms"
+                    :key="index"
+                >
+                    {{ bed }}
+                </option>
+            </select>
+            <select
+                class="form-select form-select-sm text-center m-auto"
+                v-model="textBed"
+            >
+                <option value="">Servizi</option>
+                <option
+                    :value="service"
+                    v-for="(service, index) in houses.service"
+                    :key="index"
+                >
+                    {{ service }}
                 </option>
             </select>
         </div>
         <div class="row pt-4">
             <div
                 class="col-6"
-                v-for="(house, index) in resultsApi"
+                v-for="(house, index) in filteredHousesRoom"
                 :key="index"
             >
                 <div class="card" style="width: 24rem">
@@ -76,31 +104,31 @@
 <script>
 import "../find.js";
 
-import { services } from "@tomtom-international/web-sdk-services";
-import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
+// import { services } from "@tomtom-international/web-sdk-services";
+// import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 
-let options = {
-    idleTimePress: 100,
-    minNumberOfCharacters: 0,
-    searchOptions: {
-        key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
-        language: "it-IT",
-    },
-    autocompleteOptions: {
-        key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
-        language: "it-IT",
-    },
-    noResultsMessage: "No results found.",
-};
+// let options = {
+//     idleTimePress: 100,
+//     minNumberOfCharacters: 0,
+//     searchOptions: {
+//         key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
+//         language: "it-IT",
+//     },
+//     autocompleteOptions: {
+//         key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
+//         language: "it-IT",
+//     },
+//     noResultsMessage: "No results found.",
+// };
 
-const ttSearchBox = new SearchBox(services, options);
+// const ttSearchBox = new SearchBox(services, options);
 
-let search = document.getElementsByClassName("search");
-var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-document.body.appendChild(searchBoxHTML);
-ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
-    console.log(data);
-});
+// let search = document.getElementsByClassName("search");
+// var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+// document.body.appendChild(searchBoxHTML);
+// ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
+//     console.log(data);
+// });
 
 export default {
     name: "HomeComponent",
@@ -108,21 +136,26 @@ export default {
     data() {
         return {
             cities: [],
+            services: [],
+            numberMaxRooms: [1, 2, 3, 4, 5, 6],
             cityAddress: "",
-            // posts: [],
-            resultsApi: [],
-
-            searchBoxHTML: "",
+            houses: [],
+            // resultsApi: [],
+            textRoom: "",
+            textBed: "",
             filterGeocode:
                 "https://api.tomtom.com/search/2/geometryFilter.json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&geometryList={geometryList}&poiList={poiList}",
         };
     },
     mounted: function () {},
     methods: {
-        changeSelect() {
-            this.$emit("performSearch", this.inputText);
-            console.log(this.inputText);
+        changeSelectRoom() {
+            this.textRoom;
         },
+        // changeSelect() {
+        //     console.log(this.searchText)
+
+        // },
         print() {
             console.log(this.cityAddress);
         },
@@ -144,14 +177,13 @@ export default {
     },
 
     computed: {
-        filteredHomeList() {
-            if (this.searchText === "") {
-                return this.albumList;
+        filteredHousesRoom() {
+            if (this.textBed === "" && this.textRoom === "") {
+                return this.houses;
             }
-            return this.albumList.filter((item) => {
+            return this.houses.filter((item) => {
                 return (
-                    item.author === this.searchText ||
-                    item.genre === this.searchText
+                    item.n_room === this.textRoom || item.n_bed === this.textBed
                 );
             });
         },
@@ -160,8 +192,19 @@ export default {
         axios
             .get("/api/houses/")
             .then((res) => {
-                this.resultsApi = res.data;
-                console.log(this.resultsApi);
+                this.houses = res.data;
+                // this.services = res.data;
+                console.log(this.houses);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        axios
+            .get("/api/houses/")
+            .then((res) => {
+                console.log(res.data[0].services);
+                this.houses = res.data;
+                // this.services = res.data;
             })
             .catch((err) => {
                 console.log(err);
