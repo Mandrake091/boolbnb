@@ -2118,21 +2118,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     changeSelectBed: function changeSelectBed() {
       this.textBed;
-    },
-    // changeSelect() {
-    //     console.log(this.searchText)
+    } // findGeocoding() {
+    //     axios
+    //         .get(
+    //             "https://api.tomtom.com/search/2/autocomplete/" +
+    //                 this.cityAddress +
+    //                 ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&language=it-IT&limit=10&=&&countrySet=IT"
+    //         )
+    //         .then((res) => {
+    //             results = res.data;
+    //             console.log(results);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
     // },
-    print: function print() {
-      console.log(this.cityAddress);
-    },
-    findGeocoding: function findGeocoding() {
-      axios.get("https://api.tomtom.com/search/2/autocomplete/" + this.cityAddress + ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&language=it-IT&limit=10&=&&countrySet=IT").then(function (res) {
-        results = res.data;
-        console.log(results);
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    }
+
   },
   computed: {
     filteredHousesRoom: function filteredHousesRoom() {
@@ -2142,15 +2143,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return this.houses;
       }
 
+      console.log(this.selectedServices);
       return this.houses.filter(function (item) {
         return item.n_room === _this.textRoom || item.n_bed === _this.textBed || item.services.forEach(function (el) {
-          return _this.selectedServices.forEach(function (e2) {
-            if (el.services === e2) {
-              console.log(el);
-              item.push(_this.houses);
+          return _this.selectedServices.forEach(function (el2) {
+            if (el.name === el2) {
+              console.log(item);
+              return item;
             }
           });
-        });
+        }) // this.selectedServices.forEach((el2)=>{
+        //     console.log(el.name)
+        //     if(el === el2){
+        //         return item
+        //     }
+        // }))
+        ;
       });
     }
   }
@@ -2541,7 +2549,6 @@ var render = function render() {
         checked: Array.isArray(_vm.selectedServices) ? _vm._i(_vm.selectedServices, service.name) > -1 : _vm.selectedServices
       },
       on: {
-        click: _vm.filteredHousesRoom,
         change: function change($event) {
           var $$a = _vm.selectedServices,
               $$el = $event.target,

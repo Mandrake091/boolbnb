@@ -46,8 +46,6 @@
                         :id="service.name"
                         v-model="selectedServices"
                         :value="service.name"
-                        @click="filteredHousesRoom"
-                        
                     />
                     <label for="service.name">{{ service.name }}</label>
                 </div>
@@ -165,28 +163,22 @@ export default {
         changeSelectBed() {
             this.textBed;
         },
-        // changeSelect() {
-        //     console.log(this.searchText)
 
+        // findGeocoding() {
+        //     axios
+        //         .get(
+        //             "https://api.tomtom.com/search/2/autocomplete/" +
+        //                 this.cityAddress +
+        //                 ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&language=it-IT&limit=10&=&&countrySet=IT"
+        //         )
+        //         .then((res) => {
+        //             results = res.data;
+        //             console.log(results);
+        //         })
+        //         .catch((error) => {
+        //             console.log(error);
+        //         });
         // },
-        print() {
-            console.log(this.cityAddress);
-        },
-        findGeocoding() {
-            axios
-                .get(
-                    "https://api.tomtom.com/search/2/autocomplete/" +
-                        this.cityAddress +
-                        ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&language=it-IT&limit=10&=&&countrySet=IT"
-                )
-                .then((res) => {
-                    results = res.data;
-                    console.log(results);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        },
     },
 
     computed: {
@@ -194,18 +186,28 @@ export default {
             if (this.textBed === "" && this.textRoom === "") {
                 return this.houses;
             }
+            console.log(this.selectedServices);
             return this.houses.filter((item) => {
                 return (
-                    item.n_room === this.textRoom ||
-                    item.n_bed === this.textBed ||
-                    item.services.forEach((el) =>
-                        this.selectedServices.forEach((e2) => {
-                            if (el.services === e2) {
-                                console.log(el);
-                                item.push(this.houses);
-                            }
-                        })
+                    item.n_room === this.textRoom || item.n_bed === this.textBed || item.services.forEach((el)=>this.selectedServices.forEach((el2)=>{
+                        if(el.name === el2){
+                            console.log(item)
+                         return item
+                         }
+                    })
+
+                       
                     )
+                    
+                    
+                    // this.selectedServices.forEach((el2)=>{
+                    //     console.log(el.name)
+                    //     if(el === el2){
+                    //         return item
+                    //     }
+
+
+                    // }))
                 );
             });
         },
