@@ -2,7 +2,7 @@
     <div>
         <header-component />
         <main-component />
-        <!-- <footer-component /> -->
+        <footer-component />
     </div>
 </template>
 
