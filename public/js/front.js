@@ -2047,38 +2047,40 @@ __webpack_require__.r(__webpack_exports__);
   components: {},
   data: function data() {
     return {
-      house: null // formData:(
-      //     {
-      //         'username':'',
-      //         'comment': '',
-      //         'post_id': '',
-      //     }
-      // )
-
+      house: null,
+      formData: {
+        'name': '',
+        'surname': '',
+        'email': '',
+        'text': '',
+        'house_id': ''
+      }
     };
   },
-  methods: {// addComment() {
-    //     axios
-    //         .post("/api/comments", this.formData)
-    //         .then((response) => {
-    //             this.formData.username = "";
-    //             this.formData.comment = "";
-    //             this.post.comments.push(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // },
+  methods: {
+    sendMessage: function sendMessage() {
+      var _this = this;
+
+      axios.post("/api/messages", this.formData).then(function (response) {
+        _this.formData.name = "";
+        _this.formData.surname = "";
+        _this.formData.email = "";
+        _this.formData.text = ""; // this.house.messages.push(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     var slug = this.$route.params.slug;
     axios.get("/api/houses/".concat(slug)).then(function (response) {
       console.log(response);
-      _this.house = response.data; // this.formData.post_id = this.post.id;
+      _this2.house = response.data;
+      _this2.formData.house_id = _this2.house.id; // this.formData.post_id = this.post.id;
     })["catch"](function (error) {
-      _this.$router.push({
+      _this2.$router.push({
         name: "page-404"
       });
     });
@@ -2303,7 +2305,118 @@ var render = function render() {
     return _c("li", {
       key: service.id
     }, [_vm._v("\n                    " + _vm._s(service.name) + "\n                ")]);
-  }), 0) : _vm._e()]), _vm._v(" "), _c("div", [_vm._v("\n            Prezzo per notte: "), _c("span", [_vm._v(_vm._s(_vm.house.night_price) + "€")])]), _vm._v(" "), _c("h4", [_vm._v("\n            Disponibile dal " + _vm._s(_vm.house.check_in) + " al " + _vm._s(_vm.house.check_out) + "\n        ")])]) : _vm._e()]);
+  }), 0) : _vm._e()]), _vm._v(" "), _c("div", [_vm._v("\n            Prezzo per notte: "), _c("span", [_vm._v(_vm._s(_vm.house.night_price) + "€")])]), _vm._v(" "), _c("h4", [_vm._v("\n            Disponibile dal " + _vm._s(_vm.house.check_in) + " al " + _vm._s(_vm.house.check_out) + "\n        ")])]) : _vm._e(), _vm._v(" "), _c("div", [_c("form", {
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.sendMessage();
+      }
+    }
+  }, [_c("label", {
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v("Inserisci il tuo nome:")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formData.name,
+      expression: "formData.name"
+    }],
+    staticClass: "my-input",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formData.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formData, "name", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "surname"
+    }
+  }, [_vm._v("Inserisci il tuo cognome:")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formData.surname,
+      expression: "formData.surname"
+    }],
+    staticClass: "my-input",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formData.surname
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formData, "surname", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "email"
+    }
+  }, [_vm._v("Inserisci la tua email:")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formData.email,
+      expression: "formData.email"
+    }],
+    staticClass: "my-input",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formData.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formData, "email", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "text"
+    }
+  }, [_vm._v("Inserisci il tuo messaggio:")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formData.text,
+      expression: "formData.text"
+    }],
+    staticClass: "my-input",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formData.text
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formData, "text", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("button", {
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Invia")])])])]);
 };
 
 var staticRenderFns = [];

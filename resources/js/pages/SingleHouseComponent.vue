@@ -36,6 +36,20 @@
                 Disponibile dal {{ house.check_in }} al {{ house.check_out }}
             </h4>
         </div>
+        <div>
+            <form @submit.prevent="sendMessage()">
+                <label for="name">Inserisci il tuo nome:</label>
+                <input v-model="formData.name" type="text" class="my-input">
+                <label for="surname">Inserisci il tuo cognome:</label>
+                <input v-model="formData.surname" type="text" class="my-input">
+                <label for="email">Inserisci la tua email:</label>
+                <input v-model="formData.email" type="text" class="my-input">
+                <label for="text">Inserisci il tuo messaggio:</label>
+                <input v-model="formData.text" type="text" class="my-input">
+                <button type="submit">Invia</button>
+                
+            </form>
+        </div>
     </section>
 </template>
 
@@ -46,28 +60,33 @@ export default {
     data() {
         return {
             house: null,
-            // formData:(
-            //     {
-            //         'username':'',
-            //         'comment': '',
-            //         'post_id': '',
-            //     }
-            // )
+            formData:(
+                {
+                    'name':'',
+                    'surname': '',
+                    'email': '',
+                    'text': '',
+                    'house_id': '',
+
+                }
+            )
         };
     },
     methods: {
-        // addComment() {
-        //     axios
-        //         .post("/api/comments", this.formData)
-        //         .then((response) => {
-        //             this.formData.username = "";
-        //             this.formData.comment = "";
-        //             this.post.comments.push(response.data);
-        //         })
-        //         .catch((error) => {
-        //             console.log(error);
-        //         });
-        // },
+        sendMessage() {
+            axios
+                .post("/api/messages", this.formData)
+                .then((response) => {
+                    this.formData.name = "";
+                    this.formData.surname = "";
+                    this.formData.email = "";
+                    this.formData.text = "";
+                    // this.house.messages.push(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
     },
     mounted() {
         const slug = this.$route.params.slug;
@@ -76,6 +95,9 @@ export default {
             .then((response) => {
                 console.log(response);
                 this.house = response.data;
+                this.formData.house_id = this.house.id;
+
+
                 // this.formData.post_id = this.post.id;
             })
             .catch((error) => {
