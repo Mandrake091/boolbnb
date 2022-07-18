@@ -1,13 +1,13 @@
 <template>
     <header>
         <nav>
-            <div class="logo">Boolbnb</div>
+            <div class="logo"><img src="images/logo.png" alt=""></div>
             <ul>
                 <li v-for="(item, index) in menuItem" :key="index" :class="{'active' : index === activeIndex}" @click="activeIndex = index">
                     <router-link :to="{ name: item.routeName } " class="link">{{item.label}}</router-link>
                 </li>
             </ul>
-            <a href="/admin"><div class="my-btn">Diventa un host</div></a>
+            <a href="/admin/houses"><div class="my-btn">Diventa un host</div></a>
         </nav>
     </header>
 </template>
@@ -45,6 +45,38 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+ul{
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2em 0;
+    li a{
+        text-decoration: none;
+        padding-right: 3em;
+        position: relative;
+        color: black;
+    }
+    li a::after{
+        content:'';
+        position: absolute;
+        display: block;
+        height: 0.1em;
+        width: 0%;
+        background-color: #FFDCBA;
+        bottom: -0.3em;
+        transition: all ease-in-out 400ms;
+    }
+        
+    li a:hover::after{
+        text-decoration: none;
+        width: 50%;
+    }
+}
 
+img{
+    width: 60%;
+}
 </style>

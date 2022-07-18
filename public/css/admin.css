@@ -11,7 +11,7 @@
   --purple: #9561e2;
   --pink: #f66d9b;
   --red: #e3342f;
-  --orange: #f6993f;
+  --orange: #ffaf62;
   --yellow: #ffed4a;
   --green: #38c172;
   --teal: #4dc0b5;
@@ -7009,6 +7009,7 @@ button.bg-dark:focus {
 }
 
 .position-sticky {
+  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
@@ -7028,8 +7029,9 @@ button.bg-dark:focus {
   z-index: 1030;
 }
 
-@supports (position: sticky) {
+@supports ((position: -webkit-sticky) or (position: sticky)) {
   .sticky-top {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
