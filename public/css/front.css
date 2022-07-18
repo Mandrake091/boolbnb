@@ -11,7 +11,7 @@
   --purple: #9561e2;
   --pink: #f66d9b;
   --red: #e3342f;
-  --orange: #f6993f;
+  --orange: #ffaf62;
   --yellow: #ffed4a;
   --green: #38c172;
   --teal: #4dc0b5;
@@ -7009,6 +7009,7 @@ button.bg-dark:focus {
 }
 
 .position-sticky {
+  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
@@ -7028,8 +7029,9 @@ button.bg-dark:focus {
   z-index: 1030;
 }
 
-@supports (position: sticky) {
+@supports ((position: -webkit-sticky) or (position: sticky)) {
   .sticky-top {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
@@ -19560,38 +19562,8 @@ header .logo {
   position: absolute;
   font-size: 20px;
   font-weight: bold;
-  top: 0.8em;
   left: 2em;
   color: #FF385C;
-}
-
-ul {
-  list-style: none;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  padding: 1.2em 0;
-}
-ul li a {
-  text-decoration: none;
-  padding-right: 3em;
-  position: relative;
-  color: #222222;
-}
-ul li a::after {
-  content: "";
-  position: absolute;
-  display: block;
-  height: 0.1em;
-  width: 0%;
-  background-color: #222222;
-  bottom: -0.4em;
-  transition: all ease-in-out 400ms;
-}
-ul li a:hover::after {
-  text-decoration: none;
-  width: 50%;
 }
 
 .link:hover {
@@ -19602,8 +19574,8 @@ ul li a:hover::after {
 .my-btn {
   width: 180px;
   height: 40px;
-  color: #FF385C;
-  border: 2px solid #FF385C;
+  color: #ffaf62;
+  border: 2px solid #ffaf62;
   border-radius: 5em;
   display: inline-block;
   position: absolute;
@@ -19613,7 +19585,7 @@ ul li a:hover::after {
   text-align: center;
 }
 .my-btn:hover {
-  background-color: #FF385C;
+  background-color: #ffaf62;
   color: white;
   transition: 0.8s;
 }
