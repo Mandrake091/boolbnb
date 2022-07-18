@@ -29,19 +29,20 @@
                     {{ bed }}
                 </option>
             </select>
-            <select
-                class="form-select form-select-sm text-center m-auto"
-                v-model="textBed"
-            >
-                <option value="">Servizi</option>
-                <option
-                    :value="service"
-                    v-for="(service, index) in houses.service"
-                    :key="index"
-                >
-                    {{ service }}
-                </option>
-            </select>
+
+            <p>Servizi</p>
+            <div v-for="(service, index) in services" :key="index">
+                <input
+                    type="checkbox"
+                    :id="service.name"
+                    v-model="selectedServices"
+                    :value="service.name"
+                />
+                <label for="service.name">{{ service.name }}</label>
+            </div>
+            <div v-for="item in selectedServices" :key="item.id">
+                {{ item }}
+            </div>
         </div>
         <div class="row pt-4">
             <div
@@ -135,6 +136,7 @@ export default {
     components: {},
     data() {
         return {
+            selectedServices: [],
             cities: [],
             services: [],
             numberMaxRooms: [1, 2, 3, 4, 5, 6],
@@ -200,10 +202,11 @@ export default {
                 console.log(err);
             });
         axios
-            .get("/api/houses/")
+            .get("/api/services/")
             .then((res) => {
-                console.log(res.data[0].services);
-                this.houses = res.data;
+                this.services = res.data;
+                console.log(this.services);
+                // this.services = res.data;
                 // this.services = res.data;
             })
             .catch((err) => {

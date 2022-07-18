@@ -2099,6 +2099,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {},
   data: function data() {
     return {
+      selectedServices: [],
       cities: [],
       services: [],
       numberMaxRooms: [1, 2, 3, 4, 5, 6],
@@ -2153,9 +2154,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   })["catch"](function (err) {
     console.log(err);
   });
-  axios.get("/api/houses/").then(function (res) {
-    console.log(res.data[0].services);
-    _this2.houses = res.data; // this.services = res.data;
+  axios.get("/api/services/").then(function (res) {
+    _this2.services = res.data;
+    console.log(_this2.services); // this.services = res.data;
+    // this.services = res.data;
   })["catch"](function (err) {
     console.log(err);
   }); // axios.get("/api/posts/").then((res) => {
@@ -2503,37 +2505,54 @@ var render = function render() {
         value: bed
       }
     }, [_vm._v("\n                " + _vm._s(bed) + "\n            ")]);
-  })], 2), _vm._v(" "), _c("select", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.textBed,
-      expression: "textBed"
-    }],
-    staticClass: "form-select form-select-sm text-center m-auto",
-    on: {
-      change: function change($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-          return o.selected;
-        }).map(function (o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val;
-        });
-        _vm.textBed = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
-      }
-    }
-  }, [_c("option", {
-    attrs: {
-      value: ""
-    }
-  }, [_vm._v("Servizi")]), _vm._v(" "), _vm._l(_vm.houses.service, function (service, index) {
-    return _c("option", {
-      key: index,
+  })], 2), _vm._v(" "), _c("p", [_vm._v("Servizi")]), _vm._v(" "), _vm._l(_vm.services, function (service, index) {
+    return _c("div", {
+      key: index
+    }, [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: _vm.selectedServices,
+        expression: "selectedServices"
+      }],
+      attrs: {
+        type: "checkbox",
+        id: service.name
+      },
       domProps: {
-        value: service
+        value: service.name,
+        checked: Array.isArray(_vm.selectedServices) ? _vm._i(_vm.selectedServices, service.name) > -1 : _vm.selectedServices
+      },
+      on: {
+        change: function change($event) {
+          var $$a = _vm.selectedServices,
+              $$el = $event.target,
+              $$c = $$el.checked ? true : false;
+
+          if (Array.isArray($$a)) {
+            var $$v = service.name,
+                $$i = _vm._i($$a, $$v);
+
+            if ($$el.checked) {
+              $$i < 0 && (_vm.selectedServices = $$a.concat([$$v]));
+            } else {
+              $$i > -1 && (_vm.selectedServices = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _vm.selectedServices = $$c;
+          }
+        }
       }
-    }, [_vm._v("\n                " + _vm._s(service) + "\n            ")]);
-  })], 2)]), _vm._v(" "), _c("div", {
+    }), _vm._v(" "), _c("label", {
+      attrs: {
+        "for": "service.name"
+      }
+    }, [_vm._v(_vm._s(service.name))])]);
+  }), _vm._v(" "), _vm._l(_vm.selectedServices, function (item) {
+    return _c("div", {
+      key: item.id
+    }, [_vm._v("\n            " + _vm._s(item) + "\n        ")]);
+  })], 2), _vm._v(" "), _c("div", {
     staticClass: "row pt-4"
   }, _vm._l(_vm.filteredHousesRoom, function (house, index) {
     return _c("div", {
