@@ -1,52 +1,60 @@
 <template>
     <div class="container">
-        <div class="row">
-            <select
-                class="form-select form-select-sm text-center m-auto"
-                @change="changeSelectRoom"
-                v-model="textRoom"
-            >
-                <option value="">Numero di stanze</option>
-                <option
-                    :value="room"
-                    v-for="(room, index) in numberMaxRooms"
-                    :key="index"
+        <div class="row justify-content-center text-center">
+            <div class="col-6">
+                <select
+                    class="form-select form-select-sm text-center m-auto"
+                    @change="changeSelectRoom"
+                    v-model="textRoom"
                 >
-                    {{ room }}
-                </option>
-            </select>
-            <select
-                class="form-select form-select-sm text-center m-auto"
-                @change="changeSelectRoom"
-                v-model="textBed"
-            >
-                <option value="">Numero di letti</option>
-                <option
-                    :value="bed"
-                    v-for="(bed, index) in numberMaxRooms"
-                    :key="index"
+                    <option value="">Numero di stanze</option>
+                    <option
+                        :value="room"
+                        v-for="(room, index) in numberMaxRooms"
+                        :key="index"
+                    >
+                        {{ room }}
+                    </option>
+                </select>
+                <select
+                    class="form-select form-select-sm text-center m-auto"
+                    @change="changeSelectBed"
+                    v-model="textBed"
                 >
-                    {{ bed }}
-                </option>
-            </select>
-
-            <p>Servizi</p>
-            <div v-for="(service, index) in services" :key="index">
-                <input
-                    type="checkbox"
-                    :id="service.name"
-                    v-model="selectedServices"
-                    :value="service.name"
-                />
-                <label for="service.name">{{ service.name }}</label>
-            </div>
-            <div v-for="item in selectedServices" :key="item.id">
-                {{ item }}
+                    <option value="">Numero di letti</option>
+                    <option
+                        :value="bed"
+                        v-for="(bed, index) in numberMaxRooms"
+                        :key="index"
+                    >
+                        {{ bed }}
+                    </option>
+                </select>
             </div>
         </div>
+
         <div class="row pt-4">
+            <div class="col-2">
+                <p>Servizi:</p>
+                <div
+                    class="checkbox"
+                    v-for="(service, index) in services"
+                    :key="index"
+                >
+                    <input
+                        type="checkbox"
+                        :id="service.name"
+                        v-model="selectedServices"
+                        :value="service.name"
+                        @click="filteredHousesRoom"
+                        
+                    />
+                    <label for="service.name">{{ service.name }}</label>
+                </div>
+            </div>
+
             <div
-                class="col-6"
+                class="col-5"
                 v-for="(house, index) in filteredHousesRoom"
                 :key="index"
             >
@@ -154,6 +162,9 @@ export default {
         changeSelectRoom() {
             this.textRoom;
         },
+        changeSelectBed() {
+            this.textBed;
+        },
         // changeSelect() {
         //     console.log(this.searchText)
 
@@ -185,7 +196,16 @@ export default {
             }
             return this.houses.filter((item) => {
                 return (
-                    item.n_room === this.textRoom || item.n_bed === this.textBed
+                    item.n_room === this.textRoom ||
+                    item.n_bed === this.textBed ||
+                    item.services.forEach((el) =>
+                        this.selectedServices.forEach((e2) => {
+                            if (el.services === e2) {
+                                console.log(el);
+                                item.push(this.houses);
+                            }
+                        })
+                    )
                 );
             });
         },
@@ -234,3 +254,7 @@ export default {
     },
 };
 </script>
+<style lang="scss" scoped>
+.checkbox {
+}
+</style>
