@@ -75,7 +75,9 @@ ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
 
 export default {
     name: "HomeComponent",
-    components: {},
+    components: { 
+    
+    },
     data() {
         return {
             cities: [],
