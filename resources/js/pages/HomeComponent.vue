@@ -78,8 +78,9 @@
                         </li>
                     </ul>
                     <div class="card-body">
-                        <a :href="`/house/${house.slug}`" class="card-link">Visulizza</a>
-                        
+                        <a :href="`/house/${house.slug}`" class="card-link"
+                            >Visulizza</a
+                        >
                     </div>
                 </div>
 
@@ -111,31 +112,34 @@
 <script>
 import "../find.js";
 
-// import { services } from "@tomtom-international/web-sdk-services";
-// import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
+import { services } from "@tomtom-international/web-sdk-services";
+import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 
-// let options = {
-//     idleTimePress: 100,
-//     minNumberOfCharacters: 0,
-//     searchOptions: {
-//         key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
-//         language: "it-IT",
-//     },
-//     autocompleteOptions: {
-//         key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
-//         language: "it-IT",
-//     },
-//     noResultsMessage: "No results found.",
-// };
+let options = {
+    
+    minNumberOfCharacters: 0,
+    searchOptions: {
+        countrySet: 'IT',
+        key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
+        language: "it-IT",
+    },
+    autocompleteOptions: {
+     
+        countrySet: 'IT',
+        key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
+        language: "it-IT",
+    },
+    noResultsMessage: "No results found.",
+};
 
-// const ttSearchBox = new SearchBox(services, options);
+const ttSearchBox = new SearchBox(services, options);
 
-// let search = document.getElementsByClassName("search");
-// var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-// document.body.appendChild(searchBoxHTML);
-// ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
-//     console.log(data);
-// });
+let search = document.getElementsByClassName("search");
+var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+document.body.appendChild(searchBoxHTML);
+ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
+    console.log(data);
+});
 
 export default {
     name: "HomeComponent",
@@ -164,21 +168,21 @@ export default {
             this.textBed;
         },
 
-        // findGeocoding() {
-        //     axios
-        //         .get(
-        //             "https://api.tomtom.com/search/2/autocomplete/" +
-        //                 this.cityAddress +
-        //                 ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&language=it-IT&limit=10&=&&countrySet=IT"
-        //         )
-        //         .then((res) => {
-        //             results = res.data;
-        //             console.log(results);
-        //         })
-        //         .catch((error) => {
-        //             console.log(error);
-        //         });
-        // },
+        findGeocoding() {
+            axios
+                .get(
+                    "https://api.tomtom.com/search/2/autocomplete/" +
+                        this.cityAddress +
+                        ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&language=it-IT&limit=10&=&&countrySet=IT"
+                )
+                .then((res) => {
+                    results = res.data;
+                    console.log(results);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
     },
 
     computed: {
@@ -189,23 +193,22 @@ export default {
             console.log(this.selectedServices);
             return this.houses.filter((item) => {
                 return (
-                    item.n_room === this.textRoom || item.n_bed === this.textBed || item.services.forEach((el)=>this.selectedServices.forEach((el2)=>{
-                        if(el.name === el2){
-                            console.log(item)
-                         return item
-                         }
-                    })
-
-                       
+                    item.n_room === this.textRoom ||
+                    item.n_bed === this.textBed ||
+                    item.services.forEach((el) =>
+                        this.selectedServices.forEach((el2) => {
+                            if (el.name === el2) {
+                                console.log(item);
+                                return item;
+                            }
+                        })
                     )
-                    
-                    
+
                     // this.selectedServices.forEach((el2)=>{
                     //     console.log(el.name)
                     //     if(el === el2){
                     //         return item
                     //     }
-
 
                     // }))
                 );
@@ -256,6 +259,4 @@ export default {
     },
 };
 </script>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
