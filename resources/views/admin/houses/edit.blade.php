@@ -124,7 +124,9 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-    <div class="form-group">
+    <div id="search">Inserisci il tuo indirizzo completo</div>
+
+    {{-- <div class="form-group">
         <label for="state" class="form-label">*Stato</label>
         <input type="text" class="form-control @error('state') is-invalid @enderror" id="state" name="state" value="{{ old('state', $house->state) }}" placeholder="Inserisci titolo" required>
         @error('state')
@@ -144,7 +146,7 @@
         @error('address')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-    </div>
+    </div> --}}
     <div class="form-group">
         <label for="check_in" class="form-label">*Check in</label>
         <input type="date" class="form-control @error('check_in') is-invalid @enderror" id="check_in" name="check_in" value="{{ old('check_in', $house->check_in) }}" placeholder="Inserisci numero di bagni" required>
@@ -170,6 +172,8 @@
 @push('head')
 <!-- Styles -->
 <script src="{{ asset('js/scriptValidazione.js') }}" defer></script>
+<script src="{{ asset('js/autocompleteSearch.js') }}" defer></script>
+
 @endpush
 
 </div>
