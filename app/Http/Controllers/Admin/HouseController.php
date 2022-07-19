@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use App\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
+use LDAP\Result;
 use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class HouseController extends Controller
@@ -103,6 +104,8 @@ class HouseController extends Controller
         // @dd($newHouse->address);
 
         $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . '-' . $data['city'] . '-' . $data['state'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
+
+
 
 
         $newHouse->latitude = $geoCode['results']['0']['position']['lat'];

@@ -9,7 +9,7 @@
                         <h2>Crea nuovo appartamento</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.houses.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.houses.store') }}" method="POST" enctype="multipart/form-data" id="sectionForm">
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="form-label">Titolo</label>
@@ -23,7 +23,7 @@
                             <div class="form-group-description mx-auto">
                                 <label for="contentEditor" class="form-label">Descrizione:</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="contentEditor"
-                                    cols="30" rows="10">{{ old('description') }}</textarea>
+                                    cols="30" rows="10" >{{ old('description') }}</textarea>
                                 @error('description')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label for="type" class="form-label">Tipo di alloggio:</label>
                                 <select name="type_id" id="type"
-                                    class="form-control @error('type_id') is-invalid @enderror">
+                                    class="form-control @error('type_id') is-invalid @enderror" required>
                                     <option value="">Seleziona un tipo di alloggio</option>
                                     @foreach ($types as $type)
                                         <option value="{{ $type->id }}">{{ $type->name }}</option>
@@ -58,7 +58,7 @@
                                     <label class="form-check-label" for="services">{{ $service->name }}</label>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox"
-                                            class="form-check-input"
+                                            class="form-check-input my-checkbox"
                                             {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}
                                             id="{{ $service->name }}" name="services[]" value="{{ $service->id }}">
                                     </div>
@@ -196,6 +196,10 @@
                     </div>
                 </div>
             </div>
+             @push('head')
+            <!-- Styles -->
+            <script src="{{ asset('js/scriptValidazione.js') }}" defer></script>
+    @endpush
         </div>
     </section>
     <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>

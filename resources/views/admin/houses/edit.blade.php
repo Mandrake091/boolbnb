@@ -18,7 +18,7 @@
         <div class="form-group">
             <label for="contentEditor" class="form-label">Descrizione:</label>
             <textarea  class="form-control @error('description') is-invalid @enderror" name="description" id="contentEditor"
-                cols="30" rows="10" required>{{ old('description', $house->description) }} </textarea>
+                cols="30" rows="10" >{{ old('description', $house->description) }} </textarea>
             @error('description')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -188,7 +188,7 @@
     @push('head')
             <!-- Styles -->
             <script src="{{ asset('js/scriptValidazione.js') }}" defer></script>
-        @endpush
+    @endpush
     
     </div>
 
