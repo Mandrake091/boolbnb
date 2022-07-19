@@ -1,7 +1,7 @@
 <template>
     <header>
         <nav>
-            <div class="logo"><img src="/images/boolbnb.png" alt="logo"></div>
+            <div class="logo"><img src="/images/logo.png" alt=""></div>
             <ul>
                 <li v-for="(item, index) in menuItem" :key="index" :class="{'active' : index === activeIndex}" @click="activeIndex = index">
                     <router-link :to="{ name: item.routeName } " class="link">{{item.label}}</router-link>

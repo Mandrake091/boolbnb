@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Modifica Alloggio {{ $house->id }}</h1>
-    <form enctype="multipart/form-data" action="{{ route('admin.houses.update', $house->id) }}" method="post">
+    <form enctype="multipart/form-data" action="{{ route('admin.houses.update', $house->id) }}" method="post" id="sectionForm">
         @csrf
         @method('PUT')
 
@@ -17,25 +17,26 @@
         </div>
         <div class="form-group">
             <label for="contentEditor" class="form-label">Descrizione:</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="contentEditor"
-                cols="30" rows="10">{{ old('description', $house->description) }}</textarea>
+            <textarea  class="form-control @error('description') is-invalid @enderror" name="description" id="contentEditor"
+                cols="30" rows="10" >{{ old('description', $house->description) }} </textarea>
             @error('description')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
-            <label for="type" class="form-label">Tipo di alloggio:</label>
-            <select name="type_id" id="type" class="form-control @error('type_id') is-invalid @enderror">
+            <label for="type" class="form-label" >Tipo di alloggio:</label>
+            <select name="type_id" id="type" class="form-control @error('type_id') is-invalid @enderror" required>
                 <option value="">Seleziona un tipo di alloggio</option>
                 @foreach ($types as $type)
                     <option value="{{ $type->id }}"
-                        {{ $type->id == old('type_id', $house->type_id) ? 'selected' : '' }}>{{ $type->name }}</option>
+                        {{ $type->id == old('type_id', $house->type_id) ? 'selected' : '' }} >{{ $type->name }}</option>
                 @endforeach
+                @error('type_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
             </select>
-            @error('type_id')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+            
         </div>
 
         
@@ -54,21 +55,23 @@
         <div class="form-group">
             <h5>Servizi</h5>
             @foreach ($services as $service)
-                <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline " >
                     @if (old('service'))
-                        <input type="checkbox" class="form-check-input" id="{{ $service->slug }}" name="tags[]"
+                        <input type="checkbox" class="my-checkbox form-check-input @error('services') is-invalid @enderror" id="{{ $service->slug }}" name="tags[]"
                             value="{{ $service->id }}"
-                            {{ in_array($service->id, old('service', [])) ? 'checked' : '' }}>
+                            {{ in_array($service->id, old('service', [])) ? 'checked' : '' }} >
                     @else
-                        <input type="checkbox" class="form-check-input" id="{{ $service->slug }}" name="services[]"
-                            value="{{ $service->id }}" {{ $house->services->contains($service) ? 'checked' : '' }}>
+                        <input type="checkbox" class="my-checkbox form-check-input" id="{{ $service->slug }}" name="services[]"
+                            value="{{ $service->id }}" {{ $house->services->contains($service) ? 'checked' : '' }} >
                     @endif
-                    <label class="form-check-label" for="{{ $service->slug }}">{{ $service->name }}</label>
+                    <label class="form-check-label" for="{{ $service->slug }}" >{{ $service->name }}</label>
                 </div>
+                
             @endforeach
             @error('services')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            
         </div>
 
         {{-- <div class="form-group form-check">
@@ -159,22 +162,6 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        {{-- <div class="form-group">
-            <label for="latitude" class="form-label">Lat</label>
-            <input type="number" class="form-control @error('latitude') is-invalid @enderror" id="latitude"
-                name="latitude" value="{{ old('latitude', $house->latitude) }}" placeholder="Inserisci numero di bagni" required>
-            @error('latitude')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div> --}}
-        {{-- <div class="form-group">
-            <label for="longitude" class="form-label">Long</label>
-            <input type="number" class="form-control @error('longitude') is-invalid @enderror" id="longitude"
-                name="longitude" value="{{ old('longitude', $house->latitude) }}" placeholder="Inserisci numero di bagni" required>
-            @error('longitude')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div> --}}
         <div class="form-group">
             <label for="check_in" class="form-label">Check in</label>
             <input type="date" class="form-control @error('check_in') is-invalid @enderror" id="check_in"
@@ -198,5 +185,11 @@
         <button type="submit" class="btn btn-success">Edit</button>
 
     </form>
+    @push('head')
+            <!-- Styles -->
+            <script src="{{ asset('js/scriptValidazione.js') }}" defer></script>
+    @endpush
+    
     </div>
+
 @endsection
