@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">     
                 <div class="col-4 col-md-2">
-                    <img src="/images/logo.png" alt="logo">
+                    <img src="/images/boolbnb.png" alt="logo">
                 </div>
                 <div class="col-8 col-md-4 justify-content-start pt-3">
                     <ul>
