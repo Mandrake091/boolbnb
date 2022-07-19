@@ -19,13 +19,15 @@ let options = {
 
 // const ttSearchBox = new SearchBox(services, options);
 
-let search = document.getElementsByClassName("search");
+let search = document.getElementById("search");
 var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
-console.log(search)
 
 var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-document.body.search.append(searchBoxHTML);
-console.log(document.body)
+search.append(searchBoxHTML);
+console.log(search)
+let searchBox = document.querySelector(".tt-search-box-input");
+searchBox.setAttribute("name", "address");
+console.log(searchBox);
 ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
     console.log(data);
 });

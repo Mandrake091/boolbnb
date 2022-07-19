@@ -96,14 +96,22 @@ class HouseController extends Controller
         $newHouse->square_meters = $data['square_meters'];
         $newHouse->check_in = $data['check_in'];
         $newHouse->check_out = $data['check_out'];
+        // $address = $data['search'];
 
-        $newHouse->state = $data['state'];
-        $newHouse->city = $data['city'];
+        // $newHouse->state = $data['state'];
+        // $newHouse->city = $data['city'];
 
         $newHouse->address = $data['address'];
-        // @dd($newHouse->address);
 
-        $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . '-' . $data['city'] . '-' . $data['state'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
+
+        // $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . '-' . $data['city'] . '-' . $data['state'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
+
+        $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
+
+        $newHouse->state = $geoCode['results']['0']['address']['country'];
+        $newHouse->city = $geoCode['results']['0']['address']['municipality'];
+
+        $newHouse->address = $geoCode['results']['0']['address']['streetName'];
 
 
 
@@ -184,10 +192,22 @@ class HouseController extends Controller
         $house->square_meters = $data['square_meters'];
         $house->check_in = $data['check_in'];
         $house->check_out = $data['check_out'];
-        $house->state = $data['state'];
-        $house->city = $data['city'];
+        // $house->state = $data['state'];
+        // $house->city = $data['city'];
+        // $house->address = $data['address'];
+        // $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . '-' . $data['city'] . '-' . $data['state'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
         $house->address = $data['address'];
-        $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . '-' . $data['city'] . '-' . $data['state'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
+
+
+        // $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . '-' . $data['city'] . '-' . $data['state'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
+
+        $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $data['address'] . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
+
+        $house->state = $geoCode['results']['0']['address']['country'];
+        $house->city = $geoCode['results']['0']['address']['municipality'];
+
+        $house->address = $geoCode['results']['0']['address']['streetName'];
+
 
 
         $house->latitude = $geoCode['results']['0']['position']['lat'];

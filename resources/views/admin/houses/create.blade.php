@@ -127,9 +127,11 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    <div id="search">Inserisci il tuo indirizzo completo</div>
+
+                                    {{-- <div class="form-group">
                                         <label for="state" class="form-label">*Stato</label>
-                                        <input type="text" class="form-control @error('state') is-invalid @enderror"
+                                        <input type="text" class=" form-control @error('state') is-invalid @enderror"
                                             id="state" name="state" value="{{ old('state') }}"
                                             placeholder="Inserisci titolo" required>
                                         @error('state')
@@ -144,8 +146,8 @@
                                         @error('city')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
-                                    <div class="form-group">
+                                    </div> --}}
+                                    {{-- <div class="form-group">
                                         <label for="address" class="form-label">*Indirizzo</label>
                                         <input type="text" class="form-control @error('address') is-invalid @enderror"
                                             id="address" name="address" value="{{ old('address') }}"
@@ -153,7 +155,7 @@
                                         @error('address')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group">
                                         <label for="check_in" class="form-label">*Check in</label>
