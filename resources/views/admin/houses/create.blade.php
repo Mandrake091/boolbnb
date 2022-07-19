@@ -9,7 +9,8 @@
                         <h2>Crea nuovo appartamento</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.houses.store') }}" method="POST" enctype="multipart/form-data" id="sectionForm">
+                        <form action="{{ route('admin.houses.store') }}" method="POST" enctype="multipart/form-data"
+                            id="sectionForm">
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="form-label">Titolo</label>
@@ -23,7 +24,7 @@
                             <div class="form-group-description mx-auto">
                                 <label for="contentEditor" class="form-label">Descrizione:</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="contentEditor"
-                                    cols="30" rows="10" >{{ old('description') }}</textarea>
+                                    cols="30" rows="10">{{ old('description') }}</textarea>
                                 @error('description')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -57,8 +58,7 @@
                                 @foreach ($services as $service)
                                     <label class="form-check-label" for="services">{{ $service->name }}</label>
                                     <div class="form-check form-check-inline">
-                                        <input type="checkbox"
-                                            class="form-check-input my-checkbox"
+                                        <input type="checkbox" class="form-check-input my-checkbox"
                                             {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}
                                             id="{{ $service->name }}" name="services[]" value="{{ $service->id }}">
                                     </div>
@@ -147,7 +147,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="address" class="form-label">Indirizzo</label>
-                                <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                <input type="text" class="form-control search @error('address') is-invalid @enderror"
                                     id="address" name="address" value="{{ old('address') }}"
                                     placeholder="Inserisci titolo" required>
                                 @error('address')
@@ -196,14 +196,15 @@
                     </div>
                 </div>
             </div>
-             @push('head')
-            <!-- Styles -->
-            <script src="{{ asset('js/scriptValidazione.js') }}" defer></script>
-    @endpush
+            @push('head')
+                <!-- Styles -->
+                <script src="{{ asset('js/scriptValidazione.js') }}" defer></script>
+                <script src="{{ asset('js/autocompleteSearch.js') }}" defer></script>
+                <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                    bkLib.onDomLoaded(nicEditors.allTextAreas);
+                </script>
+            @endpush
         </div>
     </section>
-    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        bkLib.onDomLoaded(nicEditors.allTextAreas);
-    </script>
 @endsection
