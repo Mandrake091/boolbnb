@@ -19562,8 +19562,7 @@ header .logo {
   position: absolute;
   font-size: 20px;
   font-weight: bold;
-  left: 2em;
-  color: #FF385C;
+  left: 1em;
 }
 
 .link:hover {
@@ -19574,8 +19573,8 @@ header .logo {
 .my-btn {
   width: 180px;
   height: 40px;
-  color: #ffaf62;
-  border: 2px solid #ffaf62;
+  color: #FF385C;
+  border: 2px solid #FF385C;
   border-radius: 5em;
   display: inline-block;
   position: absolute;
@@ -19585,7 +19584,7 @@ header .logo {
   text-align: center;
 }
 .my-btn:hover {
-  background-color: #ffaf62;
+  background-color: #FF385C;
   color: white;
   transition: 0.8s;
 }

@@ -12,8 +12,8 @@ header{
         font-size: 20px;
         font-weight: bold;
         // top: 0.8em;
-        left: 2em;
-        color: $header;
+        left: 1em;
+        // color: $header;
     }
 }
 
@@ -55,8 +55,8 @@ header{
 .my-btn{
     width: 180px;
     height: 40px;
-    color: $orange;
-    border: 2px solid $orange;
+    color: $header;
+    border: 2px solid $header;
     border-radius: 5em;
     display: inline-block;
     position: absolute;
@@ -65,7 +65,7 @@ header{
     line-height: 35px;
     text-align: center;
     &:hover{
-        background-color: $orange;
+        background-color: $header;
         color: $white;
         transition: 0.8s;
     }
