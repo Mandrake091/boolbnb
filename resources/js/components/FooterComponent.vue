@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">     
                 <div class="col-4 col-md-2">
-                    <img src="images/logo.png" alt="logo">
+                    <img src="/images/boolbnb.png" alt="logo">
                 </div>
                 <div class="col-8 col-md-4 justify-content-start pt-3">
                     <ul>
@@ -81,7 +81,7 @@ li{
   list-style-type: none;
   display: inline;
   padding-right: 10px;
-  color: #ffaf62;
+  color: #FF385C;
   cursor: pointer;
   a{
     color: black;
@@ -89,7 +89,7 @@ li{
     text-decoration: none;
     transition: all 0.2s;
     &:hover{
-        color: #ffaf62;
+        color: #FF385C;
     }
   }
 }
