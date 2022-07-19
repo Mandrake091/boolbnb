@@ -110,36 +110,9 @@
 </template>
 
 <script>
-import "../find.js";
+// import "../find.js";
 
-import { services } from "@tomtom-international/web-sdk-services";
-import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 
-let options = {
-    
-    minNumberOfCharacters: 0,
-    searchOptions: {
-        countrySet: 'IT',
-        key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
-        language: "it-IT",
-    },
-    autocompleteOptions: {
-     
-        countrySet: 'IT',
-        key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
-        language: "it-IT",
-    },
-    noResultsMessage: "No results found.",
-};
-
-const ttSearchBox = new SearchBox(services, options);
-
-let search = document.getElementsByClassName("search");
-var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-document.body.appendChild(searchBoxHTML);
-ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
-    console.log(data);
-});
 
 export default {
     name: "HomeComponent",
@@ -168,21 +141,21 @@ export default {
             this.textBed;
         },
 
-        findGeocoding() {
-            axios
-                .get(
-                    "https://api.tomtom.com/search/2/autocomplete/" +
-                        this.cityAddress +
-                        ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&language=it-IT&limit=10&=&&countrySet=IT"
-                )
-                .then((res) => {
-                    results = res.data;
-                    console.log(results);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        },
+        // findGeocoding() {
+        //     axios
+        //         .get(
+        //             "https://api.tomtom.com/search/2/autocomplete/" +
+        //                 this.cityAddress +
+        //                 ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&language=it-IT&limit=10&=&&countrySet=IT"
+        //         )
+        //         .then((res) => {
+        //             results = res.data;
+        //             console.log(results);
+        //         })
+        //         .catch((error) => {
+        //             console.log(error);
+        //         });
+        // },
     },
 
     computed: {

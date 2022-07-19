@@ -1,7 +1,6 @@
     (function() {
     const form = document.querySelector('#sectionForm');
     const checkboxes = form.querySelectorAll('.my-checkbox');
-    console.log(checkboxes);
     const checkboxLength = checkboxes.length;
     const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
 

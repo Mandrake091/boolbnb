@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateHousesTableChangeGeocodingData extends Migration
+class UpdateTableHousesChangeNightPrice extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,10 @@ class UpdateHousesTableChangeGeocodingData extends Migration
     public function up()
     {
         Schema::table('houses', function (Blueprint $table) {
-            $table->float('longitude', 10, 8)->change();
-            $table->float('latitude', 11, 8)->change();
+            $table->float('night_price', 10, 2)->change();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
@@ -27,8 +26,7 @@ class UpdateHousesTableChangeGeocodingData extends Migration
     public function down()
     {
         Schema::table('houses', function (Blueprint $table) {
-            $table->integer('longitude');
-            $table->integer('latitude');
+            $table->float('night_price', 4, 2);
         });
     }
 }
