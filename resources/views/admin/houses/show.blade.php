@@ -34,7 +34,16 @@
                             <p id="longitude">Longitude: {{ $house->longitude }}</p>
                         </div>
                     </div>
+                    <div>
+                        <h3>Messaggi: </h3>
+                        @foreach ($house->messages as $message)
+                            Nome: {{ $message->name }} <br>
+                            Cognome: {{ $message->surname }} <br>
+                            Email: {{ $message->email }}<br>
+                            {{ $message->text }}
+                        @endforeach
 
+                    </div>
 
                 </div>
             </div>

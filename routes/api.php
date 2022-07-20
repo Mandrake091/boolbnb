@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/houses', 'Api\HousesFrontController@index');
 Route::get('/houses/{slug}', 'Api\HousesFrontController@show');
 Route::get('/services', 'Api\ServicesController@index');
+Route::get('/messages', 'Api\MessageController@show');
 
 //rotta salvataggio Messaggi
 Route::post('/messages', 'Api\MessageController@store');

@@ -1,6 +1,7 @@
 latitude = latitude.innerHTML.substring(12, 23);
 longitude = longitude.innerHTML.substring(11, 23);
 
+
 console.log(latitude);
 console.log(longitude);
 
