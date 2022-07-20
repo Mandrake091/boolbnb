@@ -53,24 +53,50 @@
                     <MapComponent :longitude="longitude" :latitude="latitude" />
                 </div>
             </div>
-        </div>
+            <div class="row flex-column pt-3 w-100">
+                <div>
+                    <form @submit.prevent="sendMessage()">
+                        
+                        <div class="input-group-text p-3 flex-column w-50 mx-auto">
+                            <h3>Contattami qui:</h3>
+                            <label for="name">Inserisci il tuo nome:</label>
+                            <input
+                                v-model="formData.name"
+                                type="text"
+                                class="my-input w-75 form-control"
+                            />
 
-        <div>
-            <form @submit.prevent="sendMessage()">
-                <label for="name">Inserisci il tuo nome:</label>
-                <input v-model="formData.name" type="text" class="my-input" />
-                <label for="surname">Inserisci il tuo cognome:</label>
-                <input
-                    v-model="formData.surname"
-                    type="text"
-                    class="my-input"
-                />
-                <label for="email">Inserisci la tua email:</label>
-                <input v-model="formData.email" type="text" class="my-input" />
-                <label for="text">Inserisci il tuo messaggio:</label>
-                <input v-model="formData.text" type="text" class="my-input" />
-                <button type="submit">Invia</button>
-            </form>
+                            <label for="surname"
+                                >Inserisci il tuo cognome:</label
+                            >
+                            <input
+                                v-model="formData.surname"
+                                type="text"
+                                class="my-input w-75 form-control"
+                            />
+                            <label for="email">Inserisci la tua email:</label>
+                            <input
+                                v-model="formData.email"
+                                type="text"
+                                class="my-input w-75 form-control"
+                            />
+                            <label for="text"
+                                >Inserisci il tuo messaggio:</label
+                            >
+                            <textarea
+                                v-model="formData.text"
+                                type="text"
+                                class="my-input form-control w-75"
+                                rows="4" cols="50"
+
+                            />
+                            <button class="btn btn-primary mt-3" type="submit">
+                                Invia
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 </template>

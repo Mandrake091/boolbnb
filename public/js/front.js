@@ -2873,14 +2873,18 @@ var render = function render() {
       longitude: _vm.longitude,
       latitude: _vm.latitude
     }
-  })], 1)])]) : _vm._e(), _vm._v(" "), _c("div", [_c("form", {
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "row flex-column pt-3 w-100"
+  }, [_c("div", [_c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
         return _vm.sendMessage();
       }
     }
-  }, [_c("label", {
+  }, [_c("div", {
+    staticClass: "input-group-text p-3 flex-column w-50 mx-auto"
+  }, [_c("h3", [_vm._v("Contattami qui:")]), _vm._v(" "), _c("label", {
     attrs: {
       "for": "name"
     }
@@ -2891,7 +2895,7 @@ var render = function render() {
       value: _vm.formData.name,
       expression: "formData.name"
     }],
-    staticClass: "my-input",
+    staticClass: "my-input w-75 form-control",
     attrs: {
       type: "text"
     },
@@ -2916,7 +2920,7 @@ var render = function render() {
       value: _vm.formData.surname,
       expression: "formData.surname"
     }],
-    staticClass: "my-input",
+    staticClass: "my-input w-75 form-control",
     attrs: {
       type: "text"
     },
@@ -2941,7 +2945,7 @@ var render = function render() {
       value: _vm.formData.email,
       expression: "formData.email"
     }],
-    staticClass: "my-input",
+    staticClass: "my-input w-75 form-control",
     attrs: {
       type: "text"
     },
@@ -2959,16 +2963,18 @@ var render = function render() {
     attrs: {
       "for": "text"
     }
-  }, [_vm._v("Inserisci il tuo messaggio:")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Inserisci il tuo messaggio:")]), _vm._v(" "), _c("textarea", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.formData.text,
       expression: "formData.text"
     }],
-    staticClass: "my-input",
+    staticClass: "my-input form-control w-75",
     attrs: {
-      type: "text"
+      type: "text",
+      rows: "4",
+      cols: "50"
     },
     domProps: {
       value: _vm.formData.text
@@ -2981,10 +2987,11 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary mt-3",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Invia")])])])]);
+  }, [_vm._v("\n                            Invia\n                        ")])])])])])]) : _vm._e()]);
 };
 
 var staticRenderFns = [];
@@ -3124,7 +3131,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody,\nhtml {\n    margin: 0;\n    padding: 0;\n}\n#map {\n    width: 100%;\n    height: 50%;\n}\n", ""]);
+exports.push([module.i, "\nbody,\nhtml {\n    margin: 0;\n    padding: 0;\n}\n#map {\n    margin-top: 40px;\n    width: 100%;\n    height: 80%;\n}\n", ""]);
 
 // exports
 
