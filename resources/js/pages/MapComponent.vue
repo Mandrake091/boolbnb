@@ -47,7 +47,8 @@ html {
     padding: 0;
 }
 #map {
+    margin-top: 40px;
     width: 100%;
-    height: 50%;
+    height: 80%;
 }
 </style>
