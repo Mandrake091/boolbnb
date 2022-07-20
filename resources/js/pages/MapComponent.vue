@@ -41,13 +41,9 @@ export default {
 </script>
 
 <style>
-body,
-html {
-    margin: 0;
-    padding: 0;
-}
+
 #map {
-    margin-top: 40px;
+    
     width: 100%;
     height: 80%;
 }

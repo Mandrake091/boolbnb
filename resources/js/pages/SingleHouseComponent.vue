@@ -49,7 +49,7 @@
                         {{ house.check_out }}
                     </h4>
                 </div>
-                <div class="col-5">
+                <div class="col-5 align-items-center d-flex">
                     <MapComponent :longitude="longitude" :latitude="latitude" />
                 </div>
             </div>

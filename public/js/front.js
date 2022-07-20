@@ -2867,7 +2867,7 @@ var render = function render() {
       key: service.id
     }, [_vm._v("\n                            " + _vm._s(service.name) + "\n                        ")]);
   }), 0) : _vm._e()]), _vm._v(" "), _c("div", [_vm._v("\n                    Prezzo per notte: "), _c("span", [_vm._v(_vm._s(_vm.house.night_price) + "€")])]), _vm._v(" "), _c("h4", [_vm._v("\n                    Disponibile dal " + _vm._s(_vm.house.check_in) + " al\n                    " + _vm._s(_vm.house.check_out) + "\n                ")])]), _vm._v(" "), _c("div", {
-    staticClass: "col-5"
+    staticClass: "col-5 align-items-center d-flex"
   }, [_c("MapComponent", {
     attrs: {
       longitude: _vm.longitude,
@@ -3131,7 +3131,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody,\nhtml {\n    margin: 0;\n    padding: 0;\n}\n#map {\n    margin-top: 40px;\n    width: 100%;\n    height: 80%;\n}\n", ""]);
+exports.push([module.i, "\n#map {\n    \n    width: 100%;\n    height: 80%;\n}\n", ""]);
 
 // exports
 
