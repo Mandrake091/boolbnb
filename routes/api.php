@@ -22,6 +22,8 @@ Route::get('/houses', 'Api\HousesFrontController@index');
 Route::get('/houses/{slug}', 'Api\HousesFrontController@show');
 Route::get('/services', 'Api\ServicesController@index');
 Route::get('/messages', 'Api\MessageController@show');
+Route::get('/search', 'Api\SearchController@search');
+
 
 //rotta salvataggio Messaggi
 Route::post('/messages', 'Api\MessageController@store');
