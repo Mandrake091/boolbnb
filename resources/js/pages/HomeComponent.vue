@@ -79,8 +79,7 @@
                     </ul>
                     <div class="card-body">
                         <a :href="`/house/${house.slug}`" class="card-link"
-                            >Visulizza</a
-                        >
+                            >Visualizza</a>
                     </div>
                 </div>
 

@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<div class="container">
     <h1>Modifica Alloggio {{ $house->id }}</h1>
     <form enctype="multipart/form-data" action="{{ route('admin.houses.update', $house->id) }}" method="post" id="sectionForm">
         @csrf
@@ -191,5 +192,6 @@
     @endpush
     
     </div>
+</div>
 
 @endsection
