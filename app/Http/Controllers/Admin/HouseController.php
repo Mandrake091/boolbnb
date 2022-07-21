@@ -22,7 +22,7 @@ use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class HouseController extends Controller
 {
-    
+
     protected $validationRule = [
         // "title" => "required|string|max:100",
         // "content" => "required",
@@ -129,6 +129,13 @@ class HouseController extends Controller
         if (isset($data['services'])) {
             $newHouse->services()->sync($data['services']);
         }
+        if (isset($data['sponsorships'])) {
+
+            // $newHouse->sponsorships()->attach($sponsorships_id, ['ticket_quantity' => $qty]);
+
+
+            $newHouse->sponsorships()->sync($data['sponsorships']);
+        }
 
         return redirect()->route('admin.houses.show', $newHouse->id);
     }
@@ -142,7 +149,7 @@ class HouseController extends Controller
     public function show(House $house)
     {
 
-        
+
         return view('admin.houses.show', compact('house'));
     }
 
