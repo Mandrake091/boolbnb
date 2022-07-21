@@ -2548,10 +2548,14 @@ var render = function render() {
   return _c("div", {
     staticClass: "container"
   }, [_c("div", {
-    staticClass: "row justify-content-center text-center"
+    staticClass: "row justify-content-start pt-4"
   }, [_c("div", {
     staticClass: "col-6"
-  }, [_c("select", {
+  }, [_c("label", {
+    attrs: {
+      "for": "room"
+    }
+  }, [_vm._v("Numero di stanze")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2574,14 +2578,22 @@ var render = function render() {
     attrs: {
       value: ""
     }
-  }, [_vm._v("Numero di stanze")]), _vm._v(" "), _vm._l(_vm.numberMaxRooms, function (room, index) {
+  }), _vm._v(" "), _vm._l(_vm.numberMaxRooms, function (room, index) {
     return _c("option", {
       key: index,
       domProps: {
         value: room
       }
     }, [_vm._v("\n                    " + _vm._s(room) + "\n                ")]);
-  })], 2), _vm._v(" "), _c("select", {
+  })], 2)])]), _vm._v(" "), _c("div", {
+    staticClass: "row justify-content-start"
+  }, [_c("div", {
+    staticClass: "col-6"
+  }, [_c("label", {
+    attrs: {
+      "for": "bed"
+    }
+  }, [_vm._v("Numero di letti")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2604,7 +2616,7 @@ var render = function render() {
     attrs: {
       value: ""
     }
-  }, [_vm._v("Numero di letti")]), _vm._v(" "), _vm._l(_vm.numberMaxRooms, function (bed, index) {
+  }), _vm._v(" "), _vm._l(_vm.numberMaxRooms, function (bed, index) {
     return _c("option", {
       key: index,
       domProps: {
@@ -2612,7 +2624,7 @@ var render = function render() {
       }
     }, [_vm._v("\n                    " + _vm._s(bed) + "\n                ")]);
   })], 2)])]), _vm._v(" "), _c("div", {
-    staticClass: "row pt-4"
+    staticClass: "row pt-2"
   }, [_c("div", {
     staticClass: "col-2"
   }, [_c("p", [_vm._v("Servizi:")]), _vm._v(" "), _vm._l(_vm.services, function (service, index) {
