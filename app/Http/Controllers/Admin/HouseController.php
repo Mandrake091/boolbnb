@@ -40,6 +40,7 @@ class HouseController extends Controller
     {
         $houses = [];
         $id = Auth::id();
+        $sponsorships = Sponsorship::all();
         $allUserHouses = House::all();
 
         for ($i = 0; $i < count($allUserHouses); $i++) {
@@ -64,8 +65,7 @@ class HouseController extends Controller
     {
         $types = Type::all();
         $services = Service::all();
-        $sponsorships = Sponsorship::all();
-        return view('admin.houses.create', compact('types', 'services', 'sponsorships'));
+        return view('admin.houses.create', compact('types', 'services'));
     }
 
     /**
@@ -125,18 +125,11 @@ class HouseController extends Controller
         }
 
         $newHouse->save();
-
         if (isset($data['services'])) {
             $newHouse->services()->sync($data['services']);
         }
-        if (isset($data['sponsorships'])) {
 
-            // $newHouse->sponsorships()->attach($sponsorships_id, ['ticket_quantity' => $qty]);
-
-
-            $newHouse->sponsorships()->sync($data['sponsorships']);
-        }
-
+        
         return redirect()->route('admin.houses.show', $newHouse->id);
     }
 

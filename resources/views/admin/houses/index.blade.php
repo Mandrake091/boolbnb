@@ -59,6 +59,28 @@
                                 <p class="card-text card-text-index">{!! $post->description !!}</p>
                             </div>
                             <div class="card-body">
+                                <div class="form-group">
+                                    <form action="{{ route('admin.sponsorships.store') }}" method="POST"
+                            id="sectionForm">
+                            @csrf
+                                        <h5>Sponsorizza</h5>
+                                        @foreach ($sponsorships as $sponsorship)
+                                        <div class="form-check form-check-inline">
+                                                <input type="checkbox" class="form-check-input my-checkbox"
+                                                    {{ in_array($sponsorship->id, old('sponsorships', [])) ? 'checked' : '' }}
+                                                    id="{{ $sponsorship->name }}" name="sponsorships[]"
+                                                    value="{{ $sponsorship->id }}">
+                                            </div>
+                                            <label class="form-check-label" for="sponsorships">Tipo: {{ $sponsorship->name }} - Prezzo: {{ $sponsorship->price }}€ - Durata: {{ $sponsorship->duration}}</label>
+                                            
+                                        @endforeach
+                                        <button class="btn btn-primary" type="submit">Pagamento sponsorship</button>
+                                    </form>
+                                            
+                                        @error('services')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 <div class="row justify-content-around">
                                     <a href="{{ route('admin.houses.show', $post->id) }}"
                                         class="btn btn-primary">Visualizza</a>

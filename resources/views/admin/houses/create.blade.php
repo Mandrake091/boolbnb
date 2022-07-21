@@ -63,21 +63,7 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <h5>Sponsorizza</h5>
-                                        @foreach ($sponsorships as $sponsorship)
-                                            <label class="form-check-label" for="sponsorships">{{ $sponsorship->name }} {{ $sponsorship->price }} {{ $sponsorship->duration}}</label>
-                                            <div class="form-check form-check-inline">
-                                                <input type="checkbox" class="form-check-input my-checkbox"
-                                                    {{ in_array($sponsorship->id, old('sponsorships', [])) ? 'checked' : '' }}
-                                                    id="{{ $sponsorship->name }}" name="sponsorships[]"
-                                                    value="{{ $sponsorship->id }}">
-                                            </div>
-                                        @endforeach
-                                        @error('services')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                    
 
 
 
