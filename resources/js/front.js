@@ -41,9 +41,13 @@ import App from './views/App';
 import router from './router.js';
 import tt from "@tomtom-international/web-sdk-maps";
 
+import services from "@tomtom-international/web-sdk-services";
+
+import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
+
 
 const app = new Vue({
     el: '#root',
     render: h => h(App),
-    router, tt
+    router, tt , services, SearchBox
 });

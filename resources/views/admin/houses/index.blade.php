@@ -59,7 +59,7 @@
                                 <p class="card-text card-text-index">{!! $post->description !!}</p>
                             </div>
                             <div class="card-body">
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <form action="{{ route('admin.sponsorships.store') }}" method="POST"
                             id="sectionForm">
                             @csrf
@@ -80,7 +80,7 @@
                                         @error('services')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                 <div class="row justify-content-around">
                                     <a href="{{ route('admin.houses.show', $post->id) }}"
                                         class="btn btn-primary">Visualizza</a>

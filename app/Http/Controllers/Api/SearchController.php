@@ -26,7 +26,7 @@ class SearchController extends Controller
 
 
     $data = $request->all();
-    $indirizzo_inserito_utente = isset($data['indirizzo']) ? $data['indirizzo'] : 'Via Papa Luciani 10, Surbo';
+    $indirizzo_inserito_utente = isset($data['indirizzo']) ? $data['indirizzo'] : 'Lecce';
 
     $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $indirizzo_inserito_utente . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
 
@@ -35,15 +35,15 @@ class SearchController extends Controller
 
     // $lat = $geoCode['results']['0']['position']['lat'];
     // $lon = $geoCode['results']['0']['position']['lon'];
-    $max_lat = $geoCode['results']['0']['position']['lat'] + 0.1;
-    $min_lat = $geoCode['results']['0']['position']['lat'] - 0.1;
-    $max_lon = $geoCode['results']['0']['position']['lon'] + 0.1;
-    $min_lon = $geoCode['results']['0']['position']['lon'] - 0.1;
+    $max_lat = $geoCode['results']['0']['position']['lat'] + 0.18;
+    $min_lat = $geoCode['results']['0']['position']['lat'] - 0.18;
+    $max_lon = $geoCode['results']['0']['position']['lon'] + 0.18;
+    $min_lon = $geoCode['results']['0']['position']['lon'] - 0.18;
     $numero_stanze = isset($data['n_room']) ? $data['n_room'] : 0;
     $numero_letti = isset($data['n_bed']) ? $data['n_bed'] : 0;
     $numero_bagni = isset($data['n_bathroom']) ? $data['n_bathroom'] : 0;
     $prezzo_min = isset($data['night_price']) ? $data['night_price'] : 0;
-    $prezzo_max = isset($data['night_price']) ? $data['night_price'] : 100;
+    $prezzo_max = isset($data['night_price']) ? $data['night_price'] : 1000;
     $tipo = isset($data['type']) ? $data['type'] : ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
     $selectedServices = isset($data['services']) ? $data['services'] : [];
     // $citta = isset($data['city']) ? $data['city'] : 'Surbo';
