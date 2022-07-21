@@ -1,13 +1,14 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center text-center">
+        <div class="row justify-content-start pt-4">
             <div class="col-6">
+                <label for="room">Numero di stanze</label>
                 <select
                     class="form-select form-select-sm text-center m-auto"
                     @change="changeSelectRoom"
                     v-model="textRoom"
                 >
-                    <option value="">Numero di stanze</option>
+                    <option value=""></option>
                     <option
                         :value="room"
                         v-for="(room, index) in numberMaxRooms"
@@ -16,12 +17,17 @@
                         {{ room }}
                     </option>
                 </select>
+            </div>
+        </div>
+        <div class="row justify-content-start">
+            <div class="col-6">
+                <label for="bed">Numero di letti</label>
                 <select
                     class="form-select form-select-sm text-center m-auto"
                     @change="changeSelectBed"
                     v-model="textBed"
                 >
-                    <option value="">Numero di letti</option>
+                    <option value=""></option>
                     <option
                         :value="bed"
                         v-for="(bed, index) in numberMaxRooms"
@@ -33,7 +39,7 @@
             </div>
         </div>
 
-        <div class="row pt-4">
+        <div class="row pt-2">
             <div class="col-2">
                 <p>Servizi:</p>
                 <div
@@ -79,8 +85,7 @@
                     </ul>
                     <div class="card-body">
                         <a :href="`/house/${house.slug}`" class="card-link"
-                            >Visulizza</a
-                        >
+                            >Visualizza</a>
                     </div>
                 </div>
 

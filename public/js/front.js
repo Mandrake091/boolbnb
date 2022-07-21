@@ -2574,10 +2574,14 @@ var render = function render() {
   return _c("div", {
     staticClass: "container"
   }, [_c("div", {
-    staticClass: "row justify-content-center text-center"
+    staticClass: "row justify-content-start pt-4"
   }, [_c("div", {
     staticClass: "col-6"
-  }, [_c("select", {
+  }, [_c("label", {
+    attrs: {
+      "for": "room"
+    }
+  }, [_vm._v("Numero di stanze")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2600,14 +2604,22 @@ var render = function render() {
     attrs: {
       value: ""
     }
-  }, [_vm._v("Numero di stanze")]), _vm._v(" "), _vm._l(_vm.numberMaxRooms, function (room, index) {
+  }), _vm._v(" "), _vm._l(_vm.numberMaxRooms, function (room, index) {
     return _c("option", {
       key: index,
       domProps: {
         value: room
       }
     }, [_vm._v("\n                    " + _vm._s(room) + "\n                ")]);
-  })], 2), _vm._v(" "), _c("select", {
+  })], 2)])]), _vm._v(" "), _c("div", {
+    staticClass: "row justify-content-start"
+  }, [_c("div", {
+    staticClass: "col-6"
+  }, [_c("label", {
+    attrs: {
+      "for": "bed"
+    }
+  }, [_vm._v("Numero di letti")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2630,7 +2642,7 @@ var render = function render() {
     attrs: {
       value: ""
     }
-  }, [_vm._v("Numero di letti")]), _vm._v(" "), _vm._l(_vm.numberMaxRooms, function (bed, index) {
+  }), _vm._v(" "), _vm._l(_vm.numberMaxRooms, function (bed, index) {
     return _c("option", {
       key: index,
       domProps: {
@@ -2638,7 +2650,7 @@ var render = function render() {
       }
     }, [_vm._v("\n                    " + _vm._s(bed) + "\n                ")]);
   })], 2)])]), _vm._v(" "), _c("div", {
-    staticClass: "row pt-4"
+    staticClass: "row pt-2"
   }, [_c("div", {
     staticClass: "col-2"
   }, [_c("p", [_vm._v("Servizi:")]), _vm._v(" "), _vm._l(_vm.services, function (service, index) {
@@ -2721,7 +2733,7 @@ var render = function render() {
       attrs: {
         href: "/house/".concat(house.slug)
       }
-    }, [_vm._v("Visulizza")])])])]);
+    }, [_vm._v("Visualizza")])])])]);
   })], 2)]);
 };
 
@@ -2761,7 +2773,12 @@ var staticRenderFns = [function () {
     staticClass: "row h-100 align-items-center justify-content-center text-center"
   }, [_c("div", {
     staticClass: "col-12 col-sm-6"
-  }, [_c("div", [_c("h2", [_vm._v("Bool B&B")]), _vm._v(" "), _c("h1", {
+  }, [_c("div", [_c("img", {
+    attrs: {
+      src: "/images/boolbnb.png",
+      width: "250"
+    }
+  }), _vm._v(" "), _c("h1", {
     attrs: {
       "data-aos": "fade-down",
       "data-aos-offset": "200",
@@ -20272,7 +20289,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

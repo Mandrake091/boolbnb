@@ -1,35 +1,27 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Modifica Alloggio {{ $house->id }}</h1>
-<form enctype="multipart/form-data" action="{{ route('admin.houses.update', $house->id) }}" method="post" id="sectionForm">
-    @csrf
-    @method('PUT')
+<div class="container">
+    <h1>Modifica Alloggio {{ $house->id }}</h1>
+    <form enctype="multipart/form-data" action="{{ route('admin.houses.update', $house->id) }}" method="post" id="sectionForm">
+        @csrf
+        @method('PUT')
 
 
-    <div class="form-group">
-        <label for="title" class="form-label">*Titolo</label>
-        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title', $house->title) }}" placeholder="Inserisci titolo" required>
-        @error('title')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="contentEditor" class="form-label">Descrizione:</label>
-        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="contentEditor" cols="30" rows="10">{{ old('description', $house->description) }} </textarea>
-        @error('description')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="type" class="form-label">*Tipo di alloggio:</label>
-        <select name="type_id" id="type" class="form-control @error('type_id') is-invalid @enderror" required>
-            <option value="">Seleziona un tipo di alloggio</option>
-            @foreach ($types as $type)
-            <option value="{{ $type->id }}" {{ $type->id == old('type_id', $house->type_id) ? 'selected' : '' }}>{{ $type->name }}</option>
-            @endforeach
-            @error('type_id')
-            <div class="alert alert-danger">{{ $message }}</div>
+        <div class="form-group">
+            <label for="title" class="form-label">Titolo</label>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
+                value="{{ old('title', $house->title) }}" placeholder="Inserisci titolo" required>
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="contentEditor" class="form-label">Descrizione:</label>
+            <textarea  class="form-control @error('description') is-invalid @enderror" name="description" id="contentEditor"
+                cols="30" rows="10" >{{ old('description', $house->description) }} </textarea>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
         </select>
@@ -165,8 +157,9 @@
     <div>
         <p class="text-secondary d-flex justify-content-end px-3">*Tutti i campi contrassegnati con l'asterisco sono obbligatori</p>
     </div>
+</div>
 
-    <button type="submit" class="btn btn-success">Edit</button>
+    <button type="submit" class="btn btn-success" >Edit</button>
 
 </form>
 @push('head')
