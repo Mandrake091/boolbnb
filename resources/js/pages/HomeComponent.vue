@@ -1,7 +1,13 @@
 <template>
     <div class="container">
-        <div ref="search" id="search" class="search"  @change="getFilteredApartments"
-                    >Inserisci il tuo indirizzo completo</div>
+        <div
+            ref="search"
+            id="search"
+            class="search"
+            @change="getFilteredApartments"
+        >
+            Inserisci il tuo indirizzo completo
+        </div>
         <div class="row justify-content-start pt-4">
             <div class="col-6">
                 <label for="room">Numero di stanze</label>
@@ -82,12 +88,13 @@
                             Prezzo a notte {{ house.night_price }}
                         </li>
                         <li class="list-group-item">
-                            Tipo: {{ house.type.name }}
+                            Tipo: {{ house.type }}
                         </li>
                     </ul>
                     <div class="card-body">
                         <a :href="`/house/${house.slug}`" class="card-link"
-                            >Visualizza</a>
+                            >Visualizza</a
+                        >
                     </div>
                 </div>
 
@@ -118,9 +125,9 @@
 
 <script>
 // import "../find.js";
-import { services } from '@tomtom-international/web-sdk-services';
-import SearchBox from '@tomtom-international/web-sdk-plugin-searchbox';
-import  ref  from 'vue';
+import { services } from "@tomtom-international/web-sdk-services";
+import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
+import ref from "vue";
 let options = {
     minNumberOfCharacters: 0,
     searchOptions: {
@@ -135,10 +142,6 @@ let options = {
     },
     noResultsMessage: "No results found.",
 };
-
-
-
-
 
 export default {
     name: "HomeComponent",
@@ -155,7 +158,6 @@ export default {
             houses: [],
             filteredHousesRoom: [],
             // resultsApi: [],
-            
             filterGeocode:
                 "https://api.tomtom.com/search/2/geometryFilter.json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&geometryList={geometryList}&poiList={poiList}",
         };
@@ -167,22 +169,26 @@ export default {
         changeSelectBed() {
             this.textBed;
         },
+
         getFilteredApartments() {
+            this.filteredHousesRoom = [];
             axios
-                .get("localhost:8000/api/search?indirizzo="
-                + this.cityAddress
-                + "&numero_stanze=" + this.textRoom
-                + "&numero_letti=" + this.textBed
-            )
+                .get(
+                    "/api/search?" +
+                        // + this.cityAddress
+                        "&numero_stanze=" +
+                        this.textRoom +
+                        "&numero_letti=" +
+                        this.textBed
+                )
                 .then((response) => {
                     this.filteredHousesRoom = response.data;
-                    console.log(filteredHousesRoom);
+                    console.log / this.filteredHousesRoom;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-                
-        }
+        },
     },
 
     computed: {
@@ -203,13 +209,11 @@ export default {
         //                     }
         //                 })
         //             )
-
         //             // this.selectedServices.forEach((el2)=>{
         //             //     console.log(el.name)
         //             //     if(el === el2){
         //             //         return item
         //             //     }
-
         //             // }))
         //         );
         //     });
@@ -219,7 +223,7 @@ export default {
         axios
             .get("/api/houses/")
             .then((res) => {
-                this.houses = res.data;
+                this.filteredHousesRoom = res.data;
                 // this.services = res.data;
                 console.log(this.houses);
             })
@@ -238,44 +242,40 @@ export default {
                 console.log(err);
             });
 
-            // let searchBox = this.$el.querySelector("#search");
-            let searchBox = document.querySelector("#search");
-            console.log(searchBox);
-            var ttSearchBox = new SearchBox(services, options);
-            var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-            searchBox.append(searchBoxHTML);
-            let inputBox = document.querySelector(".tt-search-box-input");
-            inputBox.setAttribute("v-model", "indirizzo");
-            console.log(inputBox);
+        // let searchBox = this.$el.querySelector("#search");
+        let searchBox = document.querySelector("#search");
+        console.log(searchBox);
+        var ttSearchBox = new SearchBox(services, options);
+        var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+        searchBox.append(searchBoxHTML);
+        let inputBox = document.querySelector(".tt-search-box-input");
+        inputBox.setAttribute("v-model", "indirizzo");
+        console.log(inputBox);
 
-            // document.body.append(searchBoxHTML);
-            // nodeSearch.append(searchBoxHTML);
-            // searchBox.append(nodeSearch);
+        // document.body.append(searchBoxHTML);
+        // nodeSearch.append(searchBoxHTML);
+        // searchBox.append(nodeSearch);
 
-            // console.log(search)
-            console.log(searchBox);
-            ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
-                console.log(data);
-            });
-
-        
-            
-
+        // console.log(search)
+        console.log(searchBox);
+        ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
+            console.log(data);
+        });
     },
     created() {
-        axios
-            .get("/api/houses/")
-            .then((res) => {
-                res.data.forEach((el) => {
-                    this.cities.push(
-                        el.city.charAt(0).toUpperCase() + el.city.slice(1)
-                    );
-                });
-                console.log(this.cities);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        // axios
+        //     .get("/api/houses/")
+        //     .then((res) => {
+        //         res.data.forEach((el) => {
+        //             this.cities.push(
+        //                 el.city.charAt(0).toUpperCase() + el.city.slice(1)
+        //             );
+        //         });
+        //         console.log(this.cities);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
     },
 };
 </script>

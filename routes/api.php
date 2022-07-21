@@ -25,5 +25,6 @@ Route::get('/messages', 'Api\MessageController@show');
 Route::get('/search', 'Api\SearchController@search');
 
 
+
 //rotta salvataggio Messaggi
 Route::post('/messages', 'Api\MessageController@store');

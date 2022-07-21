@@ -2153,9 +2153,11 @@ var options = {
     getFilteredApartments: function getFilteredApartments() {
       var _this = this;
 
-      axios.get("localhost:8000/api/search?indirizzo=" + this.cityAddress + "&numero_stanze=" + this.textRoom + "&numero_letti=" + this.textBed).then(function (response) {
+      this.filteredHousesRoom = [];
+      axios.get("/api/search?" + // + this.cityAddress
+      "&numero_stanze=" + this.textRoom + "&numero_letti=" + this.textBed).then(function (response) {
         _this.filteredHousesRoom = response.data;
-        console.log(filteredHousesRoom);
+        console.log / _this.filteredHousesRoom;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2192,7 +2194,7 @@ var options = {
     var _this2 = this;
 
     axios.get("/api/houses/").then(function (res) {
-      _this2.houses = res.data; // this.services = res.data;
+      _this2.filteredHousesRoom = res.data; // this.services = res.data;
 
       console.log(_this2.houses);
     })["catch"](function (err) {
@@ -2223,17 +2225,19 @@ var options = {
       console.log(data);
     });
   },
-  created: function created() {
-    var _this3 = this;
-
-    axios.get("/api/houses/").then(function (res) {
-      res.data.forEach(function (el) {
-        _this3.cities.push(el.city.charAt(0).toUpperCase() + el.city.slice(1));
-      });
-      console.log(_this3.cities);
-    })["catch"](function (error) {
-      console.log(error);
-    });
+  created: function created() {// axios
+    //     .get("/api/houses/")
+    //     .then((res) => {
+    //         res.data.forEach((el) => {
+    //             this.cities.push(
+    //                 el.city.charAt(0).toUpperCase() + el.city.slice(1)
+    //             );
+    //         });
+    //         console.log(this.cities);
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     });
   }
 });
 
@@ -2636,7 +2640,7 @@ var render = function render() {
     on: {
       change: _vm.getFilteredApartments
     }
-  }, [_vm._v("Inserisci il tuo indirizzo completo")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n        Inserisci il tuo indirizzo completo\n    ")]), _vm._v(" "), _c("div", {
     staticClass: "row justify-content-start pt-4"
   }, [_c("div", {
     staticClass: "col-6"
@@ -2789,7 +2793,7 @@ var render = function render() {
       staticClass: "list-group-item"
     }, [_vm._v("\n                        Prezzo a notte " + _vm._s(house.night_price) + "\n                    ")]), _vm._v(" "), _c("li", {
       staticClass: "list-group-item"
-    }, [_vm._v("\n                        Tipo: " + _vm._s(house.type.name) + "\n                    ")])]), _vm._v(" "), _c("div", {
+    }, [_vm._v("\n                        Tipo: " + _vm._s(house.type) + "\n                    ")])]), _vm._v(" "), _c("div", {
       staticClass: "card-body"
     }, [_c("a", {
       staticClass: "card-link",
@@ -20360,7 +20364,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
