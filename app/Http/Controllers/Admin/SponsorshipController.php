@@ -43,16 +43,16 @@ class SponsorshipController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $newSponsorship = new Sponsorship();
-        $newSponsorship->house_id = '8';
-        $newSponsorship->sponsorship_id = '2';
-        // $newSponsorship->sponsorships()->sync($data['sponsorships']);
-        if (isset($data['sponsorships'])) {
-            $newSponsorship->sponsorships()->sync($data['sponsorships']);
-        }
+        // $data = $request->all();
+        // $newSponsorship = new Sponsorship();
+        // $newSponsorship->house_id = '8';
+        // $newSponsorship->sponsorship_id = '2';
+        // // $newSponsorship->sponsorships()->sync($data['sponsorships']);
+        // if (isset($data['sponsorships'])) {
+        //     $newSponsorship->sponsorships()->sync($data['sponsorships']);
+        // }
 
-        $newSponsorship->save();
+        // $newSponsorship->save();
         
     }
 

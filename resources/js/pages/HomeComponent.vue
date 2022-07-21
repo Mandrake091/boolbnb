@@ -1,11 +1,13 @@
 <template>
     <div class="container">
+        <div ref="search" id="search" class="search"  @change="getFilteredApartments"
+                    >Inserisci il tuo indirizzo completo</div>
         <div class="row justify-content-start pt-4">
             <div class="col-6">
                 <label for="room">Numero di stanze</label>
                 <select
                     class="form-select form-select-sm text-center m-auto"
-                    @change="changeSelectRoom"
+                    @change="getFilteredApartments"
                     v-model="textRoom"
                 >
                     <option value=""></option>
@@ -24,7 +26,7 @@
                 <label for="bed">Numero di letti</label>
                 <select
                     class="form-select form-select-sm text-center m-auto"
-                    @change="changeSelectBed"
+                    @change="getFilteredApartments"
                     v-model="textBed"
                 >
                     <option value=""></option>
@@ -116,6 +118,25 @@
 
 <script>
 // import "../find.js";
+import { services } from '@tomtom-international/web-sdk-services';
+import SearchBox from '@tomtom-international/web-sdk-plugin-searchbox';
+import  ref  from 'vue';
+let options = {
+    minNumberOfCharacters: 0,
+    searchOptions: {
+        countrySet: "IT",
+        key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
+        language: "it-IT",
+    },
+    autocompleteOptions: {
+        countrySet: "IT",
+        key: "HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh",
+        language: "it-IT",
+    },
+    noResultsMessage: "No results found.",
+};
+
+
 
 
 
@@ -125,19 +146,20 @@ export default {
     data() {
         return {
             selectedServices: [],
+            textRoom: "",
+            textBed: "",
+            indirizzo: "",
             cities: [],
             services: [],
             numberMaxRooms: [1, 2, 3, 4, 5, 6],
-            cityAddress: "",
             houses: [],
+            filteredHousesRoom: [],
             // resultsApi: [],
-            textRoom: "",
-            textBed: "",
+            
             filterGeocode:
                 "https://api.tomtom.com/search/2/geometryFilter.json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&geometryList={geometryList}&poiList={poiList}",
         };
     },
-    mounted: function () {},
     methods: {
         changeSelectRoom() {
             this.textRoom;
@@ -145,53 +167,53 @@ export default {
         changeSelectBed() {
             this.textBed;
         },
-
-        // findGeocoding() {
-        //     axios
-        //         .get(
-        //             "https://api.tomtom.com/search/2/autocomplete/" +
-        //                 this.cityAddress +
-        //                 ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&language=it-IT&limit=10&=&&countrySet=IT"
-        //         )
-        //         .then((res) => {
-        //             results = res.data;
-        //             console.log(results);
-        //         })
-        //         .catch((error) => {
-        //             console.log(error);
-        //         });
-        // },
+        getFilteredApartments() {
+            axios
+                .get("localhost:8000/api/search?indirizzo="
+                + this.cityAddress
+                + "&numero_stanze=" + this.textRoom
+                + "&numero_letti=" + this.textBed
+            )
+                .then((response) => {
+                    this.filteredHousesRoom = response.data;
+                    console.log(filteredHousesRoom);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+                
+        }
     },
 
     computed: {
-        filteredHousesRoom() {
-            if (this.textBed === "" && this.textRoom === "") {
-                return this.houses;
-            }
-            console.log(this.selectedServices);
-            return this.houses.filter((item) => {
-                return (
-                    item.n_room === this.textRoom ||
-                    item.n_bed === this.textBed ||
-                    item.services.forEach((el) =>
-                        this.selectedServices.forEach((el2) => {
-                            if (el.name === el2) {
-                                console.log(item);
-                                return item;
-                            }
-                        })
-                    )
+        // filteredHousesRoom() {
+        //     if (this.textBed === "" && this.textRoom === "") {
+        //         return this.houses;
+        //     }
+        //     console.log(this.selectedServices);
+        //     return this.houses.filter((item) => {
+        //         return (
+        //             item.n_room === this.textRoom ||
+        //             item.n_bed === this.textBed ||
+        //             item.services.forEach((el) =>
+        //                 this.selectedServices.forEach((el2) => {
+        //                     if (el.name === el2) {
+        //                         console.log(item);
+        //                         return item;
+        //                     }
+        //                 })
+        //             )
 
-                    // this.selectedServices.forEach((el2)=>{
-                    //     console.log(el.name)
-                    //     if(el === el2){
-                    //         return item
-                    //     }
+        //             // this.selectedServices.forEach((el2)=>{
+        //             //     console.log(el.name)
+        //             //     if(el === el2){
+        //             //         return item
+        //             //     }
 
-                    // }))
-                );
-            });
-        },
+        //             // }))
+        //         );
+        //     });
+        // },
     },
     mounted() {
         axios
@@ -215,10 +237,30 @@ export default {
             .catch((err) => {
                 console.log(err);
             });
-        // axios.get("/api/posts/").then((res) => {
-        //     this.posts = res.data.slice(0, 3);
-        //     console.log(this.posts);
-        // });
+
+            // let searchBox = this.$el.querySelector("#search");
+            let searchBox = document.querySelector("#search");
+            console.log(searchBox);
+            var ttSearchBox = new SearchBox(services, options);
+            var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+            searchBox.append(searchBoxHTML);
+            let inputBox = document.querySelector(".tt-search-box-input");
+            inputBox.setAttribute("v-model", "indirizzo");
+            console.log(inputBox);
+
+            // document.body.append(searchBoxHTML);
+            // nodeSearch.append(searchBoxHTML);
+            // searchBox.append(nodeSearch);
+
+            // console.log(search)
+            console.log(searchBox);
+            ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
+                console.log(data);
+            });
+
+        
+            
+
     },
     created() {
         axios

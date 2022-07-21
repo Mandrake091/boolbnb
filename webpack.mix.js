@@ -19,7 +19,7 @@ mix.js("resources/js/app.js", "public/js")
     .copyDirectory(
         "node_modules/@fortawesome/fontawesome-free/webfonts/*",
         "public/fonts/font-awesome"
-    );
+);
 
 //Front
 mix.js("resources/js/front.js", "public/js")
