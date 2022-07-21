@@ -24,6 +24,7 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/home', 'HomeController@index')->name('home');
         Route::resource('/houses', 'HouseController');
+        Route::resource('/sponsorships', 'SponsorshipController');
 });
 
 Route::get("{any?}", function(){
