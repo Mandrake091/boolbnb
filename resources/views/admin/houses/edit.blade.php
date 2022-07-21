@@ -35,7 +35,9 @@
         @endif
         {{-- manca else --}}
         <label for="image">*Aggiungi immagine</label>
-        <input type="file" id="image" name="image" onchange="boolpress.previewImage();">
+        <input type="file" id="image" name="image">
+        {{-- onchange="boolpress.previewImage();"> --}}
+        
         @error('image')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror

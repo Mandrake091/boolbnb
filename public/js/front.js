@@ -2157,7 +2157,7 @@ var options = {
       axios.get("/api/search?" + // + this.cityAddress
       "&numero_stanze=" + this.textRoom + "&numero_letti=" + this.textBed).then(function (response) {
         _this.filteredHousesRoom = response.data;
-        console.log / _this.filteredHousesRoom;
+        console.log(_this.filteredHousesRoom);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2793,7 +2793,7 @@ var render = function render() {
       staticClass: "list-group-item"
     }, [_vm._v("\n                        Prezzo a notte " + _vm._s(house.night_price) + "\n                    ")]), _vm._v(" "), _c("li", {
       staticClass: "list-group-item"
-    }, [_vm._v("\n                        Tipo: " + _vm._s(house.type) + "\n                    ")])]), _vm._v(" "), _c("div", {
+    }, [_vm._v("Tipo: " + _vm._s(house.type))])]), _vm._v(" "), _c("div", {
       staticClass: "card-body"
     }, [_c("a", {
       staticClass: "card-link",

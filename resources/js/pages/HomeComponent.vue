@@ -33,6 +33,7 @@
                 <select
                     class="form-select form-select-sm text-center m-auto"
                     @change="getFilteredApartments"
+                   
                     v-model="textBed"
                 >
                     <option value=""></option>
@@ -87,9 +88,7 @@
                         <li class="list-group-item">
                             Prezzo a notte {{ house.night_price }}
                         </li>
-                        <li class="list-group-item">
-                            Tipo: {{ house.type }}
-                        </li>
+                        <li class="list-group-item">Tipo: {{ house.type }}</li>
                     </ul>
                     <div class="card-body">
                         <a :href="`/house/${house.slug}`" class="card-link"
@@ -183,7 +182,7 @@ export default {
                 )
                 .then((response) => {
                     this.filteredHousesRoom = response.data;
-                    console.log / this.filteredHousesRoom;
+                    console.log(this.filteredHousesRoom);
                 })
                 .catch((error) => {
                     console.log(error);

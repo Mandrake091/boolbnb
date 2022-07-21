@@ -26,7 +26,7 @@ class SearchController extends Controller
 
 
     $data = $request->all();
-    $indirizzo_inserito_utente = isset($data['indirizzo']) ? $data['indirizzo'] : 'Roma';
+    $indirizzo_inserito_utente = isset($data['indirizzo']) ? $data['indirizzo']:'Milano';
 
     $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $indirizzo_inserito_utente . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
 
