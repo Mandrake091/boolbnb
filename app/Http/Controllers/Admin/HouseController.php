@@ -242,7 +242,7 @@ class HouseController extends Controller
     {
         $house->services()->sync([]);
         $house->delete();
-        return redirect()->route('admin.houses.index')->with("message", "House with id: {$house->id} successfully deleted !");
+        return redirect()->route('admin.houses.index')->with("message", "Cancellazione avuta con successo!");
     }
 
     private function getSlug($title)

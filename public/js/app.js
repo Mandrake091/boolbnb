@@ -49231,6 +49231,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49257,7 +49259,46 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    currentForm: null,
+    postid: null,
+    houseid: null
+  },
+  methods: _defineProperty({
+    openModal: function openModal(e, id) {
+      e.preventDefault(); //console.log(id);
+
+      this.postid = id; //console.log(e.currentTarget);
+
+      this.currentForm = e.currentTarget.parentNode; //console.log(this.currentForm);
+      //$('#deleteModal-body').html(`sei sicuro di voler eliminare l' elemento con con id: ${this.itemid}`);
+
+      $('#deleteModal').modal('show');
+    },
+    // previewImage(){
+    //     var oFReader = new FileReader();
+    //     oFReader.readAsDataURL(document.getElementById('image').files[0]);
+    //     oFReader.onload = function(oFREvent){
+    //         document.getElementById("uploadPreview").src = oFREvent.target.result;
+    //     }
+    // },
+    submitForm: function submitForm() {
+      this.currentForm.submit();
+    },
+    openModalShow: function openModalShow(e, id) {
+      e.preventDefault(); //console.log(id);
+
+      this.houseid = id; //console.log(e.currentTarget);
+
+      this.currentForm = e.currentTarget.parentNode; //console.log(this.currentForm);
+      //$('#deleteModal-body').html(`sei sicuro di voler eliminare l' elemento con con id: ${this.itemid}`);
+
+      $('#deleteModalShow').modal('show');
+    }
+  }, "submitForm", function submitForm() {
+    this.currentForm.submit();
+  })
 });
 
 /***/ }),
@@ -49336,9 +49377,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/sass/admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/sass/front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/esercizi-php/boolbnb/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/esercizi-php/boolbnb/resources/sass/admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/esercizi-php/boolbnb/resources/sass/front.scss */"./resources/sass/front.scss");
 
 
 /***/ })
