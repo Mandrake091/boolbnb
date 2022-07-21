@@ -1,6 +1,29 @@
 @extends('layouts.admin', ['title' => '#' . $house->id])
 
 @section('content')
+
+    <!-- modal delete -->
+    <div class="modal fade" tabindex="-1" id="deleteModalShow" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="/images/boolbnb.png" width="150">
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <p>Vuoi cancellare questo post?</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+            <button type="button" class="btn btn-danger" @@click="submitForm()">si cancella</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- modal delete -->
+
     <div class="container">
         <div class="row mb-3">
             <div class="col-8 h-75">
@@ -75,8 +98,8 @@
                     <form class=" mx-auto" action="{{ route('admin.houses.destroy', $house->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button class="w-50 btn btn-danger text-uppercase"
-                            @@click="openModal($event, {{ $house->id }})">Delete</button>
+                        <button type="submit" class="w-50 btn btn-danger text-uppercase delete"
+                            @@click="openModalShow($event, {{ $house->id }})">Elimina</button>
                     </form>
 
                 </div>

@@ -1,6 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
+
+ 
+
+
 <h1>Modifica Alloggio {{ $house->id }}</h1>
 <form enctype="multipart/form-data" action="{{ route('admin.houses.update', $house->id) }}" method="post" id="sectionForm">
     @csrf
@@ -166,7 +170,7 @@
         <p class="text-secondary d-flex justify-content-end px-3">*Tutti i campi contrassegnati con l'asterisco sono obbligatori</p>
     </div>
 
-    <button type="submit" class="btn btn-success">Edit</button>
+    <button type="submit" class="btn btn-success" >Edit</button>
 
 </form>
 @push('head')

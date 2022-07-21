@@ -11,7 +11,7 @@
             >
                 <div class="col-12 col-sm-6">
                     <div>
-                        <h2>Bool B&B</h2>
+                        <img src="/images/boolbnb.png" width="250">
                         <h1
                             data-aos="fade-down"
                             data-aos-offset="200"

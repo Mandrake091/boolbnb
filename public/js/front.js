@@ -2761,7 +2761,12 @@ var staticRenderFns = [function () {
     staticClass: "row h-100 align-items-center justify-content-center text-center"
   }, [_c("div", {
     staticClass: "col-12 col-sm-6"
-  }, [_c("div", [_c("h2", [_vm._v("Bool B&B")]), _vm._v(" "), _c("h1", {
+  }, [_c("div", [_c("img", {
+    attrs: {
+      src: "/images/boolbnb.png",
+      width: "250"
+    }
+  }), _vm._v(" "), _c("h1", {
     attrs: {
       "data-aos": "fade-down",
       "data-aos-offset": "200",
@@ -20272,7 +20277,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/js/front.js */"./resources/js/front.js");
+=======
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/esercizi-php/boolbnb/resources/js/front.js */"./resources/js/front.js");
+>>>>>>> origin/modale-delete
 
 
 /***/ })
