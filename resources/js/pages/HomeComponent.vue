@@ -1,18 +1,25 @@
 <template>
     <div class="container">
         <div class="jumbotron">
-            <img src="/images/sea.jpg" alt="">
+            <img src="/images/sea.jpg" alt="" />
         </div>
-        <div
+        <!-- <div
             ref="search"
             id="search"
             class="search"
             @change="getFilteredApartments"
         >
             Inserisci il tuo indirizzo completo
-        </div>
+        </div> -->
         <div class="searchhome">
-            <input type="search" id="s" name="s" placeholder="Cerca un appartamento">
+            <input
+                type="search"
+                v-model="indirizzo"
+                @change="getFilteredApartments"
+                id="s"
+                name="s"
+                placeholder="Cerca un appartamento"
+            />
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div class="row justify-content-start pt-4">
@@ -67,6 +74,7 @@
                         :id="service.name"
                         v-model="selectedServices"
                         :value="service.name"
+                        @change="getFilteredApartments"
                     />
                     <label for="service.name">{{ service.name }}</label>
                 </div>
@@ -94,7 +102,9 @@
                         <li class="list-group-item">
                             Prezzo a notte {{ house.night_price }}
                         </li>
-                        <li class="list-group-item">Tipo: {{ house.type }}</li>
+                        <li class="list-group-item">
+                            Tipo: {{ house.type.name }}
+                        </li>
                     </ul>
                     <div class="card-body">
                         <a :href="`/house/${house.slug}`" class="card-link"
@@ -148,8 +158,6 @@ let options = {
     noResultsMessage: "No results found.",
 };
 
-
-
 export default {
     name: "HomeComponent",
     components: {},
@@ -163,6 +171,7 @@ export default {
             services: [],
             numberMaxRooms: [1, 2, 3, 4, 5, 6],
             houses: [],
+            queryService:[],
             filteredHousesRoom: [],
             // resultsApi: [],
             filterGeocode:
@@ -183,20 +192,25 @@ export default {
         },
         getFilteredApartments() {
             this.filteredHousesRoom = [];
+          for(let i = 0; i < this.selectedServices.length; i++) {
+            this.queryService.push(`"&service="${this.selectedServices}`)
+               console.log(this.queryService);
+            }
             axios
                 .get(
                     "/api/search?" +
-                        // +this.indirizzo +
+                        "indirizzo=" +
+                        this.indirizzo +
+                        "&" +
                         "n_room=" +
                         this.textRoom +
                         "&n_bed=" +
-                        this.textBed
+                        this.textBed+ this.queryService
+                       
+                        
                 )
                 .then((response) => {
-                  
                     this.filteredHousesRoom = response.data;
-                  
-                   
                 })
                 .catch((error) => {
                     console.log(error);
@@ -253,26 +267,26 @@ export default {
                 console.log(err);
             });
 
-        // let searchBox = this.$el.querySelector("#search");
-        let searchBox = document.querySelector("#search");
+        //     // let searchBox = this.$el.querySelector("#search");
+        //     let searchBox = document.querySelector("#search");
 
-        var ttSearchBox = new SearchBox(services, options);
-        var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-      
-        searchBox.append(searchBoxHTML);
-        let search = document.getElementsByClassName("tt-search-box-input").value;
-        let inputBox = document.querySelector(".tt-search-box-input");
-        let inputValue = document.getElementsByTagName("input")[0];
-        console.log(search)
-        inputBox.setAttribute("v-model", "indirizzo");
+        //     var ttSearchBox = new SearchBox(services, options);
+        //     var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
 
-        // document.body.append(searchBoxHTML);
-        // nodeSearch.append(searchBoxHTML);
-        // searchBox.append(nodeSearch);
+        //     searchBox.append(searchBoxHTML);
+        //     let search = document.getElementsByClassName("tt-search-box-input").value;
+        //     let inputBox = document.querySelector(".tt-search-box-input");
+        //     let inputValue = document.getElementsByTagName("input")[0];
+        //     console.log(search)
+        //     inputBox.setAttribute("v-model", "indirizzo");
 
-        // console.log(search)
-        ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
-        });
+        //     // document.body.append(searchBoxHTML);
+        //     // nodeSearch.append(searchBoxHTML);
+        //     // searchBox.append(nodeSearch);
+
+        //     // console.log(search)
+        //     ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
+        //     });
     },
     created() {
         // axios
@@ -292,22 +306,22 @@ export default {
 };
 </script>
 <style lang="scss">
-.jumbotron{
-    background-color: #F8FAFC;
-    img{
+.jumbotron {
+    background-color: #f8fafc;
+    img {
         position: relative;
         width: 100%;
         height: 300px;
     }
 }
 
-.searchhome{
+.searchhome {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    input{
-        border: 0.5px solid #FF385C;
+    input {
+        border: 0.5px solid #ff385c;
         padding: 0.2em;
     }
 }
@@ -319,21 +333,21 @@ export default {
     -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
     -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
-    font-size:1.2em; 
+    font-size: 1.2em;
     width: 300px;
 }
 
-button{
+button {
     width: 50px;
     height: 40px;
-    color: #FF385C;
-    border: 2px solid #FF385C;
+    color: #ff385c;
+    border: 2px solid #ff385c;
     border-radius: 5em;
 
     line-height: 35px;
     text-align: center;
-    &:hover{
-        background-color: #FF385C;
+    &:hover {
+        background-color: #ff385c;
         color: white;
         transition: 0.8s;
     }

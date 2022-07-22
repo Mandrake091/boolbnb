@@ -2138,6 +2138,7 @@ var options = {
       services: [],
       numberMaxRooms: [1, 2, 3, 4, 5, 6],
       houses: [],
+      queryService: [],
       filteredHousesRoom: [],
       // resultsApi: [],
       filterGeocode: "https://api.tomtom.com/search/2/geometryFilter.json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&geometryList={geometryList}&poiList={poiList}"
@@ -2159,8 +2160,13 @@ var options = {
       var _this = this;
 
       this.filteredHousesRoom = [];
-      axios.get("/api/search?" + // +this.indirizzo +
-      "n_room=" + this.textRoom + "&n_bed=" + this.textBed).then(function (response) {
+
+      for (var i = 0; i < this.selectedServices.length; i++) {
+        this.queryService.push("\"&service=\"".concat(this.selectedServices));
+        console.log(this.queryService);
+      }
+
+      axios.get("/api/search?" + "indirizzo=" + this.indirizzo + "&" + "n_room=" + this.textRoom + "&n_bed=" + this.textBed + this.queryService).then(function (response) {
         _this.filteredHousesRoom = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -2207,22 +2213,22 @@ var options = {
       // this.services = res.data;
     })["catch"](function (err) {
       console.log(err);
-    }); // let searchBox = this.$el.querySelector("#search");
-
-    var searchBox = document.querySelector("#search");
-    var ttSearchBox = new _tomtom_international_web_sdk_plugin_searchbox__WEBPACK_IMPORTED_MODULE_1___default.a(_tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0__["services"], options);
-    var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-    searchBox.append(searchBoxHTML);
-    var search = document.getElementsByClassName("tt-search-box-input").value;
-    var inputBox = document.querySelector(".tt-search-box-input");
-    var inputValue = document.getElementsByTagName("input")[0];
-    console.log(search);
-    inputBox.setAttribute("v-model", "indirizzo"); // document.body.append(searchBoxHTML);
-    // nodeSearch.append(searchBoxHTML);
-    // searchBox.append(nodeSearch);
-    // console.log(search)
-
-    ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {});
+    }); //     // let searchBox = this.$el.querySelector("#search");
+    //     let searchBox = document.querySelector("#search");
+    //     var ttSearchBox = new SearchBox(services, options);
+    //     var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+    //     searchBox.append(searchBoxHTML);
+    //     let search = document.getElementsByClassName("tt-search-box-input").value;
+    //     let inputBox = document.querySelector(".tt-search-box-input");
+    //     let inputValue = document.getElementsByTagName("input")[0];
+    //     console.log(search)
+    //     inputBox.setAttribute("v-model", "indirizzo");
+    //     // document.body.append(searchBoxHTML);
+    //     // nodeSearch.append(searchBoxHTML);
+    //     // searchBox.append(nodeSearch);
+    //     // console.log(search)
+    //     ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
+    //     });
   },
   created: function created() {// axios
     //     .get("/api/houses/")
@@ -2631,15 +2637,31 @@ var render = function render() {
   return _c("div", {
     staticClass: "container"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
-    ref: "search",
-    staticClass: "search",
+    staticClass: "searchhome"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.indirizzo,
+      expression: "indirizzo"
+    }],
     attrs: {
-      id: "search"
+      type: "search",
+      id: "s",
+      name: "s",
+      placeholder: "Cerca un appartamento"
+    },
+    domProps: {
+      value: _vm.indirizzo
     },
     on: {
-      change: _vm.getFilteredApartments
+      change: _vm.getFilteredApartments,
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.indirizzo = $event.target.value;
+      }
     }
-  }, [_vm._v("\n        Inserisci il tuo indirizzo completo\n    ")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("div", {
     staticClass: "row justify-content-start pt-4"
   }, [_c("div", {
     staticClass: "col-6"
@@ -2739,7 +2761,7 @@ var render = function render() {
         checked: Array.isArray(_vm.selectedServices) ? _vm._i(_vm.selectedServices, service.name) > -1 : _vm.selectedServices
       },
       on: {
-        change: function change($event) {
+        change: [function ($event) {
           var $$a = _vm.selectedServices,
               $$el = $event.target,
               $$c = $$el.checked ? true : false;
@@ -2756,7 +2778,7 @@ var render = function render() {
           } else {
             _vm.selectedServices = $$c;
           }
-        }
+        }, _vm.getFilteredApartments]
       }
     }), _vm._v(" "), _c("label", {
       attrs: {
@@ -2792,7 +2814,7 @@ var render = function render() {
       staticClass: "list-group-item"
     }, [_vm._v("\n                        Prezzo a notte " + _vm._s(house.night_price) + "\n                    ")]), _vm._v(" "), _c("li", {
       staticClass: "list-group-item"
-    }, [_vm._v("Tipo: " + _vm._s(house.type))])]), _vm._v(" "), _c("div", {
+    }, [_vm._v("\n                        Tipo: " + _vm._s(house.type.name) + "\n                    ")])]), _vm._v(" "), _c("div", {
       staticClass: "card-body"
     }, [_c("a", {
       staticClass: "card-link",
@@ -2819,18 +2841,9 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "searchhome"
-  }, [_c("input", {
-    attrs: {
-      type: "search",
-      id: "s",
-      name: "s",
-      placeholder: "Cerca un appartamento"
-    }
-  }), _vm._v(" "), _c("button", [_c("i", {
+  return _c("button", [_c("i", {
     staticClass: "fa-solid fa-magnifying-glass"
-  })])]);
+  })]);
 }];
 render._withStripped = true;
 
@@ -3185,7 +3198,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".jumbotron {\n  background-color: #F8FAFC;\n}\n.jumbotron img {\n  position: relative;\n  width: 100%;\n  height: 300px;\n}\n.searchhome {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.searchhome input {\n  border: 0.5px solid #FF385C;\n  padding: 0.2em;\n}\n#s {\n  border-radius: 5px;\n  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;\n  font-size: 1.2em;\n  width: 300px;\n}\nbutton {\n  width: 50px;\n  height: 40px;\n  color: #FF385C;\n  border: 2px solid #FF385C;\n  border-radius: 5em;\n  line-height: 35px;\n  text-align: center;\n}\nbutton:hover {\n  background-color: #FF385C;\n  color: white;\n  transition: 0.8s;\n}", ""]);
+exports.push([module.i, ".jumbotron {\n  background-color: #f8fafc;\n}\n.jumbotron img {\n  position: relative;\n  width: 100%;\n  height: 300px;\n}\n.searchhome {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.searchhome input {\n  border: 0.5px solid #ff385c;\n  padding: 0.2em;\n}\n#s {\n  border-radius: 5px;\n  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;\n  font-size: 1.2em;\n  width: 300px;\n}\nbutton {\n  width: 50px;\n  height: 40px;\n  color: #ff385c;\n  border: 2px solid #ff385c;\n  border-radius: 5em;\n  line-height: 35px;\n  text-align: center;\n}\nbutton:hover {\n  background-color: #ff385c;\n  color: white;\n  transition: 0.8s;\n}", ""]);
 
 // exports
 
@@ -3261,7 +3274,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map {\r\n    \r\n    width: 100%;\r\n    height: 80%;\n}\r\n", ""]);
+exports.push([module.i, "\n#map {\n    \n    width: 100%;\n    height: 80%;\n}\n", ""]);
 
 // exports
 
@@ -20458,7 +20471,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\esercizi_php\boolbnb\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
