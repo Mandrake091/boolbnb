@@ -45,7 +45,7 @@ class SearchController extends Controller
     $prezzo_min = isset($data['night_price']) ? $data['night_price'] : 0;
     $prezzo_max = isset($data['night_price']) ? $data['night_price'] : 1000;
     $tipo = isset($data['type']) ? $data['type'] : ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-    $selectedServices = isset($data['services']) ? $data['services'] : [];
+    $selectedServices = isset($data['servicesToSearch']) ? $data['servicesToSearch'] : [];
     // $citta = isset($data['city']) ? $data['city'] : 'Surbo';
     // $state = isset($data['state']) ? $data['state'] : 'Italia';
     // $indirizzo = isset($data['address']) ? $data['address'] : 'Via Papa Luciani';
@@ -66,10 +66,8 @@ class SearchController extends Controller
       ->whereIn('type_id', $tipo)
       ->where(function ($query) use ($selectedServices) {
         foreach ($selectedServices as $service) {
-          dd($selectedServices);
-          -$query->whereHas('services', function ($query) use ($service) {
+          $query->whereHas('services', function ($query) use ($service) {
             $query->where('name', $service);
-            dump($query);
           });
         }
       })
