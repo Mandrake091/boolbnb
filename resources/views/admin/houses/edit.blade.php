@@ -159,9 +159,9 @@
     <div>
         <p class="text-secondary d-flex justify-content-end px-3">*Tutti i campi contrassegnati con l'asterisco sono obbligatori</p>
     </div>
+    <button type="submit" class="btn btn-success" >Edit</button>
 </div>
 
-    <button type="submit" class="btn btn-success" >Edit</button>
 
 </form>
 @push('head')

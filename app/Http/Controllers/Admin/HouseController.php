@@ -179,7 +179,7 @@ class HouseController extends Controller
                 $house->slug = $this->getSlug($house->title);
             }
         }
-        $house->type_id = $data['type_id'];
+        // $house->type_id = $data['type_id'];
         $house->description = $data['description'];
         $house->visibility = isset($data["visibility"]);
         $house->night_price = $data['night_price'];
