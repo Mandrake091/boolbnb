@@ -2159,11 +2159,9 @@ var options = {
       var _this = this;
 
       this.filteredHousesRoom = [];
-      axios.get("/api/search?" + +this.indirizzo + "&n_room=" + this.textRoom + "&n_bed=" + this.textBed).then(function (response) {
-        console.log(_this.indirizzo["data"]);
+      axios.get("/api/search?" + // +this.indirizzo +
+      "n_room=" + this.textRoom + "&n_bed=" + this.textBed).then(function (response) {
         _this.filteredHousesRoom = response.data;
-        console.log(_this.filteredHousesRoom);
-        console.log(_this.indirizzo);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2224,9 +2222,7 @@ var options = {
     // searchBox.append(nodeSearch);
     // console.log(search)
 
-    ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
-      console.log(data);
-    });
+    ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {});
   },
   created: function created() {// axios
     //     .get("/api/houses/")

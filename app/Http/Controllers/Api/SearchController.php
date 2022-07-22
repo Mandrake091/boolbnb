@@ -26,7 +26,7 @@ class SearchController extends Controller
 
 
     $data = $request->all();
-    $indirizzo_inserito_utente = isset($data['indirizzo']) ? $data['indirizzo']:'Roma';
+    $indirizzo_inserito_utente = isset($data['indirizzo']) ? $data['indirizzo']: 'Roma';
 
     $geoCode = Http::get("https://api.tomtom.com/search/2/geocode/" . $indirizzo_inserito_utente . ".json?key=HnmOys7lX8qXGsZCcgH6WXEgs8UWaSAh&storeResult=false&typeahead=false&limit=10&ofs=0")->json();
 
@@ -54,10 +54,10 @@ class SearchController extends Controller
     
       $apartments = House::with(['services'])
 
-        ->where('latitude', '<=', $max_lat)
-        ->where('latitude', '>=', $min_lat)
-        ->where('longitude', '<=', $max_lon)
-        ->where('longitude', '>=', $min_lon)
+        // ->where('latitude', '<=', $max_lat)
+        // ->where('latitude', '>=', $min_lat)
+        // ->where('longitude', '<=', $max_lon)
+        // ->where('longitude', '>=', $min_lon)
       ->where('n_room','>=', $numero_stanze)
       ->where('n_bed','>=', $numero_letti)
       ->where('n_bathroom','>=', $numero_bagni)

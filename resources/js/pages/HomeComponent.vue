@@ -174,23 +174,22 @@ export default {
         changeAddress() {
             this.indirizzo;
         },
-
         getFilteredApartments() {
             this.filteredHousesRoom = [];
             axios
                 .get(
                     "/api/search?" +
-                        +this.indirizzo +
-                        "&n_room=" +
+                        // +this.indirizzo +
+                        "n_room=" +
                         this.textRoom +
                         "&n_bed=" +
                         this.textBed
                 )
                 .then((response) => {
-                    console.log(this.indirizzo["data"]);
+                  
                     this.filteredHousesRoom = response.data;
-                    console.log(this.filteredHousesRoom);
-                    console.log(this.indirizzo);
+                  
+                   
                 })
                 .catch((error) => {
                     console.log(error);
@@ -240,7 +239,6 @@ export default {
             .get("/api/services/")
             .then((res) => {
                 this.services = res.data;
-
                 // this.services = res.data;
                 // this.services = res.data;
             })
@@ -253,6 +251,7 @@ export default {
 
         var ttSearchBox = new SearchBox(services, options);
         var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+      
         searchBox.append(searchBoxHTML);
         let search = document.getElementsByClassName("tt-search-box-input").value;
         let inputBox = document.querySelector(".tt-search-box-input");
@@ -265,9 +264,7 @@ export default {
         // searchBox.append(nodeSearch);
 
         // console.log(search)
-
         ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
-            console.log(data);
         });
     },
     created() {
