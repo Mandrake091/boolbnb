@@ -2145,9 +2145,11 @@ var options = {
   },
   methods: {
     changeSelectRoom: function changeSelectRoom() {
+      this.textRoom = 0;
       this.textRoom;
     },
     changeSelectBed: function changeSelectBed() {
+      this.textBed = 0;
       this.textBed;
     },
     getFilteredApartments: function getFilteredApartments() {
@@ -2155,7 +2157,7 @@ var options = {
 
       this.filteredHousesRoom = [];
       axios.get("/api/search?" + // + this.cityAddress
-      "&numero_stanze=" + this.textRoom + "&numero_letti=" + this.textBed).then(function (response) {
+      "n_room=" + this.textRoom + "&n_bed=" + this.textBed).then(function (response) {
         _this.filteredHousesRoom = response.data;
         console.log(_this.filteredHousesRoom);
       })["catch"](function (error) {
@@ -2195,8 +2197,6 @@ var options = {
 
     axios.get("/api/houses/").then(function (res) {
       _this2.filteredHousesRoom = res.data; // this.services = res.data;
-
-      console.log(_this2.houses);
     })["catch"](function (err) {
       console.log(err);
     });

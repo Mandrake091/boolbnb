@@ -33,7 +33,6 @@
                 <select
                     class="form-select form-select-sm text-center m-auto"
                     @change="getFilteredApartments"
-                   
                     v-model="textBed"
                 >
                     <option value=""></option>
@@ -163,9 +162,11 @@ export default {
     },
     methods: {
         changeSelectRoom() {
+            this.textRoom = 0;
             this.textRoom;
         },
         changeSelectBed() {
+            this.textBed = 0;
             this.textBed;
         },
 
@@ -175,9 +176,9 @@ export default {
                 .get(
                     "/api/search?" +
                         // + this.cityAddress
-                        "&numero_stanze=" +
+                        "n_room=" +
                         this.textRoom +
-                        "&numero_letti=" +
+                        "&n_bed=" +
                         this.textBed
                 )
                 .then((response) => {
@@ -224,7 +225,6 @@ export default {
             .then((res) => {
                 this.filteredHousesRoom = res.data;
                 // this.services = res.data;
-                console.log(this.houses);
             })
             .catch((err) => {
                 console.log(err);
