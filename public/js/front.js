@@ -2131,6 +2131,7 @@ var options = {
   data: function data() {
     return {
       selectedServices: [],
+      variabileServizi: [],
       textRoom: "",
       textBed: "",
       indirizzo: "",
@@ -2160,14 +2161,21 @@ var options = {
       var _this = this;
 
       this.filteredHousesRoom = [];
+      this.variabileServizi = [];
 
-      for (var i = 0; i < this.selectedServices.length; i++) {
-        this.queryService.push("\"&service=\"".concat(this.selectedServices));
-        console.log(this.queryService);
+      if (this.selectedServices.length > 0) {
+        for (var i = 0; i < this.selectedServices.length; i++) {
+          this.variabileServizi.push("&servicesToSearch[]=".concat(this.selectedServices[i]));
+        }
       }
 
-      axios.get("/api/search?" + "indirizzo=" + this.indirizzo + "&" + "n_room=" + this.textRoom + "&n_bed=" + this.textBed + this.queryService).then(function (response) {
+      axios.get("/api/search?" + "indirizzo=" + this.indirizzo + "&" + "n_room=" + this.textRoom + "&n_bed=" + this.textBed + this.variabileServizi.join(' ') //     })
+      // } 
+      // "&servicesToSearch[]=" +
+      //     this.selectedServices
+      ).then(function (response) {
         _this.filteredHousesRoom = response.data;
+        console.log(_this.variabileServizi);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -20471,7 +20479,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

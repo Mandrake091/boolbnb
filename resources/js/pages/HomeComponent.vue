@@ -164,6 +164,7 @@ export default {
     data() {
         return {
             selectedServices: [],
+            variabileServizi : [],
             textRoom: "",
             textBed: "",
             indirizzo: "",
@@ -192,10 +193,14 @@ export default {
         },
         getFilteredApartments() {
             this.filteredHousesRoom = [];
-          for(let i = 0; i < this.selectedServices.length; i++) {
-            this.queryService.push(`"&service="${this.selectedServices}`)
-               console.log(this.queryService);
+            this.variabileServizi = [];
+            if (this.selectedServices.length > 0) {
+                          for(let i = 0; i < this.selectedServices.length; i++) {
+            this.variabileServizi.push(`&servicesToSearch[]=${this.selectedServices[i]}`)
             }
+            }
+
+
             axios
                 .get(
                     "/api/search?" +
@@ -205,12 +210,20 @@ export default {
                         "n_room=" +
                         this.textRoom +
                         "&n_bed=" +
-                        this.textBed+ this.queryService
+                    this.textBed +
+                    this.variabileServizi.join(' ')                    
+                    
+                    //     })
+                    // } 
+                    // "&servicesToSearch[]=" +
+                    //     this.selectedServices
+                        
                        
                         
                 )
                 .then((response) => {
                     this.filteredHousesRoom = response.data;
+                    console.log(this.variabileServizi);
                 })
                 .catch((error) => {
                     console.log(error);
