@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <div class="jumbotron">
+            <img src="/images/sea.jpg" alt="">
+        </div>
         <div
             ref="search"
             id="search"
@@ -7,6 +10,10 @@
             @change="getFilteredApartments"
         >
             Inserisci il tuo indirizzo completo
+        </div>
+        <div class="searchhome">
+            <input type="search" id="s" name="s" placeholder="Cerca un appartamento">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div class="row justify-content-start pt-4">
             <div class="col-6">
@@ -284,4 +291,51 @@ export default {
     },
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss">
+.jumbotron{
+    background-color: #F8FAFC;
+    img{
+        position: relative;
+        width: 100%;
+        height: 300px;
+    }
+}
+
+.searchhome{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    input{
+        border: 0.5px solid #FF385C;
+        padding: 0.2em;
+    }
+}
+
+#s {
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    border-radius: 5px;
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
+    font-size:1.2em; 
+    width: 300px;
+}
+
+button{
+    width: 50px;
+    height: 40px;
+    color: #FF385C;
+    border: 2px solid #FF385C;
+    border-radius: 5em;
+
+    line-height: 35px;
+    text-align: center;
+    &:hover{
+        background-color: #FF385C;
+        color: white;
+        transition: 0.8s;
+    }
+}
+</style>
