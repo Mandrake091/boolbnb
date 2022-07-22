@@ -141,6 +141,8 @@ let options = {
     noResultsMessage: "No results found.",
 };
 
+
+
 export default {
     name: "HomeComponent",
     components: {},
@@ -169,21 +171,26 @@ export default {
             this.textBed = 0;
             this.textBed;
         },
+        changeAddress() {
+            this.indirizzo;
+        },
 
         getFilteredApartments() {
             this.filteredHousesRoom = [];
             axios
                 .get(
                     "/api/search?" +
-                        // + this.cityAddress
-                        "n_room=" +
+                        +this.indirizzo +
+                        "&n_room=" +
                         this.textRoom +
                         "&n_bed=" +
                         this.textBed
                 )
                 .then((response) => {
+                    console.log(this.indirizzo["data"]);
                     this.filteredHousesRoom = response.data;
                     console.log(this.filteredHousesRoom);
+                    console.log(this.indirizzo);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -233,7 +240,7 @@ export default {
             .get("/api/services/")
             .then((res) => {
                 this.services = res.data;
-                console.log(this.services);
+
                 // this.services = res.data;
                 // this.services = res.data;
             })
@@ -243,20 +250,22 @@ export default {
 
         // let searchBox = this.$el.querySelector("#search");
         let searchBox = document.querySelector("#search");
-        console.log(searchBox);
+
         var ttSearchBox = new SearchBox(services, options);
         var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
         searchBox.append(searchBoxHTML);
+        let search = document.getElementsByClassName("tt-search-box-input").value;
         let inputBox = document.querySelector(".tt-search-box-input");
+        let inputValue = document.getElementsByTagName("input")[0];
+        console.log(search)
         inputBox.setAttribute("v-model", "indirizzo");
-        console.log(inputBox);
 
         // document.body.append(searchBoxHTML);
         // nodeSearch.append(searchBoxHTML);
         // searchBox.append(nodeSearch);
 
         // console.log(search)
-        console.log(searchBox);
+
         ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
             console.log(data);
         });

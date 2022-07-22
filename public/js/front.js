@@ -2152,14 +2152,18 @@ var options = {
       this.textBed = 0;
       this.textBed;
     },
+    changeAddress: function changeAddress() {
+      this.indirizzo;
+    },
     getFilteredApartments: function getFilteredApartments() {
       var _this = this;
 
       this.filteredHousesRoom = [];
-      axios.get("/api/search?" + // + this.cityAddress
-      "n_room=" + this.textRoom + "&n_bed=" + this.textBed).then(function (response) {
+      axios.get("/api/search?" + +this.indirizzo + "&n_room=" + this.textRoom + "&n_bed=" + this.textBed).then(function (response) {
+        console.log(_this.indirizzo["data"]);
         _this.filteredHousesRoom = response.data;
         console.log(_this.filteredHousesRoom);
+        console.log(_this.indirizzo);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2201,26 +2205,25 @@ var options = {
       console.log(err);
     });
     axios.get("/api/services/").then(function (res) {
-      _this2.services = res.data;
-      console.log(_this2.services); // this.services = res.data;
+      _this2.services = res.data; // this.services = res.data;
       // this.services = res.data;
     })["catch"](function (err) {
       console.log(err);
     }); // let searchBox = this.$el.querySelector("#search");
 
     var searchBox = document.querySelector("#search");
-    console.log(searchBox);
     var ttSearchBox = new _tomtom_international_web_sdk_plugin_searchbox__WEBPACK_IMPORTED_MODULE_1___default.a(_tomtom_international_web_sdk_services__WEBPACK_IMPORTED_MODULE_0__["services"], options);
     var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
     searchBox.append(searchBoxHTML);
+    var search = document.getElementsByClassName("tt-search-box-input").value;
     var inputBox = document.querySelector(".tt-search-box-input");
-    inputBox.setAttribute("v-model", "indirizzo");
-    console.log(inputBox); // document.body.append(searchBoxHTML);
+    var inputValue = document.getElementsByTagName("input")[0];
+    console.log(search);
+    inputBox.setAttribute("v-model", "indirizzo"); // document.body.append(searchBoxHTML);
     // nodeSearch.append(searchBoxHTML);
     // searchBox.append(nodeSearch);
     // console.log(search)
 
-    console.log(searchBox);
     ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
       console.log(data);
     });
@@ -3215,7 +3218,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map {\r\n    \r\n    width: 100%;\r\n    height: 80%;\n}\r\n", ""]);
+exports.push([module.i, "\n#map {\n    \n    width: 100%;\n    height: 80%;\n}\n", ""]);
 
 // exports
 
@@ -20364,7 +20367,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\esercizi_php\boolbnb\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
