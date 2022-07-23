@@ -23,6 +23,9 @@ Route::get('/houses/{slug}', 'Api\HousesFrontController@show');
 Route::get('/services', 'Api\ServicesController@index');
 Route::get('/messages', 'Api\MessageController@show');
 Route::get('/search', 'Api\SearchController@search');
+Route::get('/orders/generate', 'Api\Orders\OrderController@generate');
+Route::post('/orders/makePayment', 'Api\Orders\OrderController@makePayment');
+
 
 
 
