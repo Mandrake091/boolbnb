@@ -1,16 +1,31 @@
 <template>
     <div class="container home">
-        <div class="row p-2 justify-content-center align-items-center text-center">
-           <div class="col-12 jumbotron">
-            <input
-                type="search"
-                v-model="indirizzo"
-                @change="getFilteredApartments"
-                id="s"
-                name="s"
-                placeholder="Cerca un appartamento" />
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-           </div>
+        <div
+            class="row p-2 justify-content-center align-items-center text-center"
+        >
+            <div class="col-12 jumbotron">
+                <input
+                    data-aos="zoom-in-up"
+                    data-aos-offset="200"
+                    data-aos-delay="150"
+                    data-aos-duration="1500"
+                    type="search"
+                    v-model="indirizzo"
+                    @change="getFilteredApartments"
+                    id="s"
+                    name="s"
+                    placeholder="Cerca un appartamento"
+                />
+                <button
+                    data-aos="fade-left"
+                    data-aos-offset="200"
+                    data-aos-delay="150"
+                    data-aos-duration="2000"
+                    data-aos-easing="ease-in-out"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
         </div>
         <!-- <div
             ref="search"
@@ -21,7 +36,13 @@
             Inserisci il tuo indirizzo completo
         </div> -->
         <div class="row pt-2">
-            <div class="col-2">
+            <div
+                class="col-2"
+                data-aos="fade-right"
+                data-aos-offset="50"
+                data-aos-delay="200"
+                data-aos-duration="1000"
+            >
                 <h5>Altri filtri</h5>
                 <label for="services" class="my-label">Servizi</label>
                 <div
@@ -38,8 +59,7 @@
                     />
                     <label for="service.name">{{ service.name }}</label>
                 </div>
-            
-        
+
                 <label for="room" class="pt-2 my-label">Numero stanze</label>
                 <select
                     class="form-select form-select-sm text-center m-auto"
@@ -55,7 +75,7 @@
                         {{ room }}
                     </option>
                 </select>
-                <br>
+                <br />
                 <label for="bed" class="pt-2 my-label">Numero di letti</label>
                 <select
                     class="form-select form-select-sm text-center m-auto"
@@ -72,45 +92,58 @@
                     </option>
                 </select>
             </div>
-                <div class="container-card">
-                    <div class="box">
-                    <div class="card" v-for="(house,index) in filteredHousesRoom"
-                    :key="index">
+            <div class="container-card">
+                <div class="box">
+                    <div
+                        data-aos="fade-up"
+                        data-aos-offset="50"
+                        data-aos-delay="150"
+                        data-aos-duration="1500"
+                        class="card"
+                        v-for="(house, index) in filteredHousesRoom"
+                        :key="index"
+                    >
                         <div class="card-header">
-                        <img :src="`/storage/${house.image}`">
+                            <img :src="`/storage/${house.image}`" />
                         </div>
                         <div class="card-body">
-                        <span class="tag tag-header">{{ house.type.name }}</span>
-                        <h4>
-                            {{ house.title }}
-                        </h4>
-                        <p class="card-text">
-                           {{ house.description }}
-                        </p>
-                        <div class="user">
-                            <!-- <img src="/images/host3.png" alt=""> -->
-                            <div class="user-info">
-                            <p class="price-night">
-                            {{ house.night_price }}€ a notte 
-                            </p>
-                            <h5>Host: {{ house.user.name }}</h5>
-                            <small><a :href="`/house/${house.slug}`" class="card-link"
-                            >Visualizza</a></small>
+                            <span class="tag tag-header">{{
+                                house.type.name
+                            }}</span>
+                            <h4>
+                                {{ house.title }}
+                            </h4>
+                            <p class="card-text" v-html="house.description"></p>
+                            <div class="user">
+                                <!-- <img src="/images/host3.png" alt=""> -->
+                                <div class="user-info">
+                                    <p class="price-night">
+                                        {{ house.night_price }}€ a notte
+                                    </p>
+                                    <!-- errore da risolvere per prendere il nome dell'host. adesso funziona -->
+                                    <!-- <h5>Host: {{ house.user.email }}</h5> -->
+                                    <small
+                                        ><a
+                                            :href="`/house/${house.slug}`"
+                                            class="card-link"
+                                            >Visualizza</a
+                                        ></small
+                                    >
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
 
-                <!-- <input
+            <!-- <input
                     type="text"
                     placeholder="Inserisci Città o Indirizzo"
                     v-model="cityAddress"
                     @change="findGeocoding"
                 /> -->
-                <!-- <button @click="print" class="btn btn-primary">Cerca</button> -->
-                <!-- <select
+            <!-- <button @click="print" class="btn btn-primary">Cerca</button> -->
+            <!-- <select
                     class="form-select form-select-sm text-center m-auto"
                     @change="changeSelect"
                 >
@@ -123,7 +156,7 @@
                         {{ city }}
                     </option>
                 </select> -->
-            </div>
+        </div>
     </div>
 </template>
 
@@ -153,7 +186,7 @@ export default {
     data() {
         return {
             selectedServices: [],
-            variabileServizi : [],
+            variabileServizi: [],
             textRoom: "",
             textBed: "",
             indirizzo: "",
@@ -161,7 +194,7 @@ export default {
             services: [],
             numberMaxRooms: [1, 2, 3, 4, 5, 6],
             houses: [],
-            queryService:[],
+            queryService: [],
             filteredHousesRoom: [],
             // resultsApi: [],
             filterGeocode:
@@ -184,11 +217,12 @@ export default {
             this.filteredHousesRoom = [];
             this.variabileServizi = [];
             if (this.selectedServices.length > 0) {
-                          for(let i = 0; i < this.selectedServices.length; i++) {
-            this.variabileServizi.push(`&servicesToSearch[]=${this.selectedServices[i]}`)
+                for (let i = 0; i < this.selectedServices.length; i++) {
+                    this.variabileServizi.push(
+                        `&servicesToSearch[]=${this.selectedServices[i]}`
+                    );
+                }
             }
-            }
-
 
             axios
                 .get(
@@ -199,16 +233,13 @@ export default {
                         "n_room=" +
                         this.textRoom +
                         "&n_bed=" +
-                    this.textBed +
-                    this.variabileServizi.join(' ')                    
-                    
+                        this.textBed +
+                        this.variabileServizi.join(" ")
+
                     //     })
-                    // } 
+                    // }
                     // "&servicesToSearch[]=" +
                     //     this.selectedServices
-                        
-                       
-                        
                 )
                 .then((response) => {
                     this.filteredHousesRoom = response.data;
@@ -307,6 +338,4 @@ export default {
     },
 };
 </script>
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

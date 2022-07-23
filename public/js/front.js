@@ -2030,24 +2030,24 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'HeaderComponent',
+  name: "HeaderComponent",
   data: function data() {
     return {
       menuItem: [{
-        label: 'Home',
-        routeName: 'landing-page'
+        label: "Home",
+        routeName: "landing-page"
       }, {
-        label: 'Case',
-        routeName: 'home'
+        label: "Case",
+        routeName: "home"
       }, {
-        label: 'Cerca',
-        routeName: 'search'
+        label: "Cerca",
+        routeName: "search"
       }, {
-        label: 'Dettaglio',
-        routeName: 'detail'
+        label: "Dettaglio",
+        routeName: "detail"
       }, {
-        label: 'Accedi',
-        routeName: ''
+        label: "Accedi",
+        routeName: ""
       }],
       activeIndex: 0
     };
@@ -2169,8 +2169,8 @@ var options = {
         }
       }
 
-      axios.get("/api/search?" + "indirizzo=" + this.indirizzo + "&" + "n_room=" + this.textRoom + "&n_bed=" + this.textBed + this.variabileServizi.join(' ') //     })
-      // } 
+      axios.get("/api/search?" + "indirizzo=" + this.indirizzo + "&" + "n_room=" + this.textRoom + "&n_bed=" + this.textBed + this.variabileServizi.join(" ") //     })
+      // }
       // "&servicesToSearch[]=" +
       //     this.selectedServices
       ).then(function (response) {
@@ -2552,7 +2552,14 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("header", [_c("nav", [_vm._m(0), _vm._v(" "), _c("ul", _vm._l(_vm.menuItem, function (item, index) {
+  return _c("header", [_c("nav", {
+    attrs: {
+      "data-aos": "fade-down",
+      "data-aos-offset": "200",
+      "data-aos-delay": "150",
+      "data-aos-duration": "1000"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c("ul", _vm._l(_vm.menuItem, function (item, index) {
     return _c("li", {
       key: index,
       "class": {
@@ -2579,7 +2586,14 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "logo"
+    staticClass: "logo",
+    attrs: {
+      "data-aos": "fade-right",
+      "data-aos-offset": "200",
+      "data-aos-delay": "150",
+      "data-aos-duration": "1500",
+      "data-aos-easing": "ease-in-out"
+    }
   }, [_c("img", {
     attrs: {
       src: "/images/boolbnb.png",
@@ -2595,8 +2609,15 @@ var staticRenderFns = [function () {
       href: "/admin/houses"
     }
   }, [_c("div", {
-    staticClass: "my-btn"
-  }, [_vm._v("Diventa un host")])]);
+    staticClass: "my-btn",
+    attrs: {
+      "data-aos": "fade-left",
+      "data-aos-offset": "200",
+      "data-aos-delay": "150",
+      "data-aos-duration": "1500",
+      "data-aos-easing": "ease-in-out"
+    }
+  }, [_vm._v("\n                Diventa un host\n            ")])]);
 }];
 render._withStripped = true;
 
@@ -2656,6 +2677,10 @@ var render = function render() {
       expression: "indirizzo"
     }],
     attrs: {
+      "data-aos": "zoom-in-up",
+      "data-aos-offset": "200",
+      "data-aos-delay": "150",
+      "data-aos-duration": "1500",
       type: "search",
       id: "s",
       name: "s",
@@ -2674,7 +2699,13 @@ var render = function render() {
   }), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c("div", {
     staticClass: "row pt-2"
   }, [_c("div", {
-    staticClass: "col-2"
+    staticClass: "col-2",
+    attrs: {
+      "data-aos": "fade-right",
+      "data-aos-offset": "50",
+      "data-aos-delay": "200",
+      "data-aos-duration": "1000"
+    }
   }, [_c("h5", [_vm._v("Altri filtri")]), _vm._v(" "), _c("label", {
     staticClass: "my-label",
     attrs: {
@@ -2801,7 +2832,13 @@ var render = function render() {
   }, _vm._l(_vm.filteredHousesRoom, function (house, index) {
     return _c("div", {
       key: index,
-      staticClass: "card"
+      staticClass: "card",
+      attrs: {
+        "data-aos": "fade-up",
+        "data-aos-offset": "50",
+        "data-aos-delay": "150",
+        "data-aos-duration": "1500"
+      }
     }, [_c("div", {
       staticClass: "card-header"
     }, [_c("img", {
@@ -2812,15 +2849,18 @@ var render = function render() {
       staticClass: "card-body"
     }, [_c("span", {
       staticClass: "tag tag-header"
-    }, [_vm._v(_vm._s(house.type.name))]), _vm._v(" "), _c("h4", [_vm._v("\n                        " + _vm._s(house.title) + "\n                    ")]), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }, [_vm._v("\n                       " + _vm._s(house.description) + "\n                    ")]), _vm._v(" "), _c("div", {
+    }, [_vm._v(_vm._s(house.type.name))]), _vm._v(" "), _c("h4", [_vm._v("\n                            " + _vm._s(house.title) + "\n                        ")]), _vm._v(" "), _c("p", {
+      staticClass: "card-text",
+      domProps: {
+        innerHTML: _vm._s(house.description)
+      }
+    }), _vm._v(" "), _c("div", {
       staticClass: "user"
     }, [_c("div", {
       staticClass: "user-info"
     }, [_c("p", {
       staticClass: "price-night"
-    }, [_vm._v("\n                        " + _vm._s(house.night_price) + "€ a notte \n                        ")]), _vm._v(" "), _c("h5", [_vm._v("Host: " + _vm._s(house.user.name))]), _vm._v(" "), _c("small", [_c("a", {
+    }, [_vm._v("\n                                    " + _vm._s(house.night_price) + "€ a notte\n                                ")]), _vm._v(" "), _c("small", [_c("a", {
       staticClass: "card-link",
       attrs: {
         href: "/house/".concat(house.slug)
@@ -2833,7 +2873,15 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("button", [_c("i", {
+  return _c("button", {
+    attrs: {
+      "data-aos": "fade-left",
+      "data-aos-offset": "200",
+      "data-aos-delay": "150",
+      "data-aos-duration": "2000",
+      "data-aos-easing": "ease-in-out"
+    }
+  }, [_c("i", {
     staticClass: "fa-solid fa-magnifying-glass"
   })]);
 }];
@@ -3209,7 +3257,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map {\r\n    \r\n    width: 100%;\r\n    height: 80%;\n}\r\n", ""]);
+exports.push([module.i, "\n#map {\n    \n    width: 100%;\n    height: 80%;\n}\n", ""]);
 
 // exports
 
@@ -20262,7 +20310,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\esercizi_php\boolbnb\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
