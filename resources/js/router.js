@@ -4,9 +4,8 @@ Vue.use(VueRouter);
 
 import LandingPageComponent from "./pages/LandingPageComponent.vue";
 import HomeComponent from "./pages/HomeComponent.vue";
-import AdvancedSearchComponent from "./pages/AdvancedSearchComponent.vue";
-import ApartmentComponent from "./pages/ApartmentComponent.vue";
-import SuccessSendComponent from "./pages/SuccessSendComponent.vue";
+import ChiSiamoComponent from "./pages/ChiSiamoComponent.vue";
+import ContactComponent from "./pages/ContactComponent.vue";
 import NotFoundComponent from "./pages/NotFoundComponent.vue";
 import SingleHouseComponent from "./pages/SingleHouseComponent.vue";
 
@@ -27,21 +26,20 @@ const router = new VueRouter({
             component: HomeComponent,
         },
         {
-            path: "/search",
-            name: "search",
-            component: AdvancedSearchComponent,
+            path: "/about",
+            name: "about",
+            component: ChiSiamoComponent,
         },
         {
-            path: "/detail",
-            name: "detail",
-            component: ApartmentComponent,
+            path: "/contact",
+            name: "contact",
+            component: ContactComponent,
         },
-        {
-            path: "/message",
-            name: "message",
-            component: SuccessSendComponent,
-        },
-
+        // {
+        //     path: "/message",
+        //     name: "message",
+        //     component: SuccessSendComponent,
+        // },
         {
             path: "/house/:slug",
             name: "single-house",

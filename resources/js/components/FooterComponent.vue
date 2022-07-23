@@ -8,7 +8,7 @@
                 <div class="col-8 col-md-4 justify-content-start pt-3">
                     <ul>
                         <li v-for="(link,index) in footer" :key="index" @click="activeIndex = index"> 
-                            <a :href="link.routeName">{{link.label}}</a>
+                            <a href="#">{{link.label}}</a>
                         </li>
                     </ul>
                 </div>
@@ -48,25 +48,17 @@ export default {
         ],
         footer: [
         {
-            label: 'Home',
-            routeName: 'landing-page'
+            label: 'Privacy',
         },
         {
-            label: 'Case',
-            routeName: 'home'
+            label: 'Termini',
         },
         {
-            label: 'Cerca',
-            routeName: 'search'
+            label: 'Assistenza',
         },
         {
-            label: 'Dettaglio',
-            routeName: 'detail',
+            label: 'Prova a ospitare',
         },
-        {
-            label: 'Accedi',
-            routeName: ''
-        }
         ],
         }
     }
