@@ -1,7 +1,16 @@
 <template>
-    <div class="container">
-        <div class="jumbotron">
-            <img src="/images/sea.jpg" alt="" />
+    <div class="container home">
+        <div class="row p-2 justify-content-center align-items-center text-center">
+           <div class="col-12 jumbotron">
+            <input
+                type="search"
+                v-model="indirizzo"
+                @change="getFilteredApartments"
+                id="s"
+                name="s"
+                placeholder="Cerca un appartamento" />
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+           </div>
         </div>
         <!-- <div
             ref="search"
@@ -11,20 +20,27 @@
         >
             Inserisci il tuo indirizzo completo
         </div> -->
-        <div class="searchhome">
-            <input
-                type="search"
-                v-model="indirizzo"
-                @change="getFilteredApartments"
-                id="s"
-                name="s"
-                placeholder="Cerca un appartamento"
-            />
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-        <div class="row justify-content-start pt-4">
-            <div class="col-6">
-                <label for="room">Numero di stanze</label>
+        <div class="row pt-2">
+            <div class="col-2">
+                <h5>Altri filtri</h5>
+                <label for="services" class="my-label">Servizi</label>
+                <div
+                    class="checkbox"
+                    v-for="(service, index) in services"
+                    :key="index"
+                >
+                    <input
+                        type="checkbox"
+                        :id="service.name"
+                        v-model="selectedServices"
+                        :value="service.name"
+                        @change="getFilteredApartments"
+                    />
+                    <label for="service.name">{{ service.name }}</label>
+                </div>
+            
+        
+                <label for="room" class="pt-2 my-label">Numero stanze</label>
                 <select
                     class="form-select form-select-sm text-center m-auto"
                     @change="getFilteredApartments"
@@ -39,11 +55,8 @@
                         {{ room }}
                     </option>
                 </select>
-            </div>
-        </div>
-        <div class="row justify-content-start">
-            <div class="col-6">
-                <label for="bed">Numero di letti</label>
+                <br>
+                <label for="bed" class="pt-2 my-label">Numero di letti</label>
                 <select
                     class="form-select form-select-sm text-center m-auto"
                     @change="getFilteredApartments"
@@ -59,58 +72,35 @@
                     </option>
                 </select>
             </div>
-        </div>
-
-        <div class="row pt-2">
-            <div class="col-2">
-                <p>Servizi:</p>
-                <div
-                    class="checkbox"
-                    v-for="(service, index) in services"
-                    :key="index"
-                >
-                    <input
-                        type="checkbox"
-                        :id="service.name"
-                        v-model="selectedServices"
-                        :value="service.name"
-                        @change="getFilteredApartments"
-                    />
-                    <label for="service.name">{{ service.name }}</label>
-                </div>
-            </div>
-
-            <div
-                class="col-5"
-                v-for="(house, index) in filteredHousesRoom"
-                :key="index"
-            >
-                <div class="card" style="width: 24rem">
-                    <img
-                        :src="`/storage/${house.image}`"
-                        class="card-img-top"
-                        alt=""
-                    />
-                    <div class="card-body">
-                        <h5 class="card-title">{{ house.title }}</h5>
+                <div class="container-card">
+                    <div class="box">
+                    <div class="card" v-for="(house,index) in filteredHousesRoom"
+                    :key="index">
+                        <div class="card-header">
+                        <img :src="`/storage/${house.image}`">
+                        </div>
+                        <div class="card-body">
+                        <span class="tag tag-header">{{ house.type.name }}</span>
+                        <h4>
+                            {{ house.title }}
+                        </h4>
                         <p class="card-text">
-                            {{ house.description }}
+                           {{ house.description }}
                         </p>
+                        <div class="user">
+                            <!-- <img src="/images/host3.png" alt=""> -->
+                            <div class="user-info">
+                            <p class="price-night">
+                            {{ house.night_price }}€ a notte 
+                            </p>
+                            <h5>Host: {{ house.user.name }}</h5>
+                            <small><a :href="`/house/${house.slug}`" class="card-link"
+                            >Visualizza</a></small>
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Città: {{ house.city }}</li>
-                        <li class="list-group-item">
-                            Prezzo a notte {{ house.night_price }}
-                        </li>
-                        <li class="list-group-item">
-                            Tipo: {{ house.type.name }}
-                        </li>
-                    </ul>
-                    <div class="card-body">
-                        <a :href="`/house/${house.slug}`" class="card-link"
-                            >Visualizza</a
-                        >
-                    </div>
+                </div>
                 </div>
 
                 <!-- <input
@@ -134,7 +124,6 @@
                     </option>
                 </select> -->
             </div>
-        </div>
     </div>
 </template>
 
@@ -306,50 +295,5 @@ export default {
 };
 </script>
 <style lang="scss">
-.jumbotron {
-    background-color: #f8fafc;
-    img {
-        position: relative;
-        width: 100%;
-        height: 300px;
-    }
-}
 
-.searchhome {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    input {
-        border: 0.5px solid #ff385c;
-        padding: 0.2em;
-    }
-}
-
-#s {
-    -moz-border-radius: 14px;
-    -webkit-border-radius: 14px;
-    border-radius: 5px;
-    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
-    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
-    font-size: 1.2em;
-    width: 300px;
-}
-
-button {
-    width: 50px;
-    height: 40px;
-    color: #ff385c;
-    border: 2px solid #ff385c;
-    border-radius: 5em;
-
-    line-height: 35px;
-    text-align: center;
-    &:hover {
-        background-color: #ff385c;
-        color: white;
-        transition: 0.8s;
-    }
-}
 </style>

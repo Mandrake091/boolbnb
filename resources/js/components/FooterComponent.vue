@@ -74,32 +74,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img{
-    width: 100%;
-}
-li{
-  list-style-type: none;
-  display: inline;
-  padding-right: 10px;
-  color: #FF385C;
-  cursor: pointer;
-  a{
-    color: black;
-    font-size: 12px;
-    text-decoration: none;
-    transition: all 0.2s;
-    &:hover{
-        color: #FF385C;
-    }
-  }
-}
 
-
-.copyright{
-    font-size: 8px;
-    li{
-        color: grey;
-    }
-}
 
 </style>
