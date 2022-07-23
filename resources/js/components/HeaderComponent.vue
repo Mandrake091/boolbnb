@@ -46,38 +46,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul{
-    list-style: none;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    padding: 1.2em 0;
-    li a{
-        text-decoration: none;
-        padding-right: 3em;
-        position: relative;
-        color: black;
-    }
-    li a::after{
-        content:'';
-        position: absolute;
-        display: block;
-        height: 0.1em;
-        width: 0%;
-        background-color: #FF385C;
-        bottom: -0.3em;
-        transition: all ease-in-out 400ms;
-    }
-        
-    li a:hover::after{
-        text-decoration: none;
-        width: 50%;
-    }
-}
-
-img{
-    width: 35%;
-}
 
 </style>

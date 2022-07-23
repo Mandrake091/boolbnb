@@ -1,1 +1,27 @@
-
+footer{
+  img{
+    width: 100%;
+  }
+  li{
+  list-style-type: none;
+  display: inline;
+  padding-right: 10px;
+  color: $header;
+  cursor: pointer;
+    a{
+    color: $black;
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+    &:hover{
+        color: $header;
+    }
+  }
+}
+  .copyright{
+    font-size: 8px;
+    li{
+        color: $grey;
+    }
+  }
+}
