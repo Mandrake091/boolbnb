@@ -28,18 +28,18 @@
                     }}</router-link>
                 </li>
             </ul>
-            <a href="/admin/houses"
-                ><div
-                    data-aos="fade-left"
-                    data-aos-offset="200"
-                    data-aos-delay="150"
-                    data-aos-duration="1500"
-                    data-aos-easing="ease-in-out"
-                    class="my-btn"
-                >
-                    Diventa un host
-                </div></a
+            <div
+                data-aos="fade-left"
+                data-aos-offset="200"
+                data-aos-delay="150"
+                data-aos-duration="1500"
+                data-aos-easing="ease-in-out"
+                class="my-btn"
             >
+                <a href="/admin/houses">
+                    <div class="my-btn">Area riservata</div></a
+                >
+            </div>
         </nav>
     </header>
 </template>
@@ -59,16 +59,12 @@ export default {
                     routeName: "home",
                 },
                 {
-                    label: "Cerca",
-                    routeName: "search",
+                    label: "Chi Siamo",
+                    routeName: "about",
                 },
                 {
-                    label: "Dettaglio",
-                    routeName: "detail",
-                },
-                {
-                    label: "Accedi",
-                    routeName: "",
+                    label: "Contatti",
+                    routeName: "contact",
                 },
             ],
             activeIndex: 0,
