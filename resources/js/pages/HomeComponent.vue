@@ -5,24 +5,14 @@
         >
             <div class="col-12 jumbotron">
                 <input
-                    data-aos="zoom-in-up"
-                    data-aos-offset="200"
-                    data-aos-delay="150"
-                    data-aos-duration="1500"
                     type="search"
                     v-model="indirizzo"
                     @change="getFilteredApartments"
                     id="s"
                     name="s"
-                    placeholder="Cerca un appartamento"
+                    placeholder="In che città vuoi andare?"
                 />
-                <button
-                    data-aos="fade-left"
-                    data-aos-offset="200"
-                    data-aos-delay="150"
-                    data-aos-duration="2000"
-                    data-aos-easing="ease-in-out"
-                >
+                <button>
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>

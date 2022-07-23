@@ -2677,14 +2677,10 @@ var render = function render() {
       expression: "indirizzo"
     }],
     attrs: {
-      "data-aos": "zoom-in-up",
-      "data-aos-offset": "200",
-      "data-aos-delay": "150",
-      "data-aos-duration": "1500",
       type: "search",
       id: "s",
       name: "s",
-      placeholder: "Cerca un appartamento"
+      placeholder: "In che città vuoi andare?"
     },
     domProps: {
       value: _vm.indirizzo
@@ -2873,15 +2869,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("button", {
-    attrs: {
-      "data-aos": "fade-left",
-      "data-aos-offset": "200",
-      "data-aos-delay": "150",
-      "data-aos-duration": "2000",
-      "data-aos-easing": "ease-in-out"
-    }
-  }, [_c("i", {
+  return _c("button", [_c("i", {
     staticClass: "fa-solid fa-magnifying-glass"
   })]);
 }];
