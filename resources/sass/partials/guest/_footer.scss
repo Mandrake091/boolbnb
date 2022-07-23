@@ -1,14 +1,13 @@
-footer{
-  img{
+img{
     width: 100%;
-  }
-  li{
+}
+li{
   list-style-type: none;
   display: inline;
   padding-right: 10px;
   color: $header;
   cursor: pointer;
-    a{
+  a{
     color: $black;
     font-size: 12px;
     text-decoration: none;
@@ -18,10 +17,11 @@ footer{
     }
   }
 }
-  .copyright{
+
+
+.copyright{
     font-size: 8px;
     li{
         color: $grey;
     }
-  }
 }

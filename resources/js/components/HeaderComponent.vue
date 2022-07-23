@@ -7,7 +7,7 @@
                     <router-link :to="{ name: item.routeName } " class="link">{{item.label}}</router-link>
                 </li>
             </ul>
-            <a href="/admin/houses"><div class="my-btn">Diventa un host</div></a>
+            <a href="/admin/houses"><div class="my-btn">Area riservata</div></a>
         </nav>
     </header>
 </template>
@@ -27,17 +27,13 @@ export default {
             routeName: 'home'
         },
         {
-            label: 'Cerca',
-            routeName: 'search'
+            label: 'Chi Siamo',
+            routeName: 'about'
         },
         {
-            label: 'Dettaglio',
-            routeName: 'detail',
+            label: 'Contatti',
+            routeName: 'contact',
         },
-        {
-            label: 'Accedi',
-            routeName: ''
-        }
         ],
         activeIndex : 0,
         }
