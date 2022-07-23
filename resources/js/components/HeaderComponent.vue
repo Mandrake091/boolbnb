@@ -28,17 +28,9 @@
                     }}</router-link>
                 </li>
             </ul>
-            <div
-                data-aos="fade-left"
-                data-aos-offset="200"
-                data-aos-delay="150"
-                data-aos-duration="1500"
-                data-aos-easing="ease-in-out"
-                class="my-btn"
-            >
-                <a href="/admin/houses">
-                    <div class="my-btn">Area riservata</div></a
-                >
+            <div>
+                <a class="my-btn" href="/admin/houses">
+                 Area riservata</a>
             </div>
         </nav>
     </header>

@@ -2033,22 +2033,11 @@ __webpack_require__.r(__webpack_exports__);
         label: "Case",
         routeName: "home"
       }, {
-<<<<<<< HEAD
-        label: "Cerca",
-        routeName: "search"
+        label: "Chi Siamo",
+        routeName: "about"
       }, {
-        label: "Dettaglio",
-        routeName: "detail"
-      }, {
-        label: "Accedi",
-        routeName: ""
-=======
-        label: 'Chi Siamo',
-        routeName: 'about'
-      }, {
-        label: 'Contatti',
-        routeName: 'contact'
->>>>>>> e40bcf8a42b6b051667b948cc48af79a80bd3d28
+        label: "Contatti",
+        routeName: "contact"
       }],
       activeIndex: 0
     };
@@ -2635,25 +2624,12 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("a", {
+  return _c("div", [_c("a", {
+    staticClass: "my-btn",
     attrs: {
       href: "/admin/houses"
     }
-  }, [_c("div", {
-<<<<<<< HEAD
-    staticClass: "my-btn",
-    attrs: {
-      "data-aos": "fade-left",
-      "data-aos-offset": "200",
-      "data-aos-delay": "150",
-      "data-aos-duration": "1500",
-      "data-aos-easing": "ease-in-out"
-    }
-  }, [_vm._v("\n                Diventa un host\n            ")])]);
-=======
-    staticClass: "my-btn"
-  }, [_vm._v("Area riservata")])]);
->>>>>>> e40bcf8a42b6b051667b948cc48af79a80bd3d28
+  }, [_vm._v("\n             Area riservata")])]);
 }];
 render._withStripped = true;
 
