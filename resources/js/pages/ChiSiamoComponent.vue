@@ -3,7 +3,7 @@
     <div class="box">
       <div class="card">
         <div class="imgbox">
-            <img src="" alt="images">
+            <img src="/images/paolo.jpg" alt="images">
         </div>
         <div class="details">
             <h2>Nome cognome<br><span> Jr. Web Developer</span></h2>

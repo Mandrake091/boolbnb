@@ -2692,7 +2692,7 @@ var staticRenderFns = [function () {
     staticClass: "imgbox"
   }, [_c("img", {
     attrs: {
-      src: "",
+      src: "/images/paolo.jpg",
       alt: "images"
     }
   })]), _vm._v(" "), _c("div", {
