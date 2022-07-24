@@ -2697,7 +2697,7 @@ var staticRenderFns = [function () {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "details"
-  }, [_c("h2", [_vm._v("Nome cognome"), _c("br"), _c("span", [_vm._v(" Jr. Web Developer")])])])]), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v("Paolo Cannistraro"), _c("br"), _c("span", [_vm._v(" Jr. Web Developer")])])])]), _vm._v(" "), _c("div", {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "imgbox"
@@ -2725,12 +2725,12 @@ var staticRenderFns = [function () {
     staticClass: "imgbox"
   }, [_c("img", {
     attrs: {
-      src: "",
+      src: "/images/gianmarco.jpg",
       alt: "images"
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "details"
-  }, [_c("h2", [_vm._v("Nome cognome"), _c("br"), _c("span", [_vm._v("Jr.Web Developer")])])])]), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v("Gianmarco Culqui"), _c("br"), _c("span", [_vm._v("Jr.Web Developer")])])])]), _vm._v(" "), _c("div", {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "imgbox"
@@ -20463,7 +20463,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/esercizi-php/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

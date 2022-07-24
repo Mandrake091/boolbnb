@@ -6,7 +6,7 @@
             <img src="/images/paolo.jpg" alt="images">
         </div>
         <div class="details">
-            <h2>Nome cognome<br><span> Jr. Web Developer</span></h2>
+            <h2>Paolo Cannistraro<br><span> Jr. Web Developer</span></h2>
         </div>
       </div>
     
@@ -30,10 +30,10 @@
 
         <div class="card">
          <div class="imgbox">
-            <img src="" alt="images">
+            <img src="/images/gianmarco.jpg" alt="images">
          </div>
          <div class="details">
-            <h2>Nome cognome<br><span>Jr.Web Developer</span></h2>
+            <h2>Gianmarco Culqui<br><span>Jr.Web Developer</span></h2>
           </div>
        </div>
 
