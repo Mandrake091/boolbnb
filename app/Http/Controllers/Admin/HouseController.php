@@ -129,7 +129,7 @@ class HouseController extends Controller
             $newHouse->services()->sync($data['services']);
         }
 
-        
+
         return redirect()->route('admin.houses.show', $newHouse->id);
     }
 
@@ -225,6 +225,15 @@ class HouseController extends Controller
             $house->services()->sync($data['services']);
         } else {
             $house->services()->sync([]);
+        }
+
+        if (isset($data['sponsorships'])) {
+
+            $house->sponsorships()->attach($data['sponsorships'],['end_date' => '2001-01-01']);
+            
+        }
+        else {
+            $house->sponsorships()->sync([]);
         }
 
 
