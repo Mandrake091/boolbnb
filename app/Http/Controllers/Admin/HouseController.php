@@ -142,7 +142,7 @@ class HouseController extends Controller
     public function show(House $house)
     {
 
-     
+
         return view('admin.houses.show', compact('house'));
     }
 
@@ -227,12 +227,13 @@ class HouseController extends Controller
             $house->services()->sync([]);
         }
 
-        if (isset($data['sponsorships'])) {
-
-            $house->sponsorships()->attach($data['sponsorships'],['end_date' => '2001-01-01']);
-            
-        }
-        else {
+        
+ 
+        if (isset($data['sponsorships']) && !in_array(['4','5','6'] ,$data['sponsorships'])) {
+                $house->sponsorships()->sync([]);
+                $house->sponsorships()->attach($data['sponsorships'], ['end_date' => '2001-01-01']);
+        
+        } else {
             $house->sponsorships()->sync([]);
         }
 

@@ -26,7 +26,13 @@ var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
 search.append(searchBoxHTML);
 console.log(search)
 let searchBox = document.querySelector(".tt-search-box-input");
+let searchBoxInput = document.querySelector(
+    ".tt-search-box-result-list-container");
+
+searchBoxInput.setAttribute("value", "Via Roma, Milano");
 searchBox.setAttribute("name", "address");
+searchBox.setAttribute("placeholder", "Inserisci una via");
+
 console.log(searchBox);
 ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
     console.log(data);

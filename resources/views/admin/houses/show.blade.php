@@ -94,17 +94,17 @@
 
 
 
-
-
                 @foreach ($house->sponsorships as $sponsorship)
                     <div class="p-0 text-center border-bottom border-3 px-2 py-3">
                         <p class="mb-0">Sponsorizzazione: <strong> {{ $sponsorship->name }}</strong></p>
+                        @if(count($house->sponsorships) <= 3)
                         @if ($sponsorship->name === 'Gold')
                             <img class="w-25" src="{{ asset('/images/gold.png') }}" alt="">
                         @elseif ($sponsorship->name === 'Silver')
                             <img class="w-25" src="{{ asset('/images/silver.png') }}" alt="">
                         @elseif ($sponsorship->name === 'Bronze')
                             <img class="w-25" src="{{ asset('/images/bronze.png') }}" alt="">
+                        @endif
                         @endif
                     </div>
                 @endforeach
