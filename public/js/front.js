@@ -2194,8 +2194,11 @@ var options = {
       // "&servicesToSearch[]=" +
       //     this.selectedServices
       ).then(function (response) {
-        _this.filteredHousesRoom = response.data;
-        console.log(_this.variabileServizi);
+        return response.data.forEach(function (item) {
+          if (item.visibility === 1) {
+            _this.filteredHousesRoom.push(item);
+          }
+        });
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2232,7 +2235,11 @@ var options = {
     var _this2 = this;
 
     axios.get("/api/houses/").then(function (res) {
-      _this2.filteredHousesRoom = res.data; // this.services = res.data;
+      res.data.forEach(function (item) {
+        if (item.visibility === 1) {
+          _this2.filteredHousesRoom.push(item);
+        }
+      }); // this.services = res.data;
     })["catch"](function (err) {
       console.log(err);
     });
@@ -2976,11 +2983,16 @@ var render = function render() {
       }
     }), _vm._v(" "), _c("div", {
       staticClass: "user"
-    }, [_c("div", {
+    }, [_c("img", {
+      attrs: {
+        src: "/images/host3.png",
+        alt: ""
+      }
+    }), _vm._v(" "), _c("div", {
       staticClass: "user-info"
     }, [_c("p", {
       staticClass: "price-night"
-    }, [_vm._v("\n                                    " + _vm._s(house.night_price) + "€ a notte\n                                ")]), _vm._v(" "), _c("small", [_c("a", {
+    }, [_vm._v("\n                                    " + _vm._s(house.night_price) + "€ a notte\n                                ")]), _vm._v(" "), _c("h5", [_vm._v("Host: " + _vm._s(house.user.email))]), _vm._v(" "), _c("small", [_c("a", {
       staticClass: "card-link",
       attrs: {
         href: "/house/".concat(house.slug)
@@ -20463,7 +20475,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/esercizi-php/boolbnb/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

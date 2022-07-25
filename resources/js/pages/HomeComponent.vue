@@ -105,13 +105,13 @@
                             </h4>
                             <p class="card-text" v-html="house.description"></p>
                             <div class="user">
-                                <!-- <img src="/images/host3.png" alt=""> -->
+                                <img src="/images/host3.png" alt="" />
                                 <div class="user-info">
                                     <p class="price-night">
                                         {{ house.night_price }}€ a notte
                                     </p>
                                     <!-- errore da risolvere per prendere il nome dell'host. adesso funziona -->
-                                    <!-- <h5>Host: {{ house.user.email }}</h5> -->
+                                    <h5>Host: {{ house.user.email }}</h5>
                                     <small
                                         ><a
                                             :href="`/house/${house.slug}`"
@@ -231,10 +231,11 @@ export default {
                     // "&servicesToSearch[]=" +
                     //     this.selectedServices
                 )
-                .then((response) => {
-                    this.filteredHousesRoom = response.data;
-                    console.log(this.variabileServizi);
-                })
+                .then((response) => response.data.forEach((item) => {
+                 if (item.visibility === 1) {
+                      this.filteredHousesRoom.push(item);
+                    }
+                }))
                 .catch((error) => {
                     console.log(error);
                 });
@@ -273,7 +274,13 @@ export default {
         axios
             .get("/api/houses/")
             .then((res) => {
-                this.filteredHousesRoom = res.data;
+               res.data.forEach((item) => {
+                 if (item.visibility === 1) {
+                      this.filteredHousesRoom.push(item);
+                    }
+               })
+                   
+                
                 // this.services = res.data;
             })
             .catch((err) => {
