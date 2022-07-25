@@ -39,9 +39,10 @@
                             </div>
                         </div>
 
-                        <label for="birthday">Anno di nascita:</label>
-
-                            <input type="date" id="birthday" name="birthday" value="null" min="1900-01-01" max="2004-12-31">   
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right" for="birthday">Anno di nascita:</label>
+                                <div class="col-md-6"><input type="date" id="birthday" name="birthday" value="null" min="1900-01-01" max="2004-12-31"></div>
+                        </div>
 
                         <div class="form-group row">
 
