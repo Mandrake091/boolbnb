@@ -29,7 +29,8 @@ let searchBox = document.querySelector(".tt-search-box-input");
 let searchBoxInput = document.querySelector(
     ".tt-search-box-result-list-container");
 
-searchBoxInput.setAttribute("value", "Via Roma, Milano");
+searchBox.setAttribute("value", "Via Roma 25, Milano");
+searchBox.setAttribute("required", 'true');
 searchBox.setAttribute("name", "address");
 searchBox.setAttribute("placeholder", "Inserisci una via");
 
