@@ -68,9 +68,8 @@
             <div class="form-group">
                 <label for="type" class="form-label">*Tipo di alloggio:</label>
                 <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror" required>
-                    <option value="">Seleziona un tipo di alloggio</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        <option {{ old('type_id') == $type->id ? 'selected' : '' }} value="{{$type->id}}">{{ $type->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -141,7 +140,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div id="search">Inserisci il tuo indirizzo completo</div>
+            <div id="search" class="w-100">Inserisci il tuo indirizzo completo</div>
 
             {{-- <div class="form-group">
         <label for="state" class="form-label">*Stato</label>
@@ -184,19 +183,20 @@
             </div>
             <div class="form-group">
                 <h5>Sponsorizza</h5>
-                @foreach ($sponsorships as $sponsor)
+                @foreach ($sponsorships as $sponsorship)
                     <div class="form-check form-check-inline ">
-                        @if (old('sponsor'))
+                        @if (old('sponsorship'))
                             <input type="checkbox"
                                 class="my-checkbox form-check-input @error('sponsor') is-invalid @enderror"
-                                id="{{ $sponsor->slug }}" name="sponsor[]" value="{{ $sponsor->id }}"
-                                {{ in_array($sponsor->id, old('sponsor', [])) ? 'checked' : '' }}>
+                                id="{{ $sponsorship->slug }}" name="tags[]" value="{{ $sponsorship->id }}
+                                 {{ in_array($sponsorship->id, old('sponsorship', [])) ? 'checked' : '' }}"
+                               >
                         @else
-                            <input type="checkbox" class="my-checkbox form-check-input" id="{{ $sponsor->slug }}"
-                                name="sponsorships[]" value="{{ $sponsor->id }}" {{-- {{ $house->sponsor->contains($sponsor) ? 'checked' : '' }} --}}>
+                            <input type="checkbox" class="my-checkbox form-check-input" id="{{ $sponsorship->slug }}"
+                                name="sponsorships[]" value="{{ $sponsorship->id }}" {{ $house->sponsorships->contains($sponsorship) ? 'checked' : '' }}>
                         @endif
-                        <label class="form-check-label" for="{{ $service->slug }}">{{ $sponsor->name }},
-                            {{ $sponsor->price }}€, Durata: {{ substr($sponsor->duration, 0, -6) }} ore</label>
+                        <label class="form-check-label" for="{{ $sponsorship->slug }}">{{ $sponsorship->name }},
+                            {{ $sponsorship->price }}€, Durata: {{ substr($sponsorship->duration, 0, -6) }} ore</label>
                     </div>
                 @endforeach
                 @error('sponsor')

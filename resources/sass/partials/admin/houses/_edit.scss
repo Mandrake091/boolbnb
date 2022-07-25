@@ -1,0 +1,10 @@
+
+.tt-search-box-input-container{
+  padding: 5px 0;
+  display: flex;
+  flex-direction: row;
+  .tt-search-box-input{
+    width: 250px;
+    margin: 0 15px;
+  }
+}
