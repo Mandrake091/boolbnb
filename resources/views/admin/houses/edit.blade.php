@@ -24,9 +24,7 @@
                 @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-
                 </select>
-
             </div>
 
 
@@ -183,6 +181,28 @@
                 @error('check_out')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+            </div>
+            <div class="form-group">
+                <h5>Sponsorizza</h5>
+                @foreach ($sponsorships as $sponsor)
+                    <div class="form-check form-check-inline ">
+                        @if (old('sponsor'))
+                            <input type="checkbox"
+                                class="my-checkbox form-check-input @error('sponsor') is-invalid @enderror"
+                                id="{{ $sponsor->slug }}" name="sponsor[]" value="{{ $sponsor->id }}"
+                                {{ in_array($sponsor->id, old('sponsor', [])) ? 'checked' : '' }}>
+                        @else
+                            <input type="checkbox" class="my-checkbox form-check-input" id="{{ $sponsor->slug }}"
+                                name="sponsor[]" value="{{ $sponsor->id }}" {{-- {{ $house->sponsor->contains($sponsor) ? 'checked' : '' }} --}}>
+                        @endif
+                        <label class="form-check-label" for="{{ $service->slug }}">{{ $sponsor->name }},
+                            {{ $sponsor->price }}€, Durata: {{ substr($sponsor->duration, 0, -6) }} ore</label>
+                    </div>
+                @endforeach
+                @error('sponsor')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
             </div>
 
             <div>

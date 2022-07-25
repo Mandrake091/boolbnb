@@ -4,8 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use App\House;
+use App\Message;
+use App\Service;
+use App\User;
+use App\Type;
 use App\Sponsorship;
+use Illuminate\Support\Facades\Auth;
+use App\View;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Http;
+use LDAP\Result;
+use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class SponsorshipController extends Controller
 {
@@ -16,7 +29,7 @@ class SponsorshipController extends Controller
      */
     public function index()
     {
-        //
+     
     }
 
     /**
@@ -26,12 +39,12 @@ class SponsorshipController extends Controller
      */
     public function create()
     {
-        $sponsorships = Sponsorship::all();
-        $houses = House::all();
-        return view('admin.sponsorship.create', compact('sponsorships', 'houses'));
+        // $sponsorships = Sponsorship::all();
+        // $houses = House::all();
+        // return view('admin.sponsorship.create', compact('sponsorships', 'houses'));
 
-        
-        
+
+
 
     }
 
@@ -53,7 +66,7 @@ class SponsorshipController extends Controller
         // }
 
         // $newSponsorship->save();
-        
+
     }
 
     /**
@@ -62,9 +75,11 @@ class SponsorshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(House $house)
     {
-        //
+
+        
+        return view('admin.sponsorships.show', compact('house'));
     }
 
     /**
@@ -73,9 +88,9 @@ class SponsorshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(House $house, $id)
     {
-        //
+       
     }
 
     /**
@@ -85,10 +100,11 @@ class SponsorshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, House $house)
     {
-        //
+  
     }
+    
 
     /**
      * Remove the specified resource from storage.
