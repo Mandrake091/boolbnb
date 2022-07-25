@@ -2710,12 +2710,12 @@ var staticRenderFns = [function () {
     staticClass: "imgbox"
   }, [_c("img", {
     attrs: {
-      src: "",
+      src: "/images/nicolo.jpg",
       alt: "images"
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "details"
-  }, [_c("h2", [_vm._v("Nome cognome"), _c("br"), _c("span", [_vm._v("Jr. Web Developer")])])])]), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v("Nicolò Nosi"), _c("br"), _c("span", [_vm._v("Jr. Web Developer")])])])]), _vm._v(" "), _c("div", {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "imgbox"
@@ -20475,7 +20475,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
