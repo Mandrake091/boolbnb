@@ -72,7 +72,8 @@
             </div>
             <div class="col-4">
                 <h3 class="text-uppercase">Info</h3>
-                <p class="border-bottom border-3 py-3 mb-0">Data creazione: {{ $house->created_at }}</p>
+                <p class="border-bottom border-3 py-3 mb-0">Data creazione: {{ date_format($house->created_at, 'd/m/Y') }}
+                </p>
                 <p class="border-bottom border-3 py-3 mb-0">Tipo: {{ $house->type ? $house->type->name : 'Not Defined' }}
                 </p>
                 @if ($house->visibility)
@@ -80,7 +81,44 @@
                 @else
                     <p class="border-bottom border-3 py-3 mb-0 text-uppercase text-danger fw-bold">To publish</p>
                 @endif
+
+
+                {{-- <p class="border-bottom border-3 py-3 mb-0">Sponsor {{ $house->sponsorships ? $house->sponsorship->name : 'Not Defined' }}
+                </p> --}}
+                {{-- @if ($house->visibility)
+                    <p class="border-bottom border-3 py-3 mb-0 text-uppercase text-success fw-bold">Published</p>
+                @else
+                    <p class="border-bottom border-3 py-3 mb-0 text-uppercase text-danger fw-bold">To publish</p>
+                @endif --}}
+
+
+
+
+
+
+                @foreach ($house->sponsorships as $sponsorship)
+                    <div class="p-0 text-center border-bottom border-3 px-2 py-3">
+                        <p class="mb-0">Sponsorizzazione: <strong> {{ $sponsorship->name }}</strong></p>
+                        @if ($sponsorship->name === 'Gold')
+                            <img class="w-25" src="{{ asset('/images/gold.png') }}" alt="">
+                        @elseif ($sponsorship->name === 'Silver')
+                            <img class="w-25" src="{{ asset('/images/silver.png') }}" alt="">
+                        @elseif ($sponsorship->name === 'Bronze')
+                            <img class="w-25" src="{{ asset('/images/bronze.png') }}" alt="">
+                        @endif
+                    </div>
+                @endforeach
+
+
+
+
+
+
+
+
+
                 <div class="border-bottom border-3 py-3 ">
+
                     <p class="mb-0">Servizi:</p>
                     <ul>
                         @foreach ($house->services as $service)
@@ -94,7 +132,7 @@
                     <a href="{{ route('admin.houses.edit', $house->id) }}" class="w-50 mt-2 btn btn-warning text-uppercase"
                         type="button">Edit</a>
                 </div>
-            
+
                 <div class="mt-2 text-center">
                     <form class=" mx-auto" action="{{ route('admin.houses.destroy', $house->id) }}" method="post">
                         @csrf
