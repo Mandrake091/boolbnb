@@ -70,8 +70,8 @@
 
                 </div>
             </div>
-            <div class="col-4">
-                <h3 class="text-uppercase">Info</h3>
+            <div class="col-4 rounded border border-3 pb-3">
+                <h3 class="text-uppercase pt-3">Info</h3>
                 <p class="border-bottom border-3 py-3 mb-0">Data creazione: {{ date_format($house->created_at, 'd/m/Y') }}
                 </p>
                 <p class="border-bottom border-3 py-3 mb-0">Tipo: {{ $house->type ? $house->type->name : 'Not Defined' }}
@@ -117,7 +117,7 @@
 
 
 
-                <div class="border-bottom border-3 py-3 ">
+                <div class="border-bottom border-3 py-3">
 
                     <p class="mb-0">Servizi:</p>
                     <ul>
@@ -128,12 +128,12 @@
                 </div>
                 <div id="map-div"></div>
 
-                <div class="text-center">
-                    <a href="{{ route('admin.houses.edit', $house->id) }}" class="w-50 mt-2 btn btn-warning text-uppercase"
+                <div class="text-center pt-3">
+                    <a href="{{ route('admin.houses.edit', $house->id) }}" class="w-50 btn btn-warning text-uppercase"
                         type="button">Edit</a>
                 </div>
 
-                <div class="mt-2 text-center">
+                <div class="text-center pt-3">
                     <form class=" mx-auto" action="{{ route('admin.houses.destroy', $house->id) }}" method="post">
                         @csrf
                         @method('DELETE')
