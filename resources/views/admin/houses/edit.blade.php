@@ -193,7 +193,7 @@
                                 {{ in_array($sponsor->id, old('sponsor', [])) ? 'checked' : '' }}>
                         @else
                             <input type="checkbox" class="my-checkbox form-check-input" id="{{ $sponsor->slug }}"
-                                name="sponsor[]" value="{{ $sponsor->id }}" {{-- {{ $house->sponsor->contains($sponsor) ? 'checked' : '' }} --}}>
+                                name="sponsorships[]" value="{{ $sponsor->id }}" {{-- {{ $house->sponsor->contains($sponsor) ? 'checked' : '' }} --}}>
                         @endif
                         <label class="form-check-label" for="{{ $service->slug }}">{{ $sponsor->name }},
                             {{ $sponsor->price }}€, Durata: {{ substr($sponsor->duration, 0, -6) }} ore</label>
