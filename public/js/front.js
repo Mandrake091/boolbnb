@@ -8405,9 +8405,9 @@ var render = function render() {
         flag: house.sponsorships.length != 0
       }
     }, [house.sponsorships.length != 0 ? _c("strong", {}, [_vm._v("Sponsorizzato")]) : _vm._e()])])]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
+      staticClass: "card-body pt-2"
     }, [_c("span", {
-      staticClass: "tag tag-header"
+      staticClass: "tag tag-header my-2"
     }, [_vm._v(_vm._s(house.type.name))]), _vm._v(" "), _c("h4", [_vm._v("\n                            " + _vm._s(house.title) + "\n                        ")]), _vm._v(" "), _c("p", {
       staticClass: "card-text",
       domProps: {

@@ -115,8 +115,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <span class="tag tag-header">{{
+                        <div class="card-body pt-2">
+                            <span class="tag tag-header my-2">{{
                                 house.type.name
                             }}</span>
                             <h4>
