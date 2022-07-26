@@ -8389,10 +8389,13 @@ var render = function render() {
         "data-aos-duration": "1500"
       }
     }, [_c("div", {
-      staticClass: "card-header position-relative"
+      staticClass: "card-header p-0 position-relative"
     }, [_c("div", {
-      staticClass: "position-relative"
+      staticClass: "position-relative w-100 h-100"
     }, [_c("img", {
+      "class": {
+        border: house.sponsorships.length != 0
+      },
       attrs: {
         src: "/storage/".concat(house.image)
       }
@@ -23542,7 +23545,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".sponsorized {\n  border: 2px solid #ff385c;\n}\n.flag {\n  font-size: 0.8em;\n  text-align: right;\n  color: rgb(255, 255, 255);\n  background-color: rgba(252, 58, 92, 0.8);\n  width: 100;\n  height: 20px;\n  bottom: 0;\n  right: 0;\n  z-index: 0;\n  border-radius: 10px 0 0 0;\n  overflow: hidden;\n  position: absolute;\n}\n.flag strong {\n  padding-left: 5px;\n}\n.flag img {\n  border: 2px solid #ff385c;\n}", ""]);
+exports.push([module.i, ".sponsorized {\n  border: 3px solid #ff385c;\n}\n.border {\n  filter: drop-shadow(0px 0px 5px black);\n  box-shadow: inset 2px 2px 5px black;\n}\n.flag {\n  font-size: 0.8em;\n  text-align: right;\n  color: rgb(255, 255, 255);\n  background-color: rgba(252, 58, 92, 0.8);\n  width: 100px;\n  height: 20px;\n  bottom: 0;\n  right: 0;\n  z-index: 0;\n  position: absolute;\n}", ""]);
 
 // exports
 

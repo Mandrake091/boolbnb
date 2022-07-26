@@ -96,10 +96,13 @@
                         }"
                         :key="index"
                     >
-                        <div class="card-header position-relative">
-                            <div class="position-relative">
+                        <div class="card-header p-0 position-relative">
+                            <div class="position-relative w-100 h-100">
                                 <img
                                     class=""
+                                    v-bind:class="{
+                                        border: house.sponsorships.length != 0,
+                                    }"
                                     :src="`/storage/${house.image}`"
                                 />
                                 <div
@@ -360,7 +363,11 @@ export default {
 </script>
 <style lang="scss">
 .sponsorized {
-    border: 2px solid #ff385c;
+    border: 3px solid #ff385c;
+}
+.border {
+    filter: drop-shadow(0px 0px 5px black);
+    box-shadow: inset 2px 2px 5px black;
 }
 .flag {
     font-size: 0.8em;
@@ -368,21 +375,13 @@ export default {
     color: rgb(255, 255, 255);
     background-color: rgba(252, 58, 92, 0.8);
     // transform: rotate(45deg);
-    width: 100;
+    width: 100px;
     height: 20px;
     bottom: 0;
     right: 0;
     z-index: 0;
-    border-radius: 10px 0 0 0;
-
-    overflow: hidden;
+  
 
     position: absolute;
-    strong {
-        padding-left: 5px;
-    }
-    img {
-        border: 2px solid #ff385c;
-    }
 }
 </style>
