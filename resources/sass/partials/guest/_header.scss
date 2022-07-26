@@ -72,3 +72,18 @@ header{
     }
 }
 
+// MEDIA QUERY
+
+@media only screen and (max-width: 736px) {
+    header{
+        .logo{
+            left: 0.5em;
+        }
+        ul{
+            display: none;
+        }
+        .my-btn{
+            display: none;
+        }
+    }
+  }

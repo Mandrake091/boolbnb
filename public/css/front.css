@@ -19677,7 +19677,7 @@ readers do not read off random characters that represent icons */
   }
   .container-card {
     justify-content: center;
-    margin-left: 300px;
+    margin-left: 200px;
   }
   .container-card .box {
     display: block;
@@ -19691,7 +19691,6 @@ readers do not read off random characters that represent icons */
 }
 @media only screen and (max-width: 736px) {
   .container-card {
-    justify-content: center;
     margin-left: 100px;
   }
 }
@@ -19791,6 +19790,17 @@ header img {
   transition: 0.8s;
 }
 
+@media only screen and (max-width: 736px) {
+  header .logo {
+    left: 0.5em;
+  }
+  header ul {
+    display: none;
+  }
+  header .my-btn {
+    display: none;
+  }
+}
 img {
   width: 100%;
 }

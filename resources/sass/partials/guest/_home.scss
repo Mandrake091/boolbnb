@@ -149,7 +149,7 @@
     }
     .container-card{
       justify-content: center;
-      margin-left: 300px;
+      margin-left: 200px;
       .box {
         display: block;
         width: 400px;
@@ -164,7 +164,6 @@
 
 @media only screen and (max-width: 736px) {
   .container-card{
-    justify-content: center;
     margin-left: 100px;
   }
 }
