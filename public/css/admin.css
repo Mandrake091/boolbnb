@@ -17667,3 +17667,72 @@ readers do not read off random characters that represent icons */
   width: 250px;
   margin: 0 15px;
 }
+
+.wrap-card-body {
+  width: 600px;
+  background: #fff;
+  border-radius: 10px;
+  position: relative;
+  border: 2px solid #FD5758;
+}
+
+.card-space {
+  padding-top: 50px;
+}
+
+.title {
+  width: 100%;
+  display: block;
+  font-size: 39px;
+  color: #555555;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.mp-color {
+  background-color: #f2f2f2;
+}
+
+.btn-color {
+  background-color: #FD5758;
+  color: white;
+}
+
+.wrap-card-body-r {
+  width: 800px;
+  background: #fff;
+  border-radius: 10px;
+  position: relative;
+  border: 2px solid #FD5758;
+}
+
+.card-space-r {
+  padding: 50px 80px 50px 80px;
+}
+
+.title-r {
+  width: 100%;
+  display: block;
+  font-size: 39px;
+  color: #555555;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.mp-color {
+  background-color: #f2f2f2;
+}
+
+.btn-color {
+  background-color: #FD5758;
+  color: white;
+}
+
+#birthday {
+  width: 100%;
+  margin-top: 2px;
+  padding: 10px 0px 13px 0px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #d3d3d3;
+}
