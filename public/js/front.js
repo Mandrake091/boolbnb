@@ -8404,7 +8404,7 @@ var render = function render() {
       "class": {
         flag: house.sponsorships.length != 0
       }
-    }, [_c("strong", {}, [_vm._v("Sponsorizzato")])])])]), _vm._v(" "), _c("div", {
+    }, [house.sponsorships.length != 0 ? _c("strong", {}, [_vm._v("Sponsorizzato")]) : _vm._e()])])]), _vm._v(" "), _c("div", {
       staticClass: "card-body"
     }, [_c("span", {
       staticClass: "tag tag-header"

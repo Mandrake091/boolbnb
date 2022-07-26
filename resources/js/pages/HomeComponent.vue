@@ -111,7 +111,7 @@
                                         flag: house.sponsorships.length != 0,
                                     }"
                                 >
-                                    <strong class="">Sponsorizzato</strong>
+                                    <strong v-if="house.sponsorships.length != 0" class="">Sponsorizzato</strong>
                                 </div>
                             </div>
                         </div>
