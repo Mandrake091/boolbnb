@@ -13,7 +13,7 @@
                                 Welcome back, sing in!
                             </div>
                         </div>
-                        
+
                         <div class="form-group row justify-content-center mb-0 pb-2">
                             <div class="col-md-8">
                                 <div>
@@ -68,14 +68,10 @@
                         </div>
                         <div class="form-group row mb-0 justify-content-center pb-5">
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary py-3 col-12 shadow">
-                                    <a href="https://www.facebook.com/" class="text-white">Facebook</a>
-                                </button>
+                                <a href="https://www.facebook.com/" class="text-white"><button type="submit" class="btn btn-primary py-3 col-12 shadow">Facebook</button></a>
                             </div>
                             <div class="col-4">
-                                <button type="submit" class="btn btn-trasparent py-3 col-12 shadow">
-                                    <a href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="text-dark">Google</a>
-                                </button>
+                                <a href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="text-dark"><button type="submit" class="btn btn-trasparent py-3 col-12 shadow">Google</button></a>
                             </div>
                         </div>
                     </form>
