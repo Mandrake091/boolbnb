@@ -52,7 +52,7 @@ class SearchController extends Controller
 
 
 
-    $apartments = House::with(['services', 'type', 'user'])
+    $apartments = House::with(['services', 'type', 'user', 'sponsorships'])
 
       ->where('latitude', '<=', $max_lat)
       ->where('latitude', '>=', $min_lat)

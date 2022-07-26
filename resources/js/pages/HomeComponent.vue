@@ -89,12 +89,28 @@
                         data-aos-offset="50"
                         data-aos-delay="150"
                         data-aos-duration="1500"
-                        class="card"
                         v-for="(house, index) in filteredHousesRoom"
+                        v-bind:class="{
+                            sponsorized: house.sponsorships.length != 0,
+                            card: true,
+                        }"
                         :key="index"
                     >
-                        <div class="card-header">
-                            <img :src="`/storage/${house.image}`" />
+                        <div class="card-header position-relative">
+                            <div class="position-relative">
+                                <img
+                                    class=""
+                                    :src="`/storage/${house.image}`"
+                                />
+                                <div
+                                    class="text-center"
+                                    v-bind:class="{
+                                        flag: house.sponsorships.length != 0,
+                                    }"
+                                >
+                                    <strong class="">Sponsorizzato</strong>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <span class="tag tag-header">{{
@@ -155,6 +171,7 @@
 import { services } from "@tomtom-international/web-sdk-services";
 import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import ref from "vue";
+import { createDecipheriv } from "crypto";
 let options = {
     minNumberOfCharacters: 0,
     searchOptions: {
@@ -206,6 +223,7 @@ export default {
         getFilteredApartments() {
             this.filteredHousesRoom = [];
             this.variabileServizi = [];
+            console.log(this.filteredHousesRoom);
             if (this.selectedServices.length > 0) {
                 for (let i = 0; i < this.selectedServices.length; i++) {
                     this.variabileServizi.push(
@@ -231,11 +249,13 @@ export default {
                     // "&servicesToSearch[]=" +
                     //     this.selectedServices
                 )
-                .then((response) => response.data.forEach((item) => {
-                 if (item.visibility === 1) {
-                      this.filteredHousesRoom.push(item);
-                    }
-                }))
+                .then((response) =>
+                    response.data.forEach((item) => {
+                        if (item.visibility === 1) {
+                            this.filteredHousesRoom.push(item);
+                        }
+                    })
+                )
                 .catch((error) => {
                     console.log(error);
                 });
@@ -274,18 +294,21 @@ export default {
         axios
             .get("/api/houses/")
             .then((res) => {
-               res.data.forEach((item) => {
-                 if (item.visibility === 1) {
-                      this.filteredHousesRoom.push(item);
+                res.data.forEach((item) => {
+                    if (item.visibility === 1) {
+                        this.filteredHousesRoom.push(item);
+                    } else if (item.sponsorships.length != 0) {
+                        this.filteredHousesRoom.unshift(item);
+                        console.log(this.filteredHousesRoom);
                     }
-               })
-                   
-                
+                });
+
                 // this.services = res.data;
             })
             .catch((err) => {
                 console.log(err);
             });
+
         axios
             .get("/api/services/")
             .then((res) => {
@@ -335,4 +358,31 @@ export default {
     },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.sponsorized {
+    border: 2px solid #ff385c;
+}
+.flag {
+    font-size: 0.8em;
+    text-align: right;
+    color: rgb(255, 255, 255);
+    background-color: rgba(252, 58, 92, 0.8);
+    // transform: rotate(45deg);
+    width: 100;
+    height: 20px;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    border-radius: 10px 0 0 0;
+
+    overflow: hidden;
+
+    position: absolute;
+    strong {
+        padding-left: 5px;
+    }
+    img {
+        border: 2px solid #ff385c;
+    }
+}
+</style>
