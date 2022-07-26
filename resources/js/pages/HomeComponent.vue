@@ -27,7 +27,7 @@
         </div> -->
         <div class="row pt-2">
             <div
-                class="col-2"
+                class="col-12 col-md-2 col-lg-2 services"
                 data-aos="fade-right"
                 data-aos-offset="50"
                 data-aos-delay="200"
@@ -124,7 +124,6 @@
                             </h4>
                             <p class="card-text" v-html="house.description"></p>
                             <div class="user">
-                                <img src="/images/host3.png" alt="" />
                                 <div class="user-info">
                                     <p class="price-night">
                                         {{ house.night_price }}€ a notte
