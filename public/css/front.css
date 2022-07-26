@@ -19795,7 +19795,12 @@ header img {
     left: 0.5em;
   }
   header ul {
-    display: none;
+    position: absolute;
+    top: 0.5em;
+    right: 0px;
+  }
+  header ul li {
+    padding-right: 0;
   }
   header .my-btn {
     display: none;

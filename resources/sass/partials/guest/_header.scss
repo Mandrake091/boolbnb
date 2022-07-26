@@ -80,10 +80,16 @@ header{
             left: 0.5em;
         }
         ul{
-            display: none;
+            position: absolute;
+            top: 0.5em;
+            right: 0px;
+            li{
+                padding-right: 0;
+            }
         }
         .my-btn{
             display: none;
         }
     }
   }
+
