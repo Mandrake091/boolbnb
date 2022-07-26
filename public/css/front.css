@@ -19665,6 +19665,50 @@ readers do not read off random characters that represent icons */
   font-weight: 500;
 }
 
+@media only screen and (max-width: 1170px) {
+  .jumbotron {
+    height: 200px;
+  }
+  .jumbotron input {
+    margin-top: 30px;
+  }
+  .services {
+    display: none;
+  }
+  .container-card {
+    justify-content: center;
+    margin-left: 300px;
+  }
+  .container-card .box {
+    display: block;
+    width: 400px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .container-card .card {
+    width: 350px;
+  }
+}
+@media only screen and (max-width: 736px) {
+  .container-card {
+    justify-content: center;
+    margin-left: 100px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .jumbotron {
+    width: 100%;
+  }
+  .container-card {
+    margin: 0;
+  }
+  .container-card .box {
+    width: 100%;
+  }
+  .container-card .card {
+    width: 100%;
+  }
+}
 .log-container {
   display: flex;
   flex-direction: column;

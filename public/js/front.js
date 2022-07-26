@@ -2826,7 +2826,7 @@ var render = function render() {
   }), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c("div", {
     staticClass: "row pt-2"
   }, [_c("div", {
-    staticClass: "col-2",
+    staticClass: "col-12 col-md-2 col-lg-2 services",
     attrs: {
       "data-aos": "fade-right",
       "data-aos-offset": "50",
@@ -2983,12 +2983,7 @@ var render = function render() {
       }
     }), _vm._v(" "), _c("div", {
       staticClass: "user"
-    }, [_c("img", {
-      attrs: {
-        src: "/images/host3.png",
-        alt: ""
-      }
-    }), _vm._v(" "), _c("div", {
+    }, [_c("div", {
       staticClass: "user-info"
     }, [_c("p", {
       staticClass: "price-night"
@@ -3381,7 +3376,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map {\n    \n    width: 100%;\n    height: 80%;\n}\n", ""]);
+exports.push([module.i, "\n#map {\r\n    \r\n    width: 100%;\r\n    height: 80%;\n}\r\n", ""]);
 
 // exports
 
@@ -20475,7 +20470,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/nick/Desktop/Boolean/Esercizi_Pomeriggio/boolbnb/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\esercizi_php\boolbnb\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
