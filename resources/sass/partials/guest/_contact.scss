@@ -1,0 +1,135 @@
+.contact{
+    height: 100vh;
+    margin-bottom: 200px;    
+    body {
+        font-size: 15px;
+        font-family: 'Poppins', sans-serif;
+        background-color: $light-grey;
+    }
+    
+    .button-cyan{
+        margin: 0 auto;
+        width: 50px;
+        height: 50px;
+        border: 2px solid $my-cyan;
+        border-radius: 10px;
+        background-color: $my-cyan;
+        a i{
+            font-size: 20px;
+            color: $white;
+        }
+    }
+
+    .button-red{
+        margin: 0 auto;
+        width: 50px;
+        height: 50px;
+        border: 2px solid $my-red;
+        border-radius: 10px;
+        background-color: $my-red;
+        a i{
+            font-size: 20px;
+            color: $white;
+        }
+    }
+
+    .button-blue{
+        margin: 0 auto;
+        width: 50px;
+        height: 50px;
+        border: 2px solid $my-blue;
+        border-radius: 10px;
+        background-color: $my-blue;
+        a i{
+            font-size: 20px;
+            color: $white;
+        }
+    }
+    
+    h1:first-of-type {
+        font-weight: 200;
+        color: $dark-grey;
+    }
+        
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+    }
+    
+    .box-top {
+        text-align: center;
+        line-height: 0.8;
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
+    
+    .box-top p {
+        margin: 0 auto;
+        line-height: 2;
+        color: $my-grey;
+    }
+    
+    
+    .box p {
+        color: $my-grey;
+    }
+    
+    .box {
+        border-radius: 5px;
+        box-shadow: 0px 30px 40px -20px $my-grey;
+        padding: 30px;
+        margin: 20px;  
+    }
+    
+    
+    @media (max-width: 450px) {
+        .box {
+            height: 200px;
+        }
+    }
+    
+    @media (max-width: 950px) and (min-width: 450px) {
+        .box {
+            text-align: center;
+            height: 180px;
+        }
+    }
+    
+    .cyan {
+        border-top: 3px solid $my-cyan;
+    }
+    .red {
+        border-top: 3px solid $my-red;
+    }
+    .blue {
+        border-top: 3px solid $my-blue;
+    }
+    
+    h2 {
+        color: $dark-grey;
+        font-weight: 300;
+    }
+    
+    
+    @media (min-width: 950px) {
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-down {
+            position: relative;
+            top: 150px;
+        }
+        .box {
+            width: 20%;
+         
+        }
+        .header p {
+            width: 30%;
+        }
+        
+    }
+}

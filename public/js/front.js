@@ -2763,10 +2763,53 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("section");
+  return _vm._m(0);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("section", {
+    staticClass: "contact"
+  }, [_c("div", {
+    staticClass: "box-top"
+  }, [_c("h1", [_vm._v("Contattaci")]), _vm._v(" "), _c("p", [_vm._v("Hai qualche domanda? Ci piacerebbe sentirti")])]), _vm._v(" "), _c("div", {
+    staticClass: "card-container"
+  }, [_c("div", {
+    staticClass: "box box-down cyan"
+  }, [_c("h2", [_vm._v("Supporto")]), _vm._v(" "), _c("p", [_vm._v("Boolbnb fornisce il servizio clienti via e-mail")]), _vm._v(" "), _c("button", {
+    staticClass: "button-cyan"
+  }, [_c("a", {
+    attrs: {
+      href: "https://www.google.com/intl/it/gmail/about/"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-envelope-circle-check"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "box red mb-4"
+  }, [_c("h2", [_vm._v("Chiamaci")]), _vm._v(" "), _c("p", [_vm._v("Hai bisogno di metterti in contatto con noi?")]), _vm._v(" "), _c("button", {
+    staticClass: "button-red"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-phone"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "box box-down blue mb-4"
+  }, [_c("h2", [_vm._v("Github")]), _vm._v(" "), _c("p", [_vm._v("Per maggiori informazioni sul nostro codice")]), _vm._v(" "), _c("button", {
+    staticClass: "button-blue"
+  }, [_c("a", {
+    attrs: {
+      href: "https://github.com/Mandrake091/boolbnb.git"
+    }
+  }, [_c("i", {
+    staticClass: "fa-brands fa-github"
+  })])])])])])]);
+}];
 render._withStripped = true;
 
 
@@ -3369,7 +3412,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map {\n    \n    width: 100%;\n    height: 80%;\n}\n", ""]);
+exports.push([module.i, "\n#map {\r\n    \r\n    width: 100%;\r\n    height: 80%;\n}\r\n", ""]);
 
 // exports
 
@@ -20463,7 +20506,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\esercizi_php\boolbnb\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
