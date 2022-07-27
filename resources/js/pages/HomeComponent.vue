@@ -257,7 +257,10 @@ export default {
                 )
                 .then((response) =>
                     response.data.forEach((item) => {
-                        if (item.visibility === 1) {
+                        if (item.sponsorships.length != 0) {
+                            this.filteredHousesRoom.unshift(item);
+                            console.log(this.filteredHousesRoom);
+                        } else if (item.visibility === 1) {
                             this.filteredHousesRoom.push(item);
                         }
                     })

@@ -7610,7 +7610,11 @@ var options = {
       //     this.selectedServices
       ).then(function (response) {
         return response.data.forEach(function (item) {
-          if (item.visibility === 1) {
+          if (item.sponsorships.length != 0) {
+            _this.filteredHousesRoom.unshift(item);
+
+            console.log(_this.filteredHousesRoom);
+          } else if (item.visibility === 1) {
             _this.filteredHousesRoom.push(item);
           }
         });
