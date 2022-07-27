@@ -23582,7 +23582,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-container[data-v-656dbaae] {\n  margin: 20px auto;\n  width: 80vw;\n}\n.main-container h2[data-v-656dbaae] {\n  margin-top: 40px;\n}\n.main-container img[data-v-656dbaae] {\n  width: 100%;\n}\n.main-container .info[data-v-656dbaae] {\n  display: flex;\n  gap: 20px;\n  margin-bottom: 30px;\n  margin-top: 30px;\n}\n.main-container .info .mid-dot[data-v-656dbaae] {\n  line-height: 1rem;\n  font-size: 2rem;\n}", ""]);
+exports.push([module.i, ".main-container[data-v-656dbaae] {\n  margin: 20px auto;\n  width: 80vw;\n}\n.main-container h2[data-v-656dbaae] {\n  margin-top: 40px;\n}\n.main-container img[data-v-656dbaae] {\n  width: 100%;\n}\n.main-container .info[data-v-656dbaae] {\n  display: flex;\n  gap: 20px;\n  margin-bottom: 30px;\n  margin-top: 30px;\n}\n.main-container .info .mid-dot[data-v-656dbaae] {\n  line-height: 1rem;\n  font-size: 2rem;\n}\n.main-container li[data-v-656dbaae] {\n  color: black;\n}\n@media only screen and (max-width: 797px) {\n.input-group-text[data-v-656dbaae] {\n    width: 100% !important;\n}\n}", ""]);
 
 // exports
 
@@ -23620,7 +23620,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map {\n    \n    width: 100%;\n    height: 80%;\n}\n", ""]);
+exports.push([module.i, "\n#map {\n    width: 100%;\n    height: 80%;\n}\n\n/* MEDIA QUERY */\n@media only screen and (max-width: 797px) {\n#map{\n        width: 100%;\n        height: 30%;\n}\n}\n\n", ""]);
 
 // exports
 

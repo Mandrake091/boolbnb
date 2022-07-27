@@ -43,8 +43,16 @@ export default {
 <style>
 
 #map {
-    
     width: 100%;
     height: 80%;
 }
+
+/* MEDIA QUERY */
+@media only screen and (max-width: 797px) {
+    #map{
+        width: 100%;
+        height: 30%;
+    }
+}
+
 </style>
