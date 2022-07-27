@@ -34,9 +34,9 @@
                 <div class="mt-4">
                     <h3 class="text-uppercase">Descrizione</h3>
                     <p value="{{ $house->description }}">{!! $house->description !!}</p>
-                    <h3 class="text-uppercase">Prenotazioni</h3>
-                    <h5>Data inizio prenotazione: {{ date('d/m/Y', strtotime($house->check_in)) }}</h5>
-                    <h5>Data fine prenotazione: {{ date('d/m/Y', strtotime($house->check_out)) }}</h5>
+                    <h3 class="text-uppercase">Disponibilità</h3>
+                    <h5>Data inizio disponibilità: {{ date('d/m/Y', strtotime($house->check_in)) }}</h5>
+                    <h5>Data fine disponibilità: {{ date('d/m/Y', strtotime($house->check_out)) }}</h5>
                     <div class="row mt-4">
                         <div class="col-6">
                             <h3 class="text-uppercase">Dettagli</h3>

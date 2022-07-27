@@ -179,5 +179,15 @@ export default {
             font-size: 2rem;
         }
     }
+    li{
+        color: black;
+    }
+}
+
+// MEDIA QUERY
+@media only screen and (max-width: 797px) {
+  .input-group-text{
+    width: 100% !important;
+  }
 }
 </style>
