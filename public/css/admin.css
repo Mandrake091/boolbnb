@@ -17658,6 +17658,33 @@ readers do not read off random characters that represent icons */
      object-fit: cover;
 }
 
+.comment:nth-child(odd) {
+  border: 1px solid rgba(16, 46, 46, 0.526);
+  background-color: rgba(16, 46, 46, 0.537);
+  float: left;
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  width: 55%;
+}
+
+.comment:nth-child(even) {
+  border: 1px solid rgba(16, 46, 46, 0.526);
+  background-color: rgba(16, 46, 46, 0.537);
+  float: left;
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  width: 55%;
+}
+
+.comment > .row {
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+
 .tt-search-box-input-container {
   padding: 5px 0;
   display: flex;
@@ -17669,7 +17696,6 @@ readers do not read off random characters that represent icons */
 }
 
 .wrap-card-body {
-  width: 600px;
   background: #fff;
   border-radius: 10px;
   position: relative;
@@ -17699,7 +17725,6 @@ readers do not read off random characters that represent icons */
 }
 
 .wrap-card-body-r {
-  width: 800px;
   background: #fff;
   border-radius: 10px;
   position: relative;

@@ -4,28 +4,27 @@
             <h1>{{ house.title }}</h1>
             <img :src="`/storage/${house.image}`" alt="" />
             <div class="row">
-                <div class="col-7">
+                <div class="col-12 col-md-7 text-center text-md-left">
                     <h2>{{ house.type.name }} - Host: {{ house.user.name }}</h2>
                     <hr />
-                    <div class="info">
+                    <div class="info flex-column flex-md-row">
                         <div>
-                            <i class="fa-solid fa-person-shelter"></i> Numero di
-                            stanze: <span>{{ house.n_room }}</span>
+                            <i class="fa-solid fa-person-shelter"></i> <span>{{ house.n_room }} stanze</span>
                         </div>
-                        <div class="mid-dot">&middot;</div>
+
                         <div>
-                            <i class="fa-solid fa-bed"></i> Numero di letti:
-                            <span>{{ house.n_bed }}</span>
+                            <i class="fa-solid fa-bed"></i> 
+                            <span>{{ house.n_bed }} letti</span>
                         </div>
-                        <div class="mid-dot">&middot;</div>
+
                         <div>
-                            <i class="fa-solid fa-bath"></i> Numero di bagni:
-                            <span>{{ house.n_bathroom }}</span>
+                            <i class="fa-solid fa-bath"></i>
+                            <span>{{ house.n_bathroom }} bagni</span>
                         </div>
-                        <div class="mid-dot">&middot;</div>
+
                         <div>
-                            <i class="fa-solid fa-house"></i> Metri quadrati:
-                            <span>{{ house.square_meters }}</span>
+                            <i class="fa-solid fa-house"></i>
+                            <span>{{ house.square_meters }} mq</span>
                         </div>
                     </div>
                     <hr />
@@ -42,22 +41,25 @@
                         </ul>
                     </div>
                     <div>
-                        Prezzo per notte: <span>{{ house.night_price }}€</span>
+                        <h3>Prezzo per notte:</h3>
+                        <p>{{ house.night_price }}€</p>
                     </div>
-                    <h4>
-                        Disponibile dal {{ house.check_in }} al
-                        {{ house.check_out }}
-                    </h4>
+                    <div>
+                        <h3>Disponibilità:</h3>
+                        <p>dal {{ house.check_in }} al {{ house.check_out }}</p>
+                    </div>
                 </div>
                 <div class="col-5 align-items-center d-flex">
                     <MapComponent :longitude="longitude" :latitude="latitude" />
                 </div>
             </div>
+            <hr>
             <div class="row flex-column pt-3 w-100">
                 <div>
                     <form @submit.prevent="sendMessage()">
-                        
-                        <div class="input-group-text p-3 flex-column w-50 mx-auto">
+                        <div
+                            class="input-group-text p-3 flex-column w-50 mx-auto"
+                        >
                             <h3>Contattami qui:</h3>
                             <label for="name">Inserisci il tuo nome:</label>
                             <input
@@ -87,8 +89,8 @@
                                 v-model="formData.text"
                                 type="text"
                                 class="my-input form-control w-75"
-                                rows="4" cols="50"
-
+                                rows="4"
+                                cols="50"
                             />
                             <button class="btn btn-primary mt-3" type="submit">
                                 Invia
@@ -179,15 +181,13 @@ export default {
             font-size: 2rem;
         }
     }
-    li{
-        color: black;
-    }
+   
 }
 
 // MEDIA QUERY
 @media only screen and (max-width: 797px) {
-  .input-group-text{
-    width: 100% !important;
-  }
+    .input-group-text {
+        width: 100% !important;
+    }
 }
 </style>

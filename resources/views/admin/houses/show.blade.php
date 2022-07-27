@@ -57,17 +57,45 @@
                             <p id="longitude">Longitude: {{ $house->longitude }}</p>
                         </div>
                     </div>
-                    <div>
-                        <h3>Messaggi: </h3>
-                        @foreach ($house->messages as $message)
-                            Nome: {{ $message->name }} <br>
-                            Cognome: {{ $message->surname }} <br>
-                            Email: {{ $message->email }}<br>
-                            {{ $message->text }}
-                        @endforeach
 
-                    </div>
 
+                </div>
+                <div>
+                    <h3>Messaggi: </h3>
+
+                    {{-- Nome: {{ $message->name }} <br>
+                        Cognome: {{ $message->surname }} <br>
+                        Email: {{ $message->email }}<br>
+                        {{ $message->text }} --}}
+
+                    @foreach ($house->messages as $message)
+                        <div {{-- :key="comment.id" --}} class="comment mt-4 text-justify">
+                            <div class="row h-25">
+                                <img :src="'https://picsum.photos/200/300?random=' +
+                                {{ $message->id }}"
+                                    alt="" class="rounded-circle" width="50" height="50" />
+                                <div class="h-50">
+                                    <h5 class="text-white pt-2 m-0">
+                                        {{ $message->name }}
+                                        {{ $message->surname }}
+                                    </h5>
+
+                                    {{-- <p class="text-white">
+                                    Lì
+                                    <small>{{
+                                        // comment.created_at
+                                        //     .substr(0, 19)
+                                        //     .replace("T", ", ")
+                                    }}</small>
+                                </p> --}}
+                                </div>
+                            </div>
+
+                            <p class="text-white pt-2">
+                                {{ $message->text }}
+                            </p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="col-4 rounded border border-3 pb-3">
@@ -97,14 +125,14 @@
                 @foreach ($house->sponsorships as $sponsorship)
                     <div class="p-0 text-center border-bottom border-3 px-2 py-3">
                         <p class="mb-0">Sponsorizzazione: <strong> {{ $sponsorship->name }}</strong></p>
-                        @if(count($house->sponsorships) <= 3)
-                        @if ($sponsorship->name === 'Gold')
-                            <img class="w-25" src="{{ asset('/images/gold.png') }}" alt="">
-                        @elseif ($sponsorship->name === 'Silver')
-                            <img class="w-25" src="{{ asset('/images/silver.png') }}" alt="">
-                        @elseif ($sponsorship->name === 'Bronze')
-                            <img class="w-25" src="{{ asset('/images/bronze.png') }}" alt="">
-                        @endif
+                        @if (count($house->sponsorships) <= 3)
+                            @if ($sponsorship->name === 'Gold')
+                                <img class="w-25" src="{{ asset('/images/gold.png') }}" alt="">
+                            @elseif ($sponsorship->name === 'Silver')
+                                <img class="w-25" src="{{ asset('/images/silver.png') }}" alt="">
+                            @elseif ($sponsorship->name === 'Bronze')
+                                <img class="w-25" src="{{ asset('/images/bronze.png') }}" alt="">
+                            @endif
                         @endif
                     </div>
                 @endforeach

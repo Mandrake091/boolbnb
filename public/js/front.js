@@ -8603,24 +8603,18 @@ var render = function render() {
   }), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-7"
+    staticClass: "col-12 col-md-7 text-center text-md-left"
   }, [_c("h2", [_vm._v(_vm._s(_vm.house.type.name) + " - Host: " + _vm._s(_vm.house.user.name))]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
-    staticClass: "info"
+    staticClass: "info flex-column flex-md-row"
   }, [_c("div", [_c("i", {
     staticClass: "fa-solid fa-person-shelter"
-  }), _vm._v(" Numero di\n                        stanze: "), _c("span", [_vm._v(_vm._s(_vm.house.n_room))])]), _vm._v(" "), _c("div", {
-    staticClass: "mid-dot"
-  }, [_vm._v("·")]), _vm._v(" "), _c("div", [_c("i", {
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.house.n_room) + " stanze")])]), _vm._v(" "), _c("div", [_c("i", {
     staticClass: "fa-solid fa-bed"
-  }), _vm._v(" Numero di letti:\n                        "), _c("span", [_vm._v(_vm._s(_vm.house.n_bed))])]), _vm._v(" "), _c("div", {
-    staticClass: "mid-dot"
-  }, [_vm._v("·")]), _vm._v(" "), _c("div", [_c("i", {
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.house.n_bed) + " letti")])]), _vm._v(" "), _c("div", [_c("i", {
     staticClass: "fa-solid fa-bath"
-  }), _vm._v(" Numero di bagni:\n                        "), _c("span", [_vm._v(_vm._s(_vm.house.n_bathroom))])]), _vm._v(" "), _c("div", {
-    staticClass: "mid-dot"
-  }, [_vm._v("·")]), _vm._v(" "), _c("div", [_c("i", {
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.house.n_bathroom) + " bagni")])]), _vm._v(" "), _c("div", [_c("i", {
     staticClass: "fa-solid fa-house"
-  }), _vm._v(" Metri quadrati:\n                        "), _c("span", [_vm._v(_vm._s(_vm.house.square_meters))])])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("p", {
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.house.square_meters) + " mq")])])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("p", {
     domProps: {
       innerHTML: _vm._s(_vm.house.description)
     }
@@ -8628,14 +8622,14 @@ var render = function render() {
     return _c("li", {
       key: service.id
     }, [_vm._v("\n                            " + _vm._s(service.name) + "\n                        ")]);
-  }), 0) : _vm._e()]), _vm._v(" "), _c("div", [_vm._v("\n                    Prezzo per notte: "), _c("span", [_vm._v(_vm._s(_vm.house.night_price) + "€")])]), _vm._v(" "), _c("h4", [_vm._v("\n                    Disponibile dal " + _vm._s(_vm.house.check_in) + " al\n                    " + _vm._s(_vm.house.check_out) + "\n                ")])]), _vm._v(" "), _c("div", {
+  }), 0) : _vm._e()]), _vm._v(" "), _c("div", [_c("h3", [_vm._v("Prezzo per notte:")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.house.night_price) + "€")])]), _vm._v(" "), _c("div", [_c("h3", [_vm._v("Disponibilità:")]), _vm._v(" "), _c("p", [_vm._v("dal " + _vm._s(_vm.house.check_in) + " al " + _vm._s(_vm.house.check_out))])])]), _vm._v(" "), _c("div", {
     staticClass: "col-5 align-items-center d-flex"
   }, [_c("MapComponent", {
     attrs: {
       longitude: _vm.longitude,
       latitude: _vm.latitude
     }
-  })], 1)]), _vm._v(" "), _c("div", {
+  })], 1)]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row flex-column pt-3 w-100"
   }, [_c("div", [_c("form", {
     on: {
@@ -23625,7 +23619,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".main-container[data-v-656dbaae] {\n  margin: 20px auto;\n  width: 80vw;\n}\n.main-container h2[data-v-656dbaae] {\n  margin-top: 40px;\n}\n.main-container img[data-v-656dbaae] {\n  width: 100%;\n}\n.main-container .info[data-v-656dbaae] {\n  display: flex;\n  gap: 20px;\n  margin-bottom: 30px;\n  margin-top: 30px;\n}\n.main-container .info .mid-dot[data-v-656dbaae] {\n  line-height: 1rem;\n  font-size: 2rem;\n}\n.main-container li[data-v-656dbaae] {\n  color: black;\n}\n@media only screen and (max-width: 797px) {\n.input-group-text[data-v-656dbaae] {\n    width: 100% !important;\n}\n}", ""]);
+exports.push([module.i, ".main-container[data-v-656dbaae] {\n  margin: 20px auto;\n  width: 80vw;\n}\n.main-container h2[data-v-656dbaae] {\n  margin-top: 40px;\n}\n.main-container img[data-v-656dbaae] {\n  width: 100%;\n}\n.main-container .info[data-v-656dbaae] {\n  display: flex;\n  gap: 20px;\n  margin-bottom: 30px;\n  margin-top: 30px;\n}\n.main-container .info .mid-dot[data-v-656dbaae] {\n  line-height: 1rem;\n  font-size: 2rem;\n}\n@media only screen and (max-width: 797px) {\n.input-group-text[data-v-656dbaae] {\n    width: 100% !important;\n}\n}", ""]);
 
 // exports
 
