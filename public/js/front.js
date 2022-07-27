@@ -7604,17 +7604,13 @@ var options = {
         }
       }
 
-      axios.get("/api/search?" + "indirizzo=" + this.indirizzo + "&" + "n_room=" + this.textRoom + "&n_bed=" + this.textBed + this.variabileServizi.join(" ") //     })
+      axios.get("/api/search?" + "indirizzo=" + this.indirizzo + "&" + "&n_room=" + this.textRoom + "&n_bed=" + this.textBed + this.variabileServizi.join(" ") //     })
       // }
       // "&servicesToSearch[]=" +
       //     this.selectedServices
       ).then(function (response) {
         return response.data.forEach(function (item) {
-          if (item.sponsorships.length != 0) {
-            _this.filteredHousesRoom.unshift(item);
-
-            console.log(_this.filteredHousesRoom);
-          } else if (item.visibility === 1) {
+          if (item.visibility === 1) {
             _this.filteredHousesRoom.push(item);
           }
         });
