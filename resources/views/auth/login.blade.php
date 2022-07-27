@@ -10,7 +10,7 @@
                         @csrf
                         <div class="row justify-content-center">
                             <div class="h3 py-3 text-monospace">
-                                Welcome back, sing in!
+                                Welcome back, sign in!
                             </div>
                         </div>
 

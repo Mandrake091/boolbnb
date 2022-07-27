@@ -111,7 +111,11 @@
                                         flag: house.sponsorships.length != 0,
                                     }"
                                 >
-                                    <strong v-if="house.sponsorships.length != 0" class="">Sponsorizzato</strong>
+                                    <strong
+                                        v-if="house.sponsorships.length != 0"
+                                        class=""
+                                        >Sponsorizzato</strong
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -297,11 +301,11 @@ export default {
             .get("/api/houses/")
             .then((res) => {
                 res.data.forEach((item) => {
-                    if (item.visibility === 1) {
-                        this.filteredHousesRoom.push(item);
-                    } else if (item.sponsorships.length != 0) {
+                    if (item.sponsorships.length != 0) {
                         this.filteredHousesRoom.unshift(item);
                         console.log(this.filteredHousesRoom);
+                    } else if (item.visibility === 1) {
+                        this.filteredHousesRoom.push(item);
                     }
                 });
 
@@ -379,7 +383,6 @@ export default {
     bottom: 0;
     right: 0;
     z-index: 0;
-  
 
     position: absolute;
 }

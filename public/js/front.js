@@ -7651,12 +7651,12 @@ var options = {
 
     axios.get("/api/houses/").then(function (res) {
       res.data.forEach(function (item) {
-        if (item.visibility === 1) {
-          _this2.filteredHousesRoom.push(item);
-        } else if (item.sponsorships.length != 0) {
+        if (item.sponsorships.length != 0) {
           _this2.filteredHousesRoom.unshift(item);
 
           console.log(_this2.filteredHousesRoom);
+        } else if (item.visibility === 1) {
+          _this2.filteredHousesRoom.push(item);
         }
       }); // this.services = res.data;
     })["catch"](function (err) {
@@ -71229,7 +71229,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/progetti-php/boolbnb/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/boolbnb/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ }),
