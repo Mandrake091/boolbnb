@@ -39,10 +39,10 @@
 
         <div class="card">
          <div class="imgbox">
-            <img src="" alt="images">
+            <img src="/images/alfonso.jpg" alt="images">
          </div>
          <div class="details">
-            <h2>Nome cognome<br><span>Jr.Web Developer</span></h2>
+            <h2>Alfonso Ammirati<br><span>Jr.Web Developer</span></h2>
           </div>
        </div>
  

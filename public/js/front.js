@@ -8162,12 +8162,12 @@ var staticRenderFns = [function () {
     staticClass: "imgbox"
   }, [_c("img", {
     attrs: {
-      src: "",
+      src: "/images/alfonso.jpg",
       alt: "images"
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "details"
-  }, [_c("h2", [_vm._v("Nome cognome"), _c("br"), _c("span", [_vm._v("Jr.Web Developer")])])])])])]);
+  }, [_c("h2", [_vm._v("Alfonso Ammirati"), _c("br"), _c("span", [_vm._v("Jr.Web Developer")])])])])])]);
 }];
 render._withStripped = true;
 
